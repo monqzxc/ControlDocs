@@ -104,6 +104,10 @@
     <Compile Include="Migrations\202202221319296_CreateTables.designer.cs">
       <DependentUpon>202202221319296_CreateTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202230017036_UpdateDoctype.cs" />
+    <Compile Include="Migrations\202202230017036_UpdateDoctype.designer.cs">
+      <DependentUpon>202202230017036_UpdateDoctype.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Plantilla.cs" />
     <Compile Include="Model\dbDocs.cs" />
@@ -130,6 +134,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\202202221319296_CreateTables.resx">
       <DependentUpon>202202221319296_CreateTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202230017036_UpdateDoctype.resx">
+      <DependentUpon>202202230017036_UpdateDoctype.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -17,7 +17,8 @@ namespace DocsControl.Model
         public int Id { get; set; }
 
         [Column("DocType")]
-        public string DocType1 { get; set; }
+        public string DocumentType { get; set; }
+        public string Description { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DocData> DocDatas { get; set; }
