@@ -16,7 +16,7 @@
         Width="420" Height="400">
 
     <Grid>
-        <StackPanel Background="#1A73E8" MouseDown="StackPanel_MouseDown">
+        <StackPanel Background="#1D1B1B" MouseDown="StackPanel_MouseDown">
             <Image
                 Source="D:\Downloads\Icons\tesda logo white.png"
                 HorizontalAlignment="Left"
@@ -56,9 +56,9 @@
                         materialDesign:HintAssist.Hint="PASSWORD"/>
                 <Button
                         Name="buttonLogin"
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
                         Width="100"
-                        ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
                         Content="LOGIN" 
                         Margin="-120,20,10,10"
                         Click="buttonClick"/>

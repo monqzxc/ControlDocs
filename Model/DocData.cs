@@ -22,18 +22,13 @@ namespace DocsControl.Model
 
         public string Link { get; set; }
 
-        public int DocTypeID { get; set; }
+        public string DoctTypes { get; set; }
 
-        public int DocFromID { get; set; }
-
-        public int DocToID { get; set; }
 
         public DateTime DateAdd { get; set; }
 
-        public virtual DocType DocType { get; set; }
-
         public virtual Focal Focal { get; set; }
 
-        public virtual Focal Focal1 { get; set; }
+        public virtual Addressee Addressee { get; set; }
     }
 }

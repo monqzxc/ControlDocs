@@ -31,33 +31,16 @@ namespace DocsControl.Model
         dbDocs db = new dbDocs();
 
 
-        public List<User> GetUserInfo(string userName, string password)
-        {
-            this.UserName = userName;
-            this.Password = password;
-            var list = new List<User>();
-            var z = new dbDocs().Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).ToList();
-            foreach (var item in z)
-            {
-
-                list.Add(new User { 
-                    FirstName = item.FirstName, 
-                    LastName = item.LastName, 
-                    NickName = item.NickName, 
-                    UserName = item.UserName, 
-                    Password = item.Password, 
-                    Sex = item.Sex, 
-                    RoleID = item.RoleID, 
-                    Id = item.Id });                
-            }
-            return list;            
+        public IQueryable<User> GetUserInfo()
+        {                      
+            return new dbDocs().Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password));
         }
 
-        public string GetRole()
+        public string GetNickname()
         {
-            var role = db.Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).Select(x => x.Role.RoleName).FirstOrDefault();
-            if (role != null)
-                return role;
+            var nickname = db.Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).Select(x => x.NickName).FirstOrDefault();
+            if (nickname != null)
+                return nickname;
             else
                 return "Invalid Username and Password";
         }

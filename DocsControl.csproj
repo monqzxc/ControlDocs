@@ -79,6 +79,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Migrations\202202230941088_CreateAddressee.cs" />
+    <Compile Include="Migrations\202202230941088_CreateAddressee.designer.cs">
+      <DependentUpon>202202230941088_CreateAddressee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Addressee.cs" />
+    <Compile Include="Model\Modules.cs" />
+    <Compile Include="View\vDashboard.xaml.cs">
+      <DependentUpon>vDashboard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\vOutgoing.xaml.cs">
+      <DependentUpon>vOutgoing.xaml</DependentUpon>
+    </Compile>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -98,6 +110,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\vDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\vOutgoing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Migrations\202202221319296_CreateTables.cs" />
@@ -138,6 +158,9 @@
     <EmbeddedResource Include="Migrations\202202230017036_UpdateDoctype.resx">
       <DependentUpon>202202230017036_UpdateDoctype.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202230941088_CreateAddressee.resx">
+      <DependentUpon>202202230941088_CreateAddressee.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -157,7 +180,6 @@
   <ItemGroup>
     <Folder Include="Controller\" />
     <Folder Include="ViewModel\" />
-    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

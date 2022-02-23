@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocsControl.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace DocsControl
 {
@@ -23,6 +25,55 @@ namespace DocsControl
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        public MainWindow(string user)
+        {
+            InitializeComponent();
+            //sp1.Children.Add();
+            lblUser.Content = user.ToUpper();
+            var users = new User
+            {
+                NickName = user
+            };
+
+            DispatcherTimer dispatcherTimer = new DispatcherTimer();
+
+            dispatcherTimer.Tick += DispatcherTimer_Tick;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
+            dispatcherTimer.Start();
+
+        }
+
+        private void DispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            var dateNow = DateTime.Now.ToString("F");
+
+            lblDateTime.Content = dateNow;
+        }
+
+        private void navHeader_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton.Equals(MouseButton.Left))
+                DragMove();
+        }
+        private void buttonDashboard(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void buttonOutgoing(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void buttonIncoming(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void buttonDocuments(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

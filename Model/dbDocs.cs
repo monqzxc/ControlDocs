@@ -21,22 +21,8 @@ namespace DocsControl.Model
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Plantilla> Plantillas { get; set; }
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Focal>()
-                .HasMany(e => e.DocDatas)
-                .WithRequired(e => e.Focal)
-                .HasForeignKey(e => e.DocFromID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Focal>()
-                .HasMany(e => e.DocDatas1)
-                .WithRequired(e => e.Focal1)
-                .HasForeignKey(e => e.DocToID)
-                .WillCascadeOnDelete(false);
-        }
-
+        public virtual DbSet<Addressee> Addressees { get; set; }
+        
 
     }
 }

@@ -10,8 +10,7 @@ namespace DocsControl.Model
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DocType()
-        {
-            DocDatas = new HashSet<DocData>();
+        {            
         }
 
         public int Id { get; set; }
@@ -19,8 +18,6 @@ namespace DocsControl.Model
         [Column("DocType")]
         public string DocumentType { get; set; }
         public string Description { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocData> DocDatas { get; set; }
+       
     }
 }

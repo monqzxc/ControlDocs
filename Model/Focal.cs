@@ -12,7 +12,6 @@ namespace DocsControl.Model
         public Focal()
         {
             DocDatas = new HashSet<DocData>();
-            DocDatas1 = new HashSet<DocData>();
         }
 
         public int Id { get; set; }
@@ -31,8 +30,6 @@ namespace DocsControl.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DocData> DocDatas { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocData> DocDatas1 { get; set; }
 
         public virtual Focalship Focalship { get; set; }
 
