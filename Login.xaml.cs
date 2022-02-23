@@ -54,8 +54,7 @@ namespace DocsControl
                     {
                         Console.WriteLine(item.NickName);
                     }
-
-                    Console.WriteLine(user.GetRole());
+              
                     break;
                 case "EXIT":
                     MessageBox.Show("OYOYOYY");
