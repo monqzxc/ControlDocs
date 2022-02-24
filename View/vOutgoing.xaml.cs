@@ -22,7 +22,9 @@ namespace DocsControl.View
     {
         public vOutgoing()
         {
-            InitializeComponent();
+            
         }
+
+    
     }
 }

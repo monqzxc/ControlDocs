@@ -59,8 +59,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -83,8 +85,18 @@
     <Compile Include="Migrations\202202230941088_CreateAddressee.designer.cs">
       <DependentUpon>202202230941088_CreateAddressee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202240008383_CreateDocPath.cs" />
+    <Compile Include="Migrations\202202240008383_CreateDocPath.designer.cs">
+      <DependentUpon>202202240008383_CreateDocPath.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202240703040_updateDocData.cs" />
+    <Compile Include="Migrations\202202240703040_updateDocData.designer.cs">
+      <DependentUpon>202202240703040_updateDocData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Addressee.cs" />
+    <Compile Include="Model\DocPath.cs" />
     <Compile Include="Model\Modules.cs" />
+    <Compile Include="ViewModel\vmOutgoing.cs" />
     <Compile Include="View\vDashboard.xaml.cs">
       <DependentUpon>vDashboard.xaml</DependentUpon>
     </Compile>
@@ -161,6 +173,12 @@
     <EmbeddedResource Include="Migrations\202202230941088_CreateAddressee.resx">
       <DependentUpon>202202230941088_CreateAddressee.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202240008383_CreateDocPath.resx">
+      <DependentUpon>202202240008383_CreateDocPath.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202240703040_updateDocData.resx">
+      <DependentUpon>202202240703040_updateDocData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -179,7 +197,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
-    <Folder Include="ViewModel\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -60,16 +60,10 @@ namespace DocsControl
                         Cursor = Cursors.Arrow;
                         return;
                     }
-
-                    foreach (var item in user.GetUserInfo())
-                    {
-                        Console.WriteLine(item.Role.RoleName);
-                    }
                     var mainWindow = new MainWindow(user.GetNickname());
                     this.Close();
 
                     mainWindow.Show();
-                    //Console.WriteLine(user.Role.RoleName);
                     
                     break;
                 case "EXIT":

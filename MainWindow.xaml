@@ -10,7 +10,7 @@
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         FontFamily="Century Gothic"
-        Background="#1D1B1B"
+        Background="AliceBlue"
         Title="MainWindow" Height="890" Width="1300" WindowStyle="None">
     <Grid>
         <Grid.RenderTransform>
@@ -51,7 +51,7 @@
         <materialDesign:Card
             Name="navHeader"
              
-            Background="white"
+            Background="#1D1B1B"
             Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
             Padding="8" Grid.Column="1" Margin="155,0,0,80" MouseDown="navHeader_MouseDown"/>
 
@@ -59,7 +59,7 @@
         <materialDesign:Card
             Name="navHeader2"
              
-            Background="white"
+            Background="#1D1B1B"
             Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
             Padding="8" Grid.Column="1" Margin="155,760,0,0" Grid.Row="1">
             <materialDesign:TimePicker HorizontalAlignment="Left" Margin="898,0,0,0" VerticalAlignment="Top"/>

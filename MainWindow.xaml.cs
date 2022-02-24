@@ -24,8 +24,7 @@ namespace DocsControl
     {
         public MainWindow()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
 
         public MainWindow(string user)
@@ -49,7 +48,7 @@ namespace DocsControl
         private void DispatcherTimer_Tick(object sender, EventArgs e)
         {
             var dateNow = DateTime.Now.ToString("F");
-
+        
             lblDateTime.Content = dateNow;
         }
 
@@ -64,7 +63,7 @@ namespace DocsControl
         }
         private void buttonOutgoing(object sender, RoutedEventArgs e)
         {
-
+            sp1.Children.Add(new ViewModel.vmOutgoing());
         }
 
         private void buttonIncoming(object sender, RoutedEventArgs e)

@@ -39,3 +39,5 @@ C:\Users\Mon\source\repos\DocsControl\obj\Debug\View\vDashboard.baml
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\View\vOutgoing.baml
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.csprojAssemblyReference.cache
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.CreateAddressee.resources
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.CreateDocPath.resources
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateDocData.resources

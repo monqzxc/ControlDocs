@@ -21,8 +21,8 @@ namespace DocsControl.Model
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Plantilla> Plantillas { get; set; }
-        public virtual DbSet<Addressee> Addressees { get; set; }
-        
+        public virtual DbSet<Addressee> Addressees { get; set; }       
+        public virtual DbSet<DocPath> DocPaths { get; set; }
 
     }
 }
