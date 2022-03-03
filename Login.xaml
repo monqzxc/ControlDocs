@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DocsControl"
-         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"     
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"     
         mc:Ignorable="d"            
         ResizeMode="NoResize"
         AllowsTransparency="True"
@@ -55,17 +55,17 @@
                         Height="49"                      
                         materialDesign:HintAssist.Hint="PASSWORD"/>
                 <Button
-                        Name="buttonLogin"
+                        x:Name="buttonLogin"
                         Style="{StaticResource MaterialDesignRaisedButton}"
                         Width="100"
-                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                        ToolTip="LOGIN"
                         Content="LOGIN" 
-                        Margin="-120,20,10,10"
+                        Margin="44,20,173,10"
                         Click="buttonClick"/>
                 <Button
                         Style="{StaticResource MaterialDesignRaisedAccentButton}"
                         Width="100"
-                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                        ToolTip="EXIT"
                         Content="EXIT"
                         Margin="150,-42,10,10"
                         Click="buttonClick"/>

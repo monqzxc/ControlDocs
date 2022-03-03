@@ -17,7 +17,7 @@
         <Label          
             Foreground="#008080"
             FontWeight="Bold"
-            Content="For Signature"
+            Content="FOR SIGNATURE"
             Margin="0,113,698,709"
             FontSize="20"
             Height="Auto"
@@ -25,9 +25,9 @@
             HorizontalContentAlignment="Center"/>
         <Label
             Foreground="#008080"
-            Content="Signed"
+            Content="SIGNED"
             FontWeight="Bold"
-            Margin="345,113,353,709"
+            Margin="343,113,355,709"
             FontSize="20"
             Height="Auto"
             Width="Auto"
@@ -35,58 +35,58 @@
         <Label            
             Foreground="#008080"
             FontWeight="Bold"
-            Content="Released"
+            Content="RELEASED"
             Margin="688,113,10,709"
             FontSize="20"
             Height="Auto"
             Width="Auto"
             HorizontalContentAlignment="Center"/>
 
-        <!--<Button 
-            Height="Auto"
-            Margin="869,10,10,824"
-            Content="ADD DOCUMENT"
-            FontSize="11"/>-->
-        
-
         <ListView             
             BorderThickness="10"
             Name="lvForSign"
-            ItemsSource="{Binding Items1}" Margin="0,152,698,10">
+            Margin="0,152,698,10">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
                         <Style TargetType="GridViewColumnHeader">
                             <Setter Property="Foreground" Value="#008080"></Setter>
                             <Setter Property="FontWeight" Value="Bold"></Setter>
-                            <Setter Property="Width" Value="190"></Setter>
+                            <Setter Property="Width" Value="230"></Setter>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
                     <!--<GridViewColumn                       
                         DisplayMemberBinding="{Binding DocType}"
                         Header="Type" />-->
-                    <GridViewColumn
-                       Width="170"                        
-                        Header="Subject">
+                    <GridViewColumn                       
+                       Width="230"                        
+                       Header="SUBJECT">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock 
-                                    Width="170"        
-                                    x:Name="txt"
+                                <TextBlock
+                                    Padding="-1"
+                                    Margin="8"
+                                    Height="30"
+                                    TextWrapping="Wrap"                                 
+                                    Width="220"        
+                                    x:Name="txt"                                    
                                     Text="{Binding Path=OperatingUnit}" 
-                                    Foreground="#EC4D37"
-                                   ></TextBlock>
+                                    Foreground="#EC4D37">
+                                </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn   
-                         Width="170"    
-                        Header="Date">
+                        Width="150"                         
+                        Header="DATE          ">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock
-                                    Width="170"        
-                                    x:Name="txt"                 
+                                <TextBlock 
+                                    Margin="8"                               
+                                    Width="70"        
+                                    x:Name="txt"   
+                                    TextAlignment="Center"                                        
                                     Text="{Binding Email}" 
                                     Foreground="#EC4D37"></TextBlock>
                             </DataTemplate>
@@ -94,38 +94,59 @@
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
+            <!--<ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    
+                </Style>
+            </ListView.ItemContainerStyle>-->
         </ListView>
 
         <ListView 
             Name="lvSigned"
-            ItemsSource="{Binding Items1}" Margin="345,152,353,10">
+            ItemsSource="{Binding Items1}" Margin="343,152,355,10">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
                         <Style TargetType="GridViewColumnHeader">
                             <Setter Property="Foreground" Value="#008080"></Setter>
                             <Setter Property="FontWeight" Value="Bold"></Setter>
-                            <Setter Property="Width" Value="190"></Setter>
+                            <Setter Property="Width" Value="230"></Setter>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
                     <!--<GridViewColumn                       
                         DisplayMemberBinding="{Binding DocType}"
                         Header="Type" />-->
-                    <GridViewColumn
-                       Width="170"                        
-                        Header="Subject">
+                    <GridViewColumn                       
+                       Width="230"                        
+                       Header="SUBJECT">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Width="170" x:Name="txt" Text="{Binding Path=Subject}" Foreground="#008080"></TextBlock>
+                                <TextBlock
+                                    Margin="8"
+                                    Height="30"
+                                    TextWrapping="Wrap"                                 
+                                    Width="220"        
+                                    x:Name="txt"                                    
+                                    Text="{Binding Path=OperatingUnit}" 
+                                    Foreground="#000030">
+                                </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn   
-                         Width="170"    
-                        Header="Date">
+                        Width="150"                         
+                        Header="DATE          ">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Width="170" x:Name="txt" Text="{Binding Date}" Foreground="#008080"></TextBlock>
+                                <TextBlock 
+                                    Margin="8"                               
+                                    Width="70"        
+                                    x:Name="txt"   
+                                    TextAlignment="Center"                                        
+                                    Text="{Binding Email}" 
+                                    Foreground="#000030"></TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
@@ -142,58 +163,56 @@
                         <Style TargetType="GridViewColumnHeader">
                             <Setter Property="Foreground" Value="#008080"></Setter>
                             <Setter Property="FontWeight" Value="Bold"></Setter>
-                            <Setter Property="Width" Value="190"></Setter>
+                            <Setter Property="Width" Value="230"></Setter>
+                            <Setter Property="HorizontalAlignment" Value="Center"/>
                         </Style>
                     </GridView.ColumnHeaderContainerStyle>
-                    
                     <!--<GridViewColumn                       
                         DisplayMemberBinding="{Binding DocType}"
                         Header="Type" />-->
-                    <GridViewColumn
-                                      Width="170" 
-                        Header="Subject">
+                    <GridViewColumn                       
+                       Width="230"                        
+                       Header="SUBJECT">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock x:Name="txt" Text="{Binding Path=Subject}" Foreground="#008080"></TextBlock>
+                                <TextBlock
+                                    Margin="8"
+                                    Height="30"
+                                    TextWrapping="Wrap"                                 
+                                    Width="220"        
+                                    x:Name="txt"                                    
+                                    Text="{Binding Path=OperatingUnit}" 
+                                    Foreground="#EC4D37">
+                                </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn     
-                        Width="170" 
-                        Header="Date">
+                    <GridViewColumn   
+                        Width="150"                         
+                        Header="DATE          ">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock x:Name="txt" Text="{Binding Date}" Foreground="#008080"></TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn> 
-                    
-                    <!--<GridViewColumn
-                        Width="170"                        
-                        Header="Subject">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock x:Name="txt" Text="{Binding Path=Subject}" Foreground="#008080"></TextBlock>
+                                <TextBlock 
+                                    Margin="8"                               
+                                    Width="70"        
+                                    x:Name="txt"   
+                                    TextAlignment="Center"                                        
+                                    Text="{Binding Email}" 
+                                    Foreground="#EC4D37"></TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn                      
-                        Header="Date">
-                        <GridViewColumn.CellTemplate>
-                        <DataTemplate>
-                                <TextBlock x:Name="txt" Text="{Binding Date}" Foreground="#008080"></TextBlock>
-                        </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>-->
                 </GridView>
             </ListView.View>
         </ListView>
         
         
         <Button            
+            x:Name="btnAdd"
+            Click="buttonShowDialog"
             Margin="968,769,10,31"
             Style="{StaticResource MaterialDesignFloatingActionButton}"
-            ToolTip="MaterialDesignFloatingActionButton">
+            ToolTip="ADD NEW DOCUMENT">
             <materialDesign:PackIcon
                 Kind="Add"
                 Height="24"

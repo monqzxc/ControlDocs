@@ -13,7 +13,7 @@ namespace DocsControl.Model
 
         public string DocSubject { get; set; }
 
-        public string MotherDocNumber { get; set; }
+        public string Remarks { get; set; }
         public string CurrentStatus { get; set; }
 
         public DateTime? ForSigned { get; set; }
@@ -25,6 +25,7 @@ namespace DocsControl.Model
         public string DoctTypes { get; set; }
         
         public DateTime DateAdd { get; set; }
+        public string Tag { get; set; }
 
         public virtual Focal Focal { get; set; }
 

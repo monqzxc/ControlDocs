@@ -1,22 +1,45 @@
-﻿using DocsControl.Model;
+﻿using DocsControl.Dialogs;
+using DocsControl.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
 using static DocsControl.Model.DocData;
+using static DocsControl.Model.Modules;
 
 namespace DocsControl.ViewModel
 {
     public partial class vmOutgoing : UserControl
-    {
+    {        
         public vmOutgoing()
-        {         
+        {
             InitializeComponent();
             DocList();
+            
+            lvForSign.SelectionChanged += LvForSign_SelectionChanged;
+            lvSigned.SelectionChanged += LvForSign_SelectionChanged;
+            lvForRelease.SelectionChanged += LvForSign_SelectionChanged;
+
         }
         
+        private void LvForSign_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            var item = (ListBox)sender;
+            var office = (Office)item.SelectedItem;
+            this.Opacity = .5;
+            this.Background = Brushes.Black;
+            var dialog = new dAddEditDocs("EDIT DOCUMENT");
+            dialog.ShowDialog();
+            this.Opacity = 1;
+            this.Background = Brushes.Transparent;
+        }
+
         public void DocList()
         {
             var db = new dbDocs();
@@ -31,12 +54,20 @@ namespace DocsControl.ViewModel
             {
                 officeList.Add(new Office() { OperatingUnit = item.OperatingUnit, Email = DateTime.Now.ToString("yyyy-MM-dd")} );
                 lvForSign.ItemsSource = officeList;
+                lvSigned.ItemsSource = officeList;
             }
         }
+      
 
-       //public List<DocData> DocDatas
-       // {
-       //     get { return DocDataHelper.DocDatas; }
-       // }
+        private void buttonShowDialog(object sender, RoutedEventArgs e)
+        {
+            this.Opacity = .5;
+            this.Background = Brushes.Black;            
+            var dialog = new dAddEditDocs("ADD DOCUMENT");
+            dialog.ShowDialog();
+            this.Opacity = 1;
+            this.Background = Brushes.Transparent;
+            //openDialog(Window, new dAddEditDocs("ADD DOCUMENT"));
+        }
     }
 }

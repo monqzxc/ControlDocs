@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Mon\source\repos\DocsControl\App.xaml
-42082337044
+7-1782257869
 
-33-635887507
-24-540062077
-Login.xaml;MainWindow.xaml;View\vDashboard.xaml;View\vOutgoing.xaml;
+41-712812854
+25-2104697344
+Dialogs\dAddEditDocs.xaml;Dialogs\dDocInfo.xaml;Login.xaml;MainWindow.xaml;View\vDashboard.xaml;View\vDocuments.xaml;View\vOutgoing.xaml;
 
 False
 

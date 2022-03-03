@@ -56,6 +56,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=4.3.0.3, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
       <HintPath>packages\MaterialDesignThemes.4.3.0\lib\net452\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MaterialSkin.Updated.0.2.2\lib\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -81,6 +84,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dialogs\dAddEditDocs.xaml.cs">
+      <DependentUpon>dAddEditDocs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\dDocInfo.xaml.cs">
+      <DependentUpon>dDocInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202202230941088_CreateAddressee.cs" />
     <Compile Include="Migrations\202202230941088_CreateAddressee.designer.cs">
       <DependentUpon>202202230941088_CreateAddressee.cs</DependentUpon>
@@ -93,16 +102,36 @@
     <Compile Include="Migrations\202202240703040_updateDocData.designer.cs">
       <DependentUpon>202202240703040_updateDocData.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203010519351_updateDocDataTable.cs" />
+    <Compile Include="Migrations\202203010519351_updateDocDataTable.designer.cs">
+      <DependentUpon>202203010519351_updateDocDataTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203030527401_addTagColumnDDT.cs" />
+    <Compile Include="Migrations\202203030527401_addTagColumnDDT.designer.cs">
+      <DependentUpon>202203030527401_addTagColumnDDT.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Addressee.cs" />
     <Compile Include="Model\DocPath.cs" />
     <Compile Include="Model\Modules.cs" />
+    <Compile Include="ViewModel\vmDocuments.cs" />
     <Compile Include="ViewModel\vmOutgoing.cs" />
     <Compile Include="View\vDashboard.xaml.cs">
       <DependentUpon>vDashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\vDocuments.xaml.cs">
+      <DependentUpon>vDocuments.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\vOutgoing.xaml.cs">
       <DependentUpon>vOutgoing.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dialogs\dAddEditDocs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\dDocInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +152,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\vDashboard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\vDocuments.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,6 +211,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202240703040_updateDocData.resx">
       <DependentUpon>202202240703040_updateDocData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203010519351_updateDocDataTable.resx">
+      <DependentUpon>202203010519351_updateDocDataTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203030527401_addTagColumnDDT.resx">
+      <DependentUpon>202203030527401_addTagColumnDDT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

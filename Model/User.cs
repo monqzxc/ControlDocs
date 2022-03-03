@@ -45,6 +45,21 @@ namespace DocsControl.Model
                 return "Invalid Username and Password";
         }
 
+        public void addUser()
+        {
+
+        }
+
+        public void editUser()
+        {
+
+        }
+
+        public void deleteUser()
+        {
+
+        }
+
         //public User(string userName, string password)
         //{
         //    this.UserName = userName;

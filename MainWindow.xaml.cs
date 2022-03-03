@@ -63,6 +63,7 @@ namespace DocsControl
         }
         private void buttonOutgoing(object sender, RoutedEventArgs e)
         {
+            sp1.Children.Clear();
             sp1.Children.Add(new ViewModel.vmOutgoing());
         }
 
@@ -72,7 +73,8 @@ namespace DocsControl
         }
         private void buttonDocuments(object sender, RoutedEventArgs e)
         {
-
+            sp1.Children.Clear();
+            sp1.Children.Add(new ViewModel.vmDocuments());
         }
     }
 }

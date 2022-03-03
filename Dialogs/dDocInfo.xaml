@@ -1,0 +1,153 @@
+﻿<Window x:Class="DocsControl.Dialogs.dDocInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DocsControl.Dialogs"
+          mc:Ignorable="d"
+        Background="#1D1B1B"       
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"                   
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Century Gothic"      
+        Title="MainDialog" 
+        Height="594.684" 
+        Width="565.317" 
+        WindowStyle="None">
+    <Grid>
+        <Label 
+            FontSize="20"
+            FontFamily="Century Gothic"
+            Foreground="White"
+            FontWeight="Bold"
+            Name="lblTitle"
+            Content="DOCUMENT DETAILS" 
+            HorizontalAlignment="Left" 
+            Margin="10,5,0,0" 
+            VerticalAlignment="Top"/>
+        <Grid  
+            Background="White"
+            HorizontalAlignment="Left"
+            Height="498"
+            Margin="0,38,0,0" 
+            VerticalAlignment="Top" 
+            Width="565">
+
+            <Label 
+                Content="SUBJECT"                    
+                FontWeight="Bold"                   
+                HorizontalAlignment="Left"                  
+                Margin="24,10,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label                            
+                HorizontalAlignment="Left"                                 
+                Margin="24,32,0,0"                                 
+                VerticalAlignment="Top" Height="57" Width="278">
+                <Label.Content>
+                    <AccessText 
+                        TextWrapping="Wrap"
+                        x:Name="lblSubject" 
+                        Text="For IAS-Region IV-A Submission of UTPRAS 
+                        PTCACS Compliance Audit Reports as of End of December 2021"
+                        Width="273"
+                        Height="51" />
+                </Label.Content>
+            </Label>
+            <Label 
+                Content="CONTROL NUMBER"                    
+                FontWeight="Bold"                   
+                HorizontalAlignment="Left"                  
+                Margin="362,17,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label 
+                Content="CONTROL NUMBER"                                                  
+                HorizontalAlignment="Left"                  
+                Margin="362,40,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label 
+                Content="DOCUMENT TYPE"                    
+                FontWeight="Bold"                   
+                HorizontalAlignment="Left"                  
+                Margin="24,95,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label                            
+                HorizontalAlignment="Left"                                 
+                 Margin="24,118,0,0"                                     
+                VerticalAlignment="Top" Height="46" Width="278">
+                <Label.Content>
+                    <AccessText 
+                        TextWrapping="Wrap"
+                       
+                        Text="For IAS-Region IV-A Submission of UTPRAS 
+                        PTCACS Compliance Audit Reports as of End of December 2021"
+                        Width="273"
+                        Height="42" />
+                </Label.Content>
+            </Label>
+            <Label 
+                Content="DATE ADDED"                    
+                FontWeight="Bold"                   
+                HorizontalAlignment="Left"                  
+                Margin="362,95,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label 
+                Content="DATE ADDED"                                                  
+                HorizontalAlignment="Left"                  
+                Margin="362,118,0,0"                 
+                VerticalAlignment="Top"/>
+
+            <Label 
+                Content="TIMELINE"                    
+                FontWeight="Bold"                   
+                HorizontalAlignment="Left"                  
+                Margin="45,296,0,0"                 
+                VerticalAlignment="Top"/>
+
+            <Label 
+                Content="FOR SIGNATURE"                    
+                FontWeight="Bold"                   
+                HorizontalAlignment="Left"                  
+                Margin="45,319,0,0"                 
+                VerticalAlignment="Top"/>
+
+            <Label 
+                Content="SIGNED"                    
+                FontWeight="Bold"                   
+                HorizontalAlignment="Left"                  
+                Margin="272,319,0,0"                 
+                VerticalAlignment="Top"/>
+
+            <Label 
+                Content="RELEASED"                    
+                FontWeight="Bold"                   
+                HorizontalAlignment="Left"                  
+                Margin="457,319,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label 
+                Content="FOR SIGNATURE"                                                
+                HorizontalAlignment="Left"                  
+                Margin="45,342,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label 
+                Content="SIGNED"                                     
+                HorizontalAlignment="Left"                  
+                Margin="272,342,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label 
+                Content="RELEASED"                                     
+                HorizontalAlignment="Left"                  
+                Margin="457,342,0,0"                 
+                VerticalAlignment="Top"/>
+        </Grid>
+
+        <Button            
+            Content="OKAY"
+            Name="btnCancel"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"       
+            Width="100"    
+            ToolTip="OKAY"
+            Margin="455,553,10,10">
+        </Button>
+    </Grid>
+</Window>
