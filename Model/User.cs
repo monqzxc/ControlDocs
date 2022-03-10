@@ -60,72 +60,7 @@ namespace DocsControl.Model
 
         }
 
-        //public User(string userName, string password)
-        //{
-        //    this.UserName = userName;
-        //    this.Password = password;
-
-        //    var z = new dbDocs().Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).ToList();
-        //    foreach (var item in z)
-        //    {
-        //        this.FirstName = item.FirstName;
-        //        this.LastName = item.LastName;
-        //        this.NickName = item.NickName;
-        //        this.Sex = item.Sex;
-        //        this.RoleID = item.RoleID;
-        //    }
-        //}
-
-        //public string GetRole()
-        //{
-        //    var role = db.Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).Select(x => x.Role.RoleName).FirstOrDefault();
-        //    if (role != null)
-        //        return role;
-        //    else
-        //        return "Invalid Username and Password";
-        //}
-        public class UserHanlder
-        {
-            public string UserName { get; set; }
-            public string Password { get; set; }
-            dbDocs db = new dbDocs();
-            public UserHanlder(string userName, string password)
-            {                                
-                this.UserName = userName;
-                this.Password = password;
-            }
-
-            public string GetRole()
-            {
-                var role = db.Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).Select(x => x.Role.RoleName).FirstOrDefault();
-                if (role != null)
-                    return role;
-                else
-                    return "Invalid Username and Password";
-            }
-        }
-        //public class UserHandler
-        //{
-        //    private List<User> users;
-        //    public List<User> Users
-        //    {
-        //        get
-        //        {
-        //            return users;
-        //        }
-        //        set
-        //        {
-        //            users = value;
-        //        }
-        //    }
-        //    public UserHandler()
-        //    {
-        //        Users = new List<User>();
-        //    }
-        //    public void Add(User users)
-        //    {
-        //        Users.Add(users);
-        //    }
-        //}
+    
+     
     }
 }

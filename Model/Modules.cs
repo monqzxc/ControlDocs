@@ -11,29 +11,37 @@ namespace DocsControl.Model
 {
     public class Modules
     {
-        public void ComboBox(System.Windows.Controls.ComboBox cmb, IEnumerable<string> data, string title)
+        public static void ComboBox(System.Windows.Controls.ComboBox cmb, IEnumerable<string> data)
         {
-            //cmb.Items.Clear();
+            cmb.Items.Clear();
             var list = new List<string>();
-            list.Add($"-- {title} --");
-
+           
             foreach (var item in data.ToList())
             {
                 list.Add(item);
             }            
             cmb.ItemsSource = list;
             cmb.SelectedIndex = 0;
-        }        
+        }
+
+        public static void showInfo(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public static void showError(string message)
+        {
+            System.Windows.Forms.MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
 
         //opening dialog. 
         //currently disabled
-        public static void openDialog(Window window, Window window2)
-        {
-            window.Opacity = .5;
-            window.Background = Brushes.Black;
-            window2.ShowDialog();
-            window.Opacity = 1;
-            window.Background = Brushes.Transparent;
-        }
+        //public static void openDialog(Window window, Window window2)
+        //{
+        //    window.Opacity = .5;
+        //    window.Background = Brushes.Black;
+        //    window2.ShowDialog();
+        //    window.Opacity = 1;
+        //    window.Background = Brushes.Transparent;
+        //}
     }
 }

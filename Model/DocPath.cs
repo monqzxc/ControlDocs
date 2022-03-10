@@ -14,5 +14,37 @@ namespace DocsControl.Model
         public int DocDataID { get; set; }
         
         public virtual DocData DocData { get; set; }
+
+        dbDocs db = new dbDocs();
+        public List<string> pathList = new List<string>();
+        public void addPath()
+        {
+
+            if (pathList.Count > 0)
+            {
+                foreach (var item in pathList)
+                {
+                    var doc = new DocPath()
+                    {
+                        DocDataID = DocDataID,
+                        Path = item
+                    };
+                    db.DocPaths.Add(doc);
+                    db.SaveChanges();
+                }
+            }            
+        }
+
+        //public void editPath()
+        //{
+     
+        //    var doc = new DocPath()
+        //    {
+        //        DocDataID = DocDataID,
+        //        Path = Path
+        //    };
+        //    db.DocPaths.Add(doc);
+        //    db.SaveChanges();
+        //}
     }
 }

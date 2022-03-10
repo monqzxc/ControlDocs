@@ -19,54 +19,83 @@ namespace DocsControl.ViewModel
         public vmOutgoing()
         {
             InitializeComponent();
-            DocList();
-            
+            //DocList();
+            forSign();
+            signed();
+            released();
             lvForSign.SelectionChanged += LvForSign_SelectionChanged;
             lvSigned.SelectionChanged += LvForSign_SelectionChanged;
             lvForRelease.SelectionChanged += LvForSign_SelectionChanged;
-
-        }
-        
+        }        
         private void LvForSign_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
             var item = (ListBox)sender;
-            var office = (Office)item.SelectedItem;
+            var docData = (DocData)item.SelectedItem;
             this.Opacity = .5;
             this.Background = Brushes.Black;
-            var dialog = new dAddEditDocs("EDIT DOCUMENT");
+            var dialog = new dAddEditDocs("EDIT DOCUMENT",docData.Id);
             dialog.ShowDialog();
             this.Opacity = 1;
             this.Background = Brushes.Transparent;
+           
         }
-
-        public void DocList()
-        {
-            var db = new dbDocs();
-            var offices = db.Offices.ToList();
-            var officeList = new List<Office>();
-            var sampleLilst = new string[] { 
-                "1,Hatdog,For Sign,2022-10-29,-,-,Memo,1-,-",
-                "2,DogHat,For Sign,2022-12-15,-,-,Letter,1-,-", 
-                "3,GotHag,For Sign,2022-01-09,-,-,CTPR,1-,-", 
-                "4,TogHad,For Sign,2022-07-31,-,-,Advisory,1-,-" };
-            foreach (var item in offices)
-            {
-                officeList.Add(new Office() { OperatingUnit = item.OperatingUnit, Email = DateTime.Now.ToString("yyyy-MM-dd")} );
-                lvForSign.ItemsSource = officeList;
-                lvSigned.ItemsSource = officeList;
-            }
-        }
+        dbDocs db = new dbDocs();       
       
+        private void forSign()
+        {
+            var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("FOR SIGNATURE")).ToList();
+            var listDoc = new List<DocData>();
+            foreach (var item in docs)
+            {
+                listDoc.Add(new DocData()
+                {
+                    Id = item.Id,
+                    DocSubject = item.DocSubject,
+                    ForSigned = item.ForSigned
+                });                               
+            }
+            lvForSign.ItemsSource = listDoc;
+        }
+        private void signed()
+        {
+            var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("SIGNED")).ToList();
+            var listDoc = new List<DocData>();
+            foreach (var item in docs)
+            {
+                listDoc.Add(new DocData()
+                {
+                    Id = item.Id,
+                    DocSubject = item.DocSubject,
+                    Signed = item.Signed
+                });
+            }
+            lvSigned.ItemsSource = listDoc;
+        }
+        private void released()
+        {
+            var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RELEASED")).ToList();
+            var listDoc = new List<DocData>();
+            foreach (var item in docs)
+            {
+                listDoc.Add(new DocData()
+                {
+                    Id = item.Id,
+                    DocSubject = item.DocSubject,
+                    ForRelease = item.ForRelease
+                });
+            }
+            lvForRelease.ItemsSource = listDoc;
+        }
 
         private void buttonShowDialog(object sender, RoutedEventArgs e)
         {
             this.Opacity = .5;
             this.Background = Brushes.Black;            
-            var dialog = new dAddEditDocs("ADD DOCUMENT");
+            var dialog = new dAddEditDocs("ADD DOCUMENT",0);
             dialog.ShowDialog();
             this.Opacity = 1;
             this.Background = Brushes.Transparent;
+            //lvForSign.SelectedIndex = -1;
             //openDialog(Window, new dAddEditDocs("ADD DOCUMENT"));
         }
     }

@@ -90,6 +90,9 @@
     <Compile Include="Dialogs\dDocInfo.xaml.cs">
       <DependentUpon>dDocInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\dPDFView.xaml.cs">
+      <DependentUpon>dPDFView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202202230941088_CreateAddressee.cs" />
     <Compile Include="Migrations\202202230941088_CreateAddressee.designer.cs">
       <DependentUpon>202202230941088_CreateAddressee.cs</DependentUpon>
@@ -110,6 +113,14 @@
     <Compile Include="Migrations\202203030527401_addTagColumnDDT.designer.cs">
       <DependentUpon>202203030527401_addTagColumnDDT.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203070131267_updateDocDataTable030722.cs" />
+    <Compile Include="Migrations\202203070131267_updateDocDataTable030722.designer.cs">
+      <DependentUpon>202203070131267_updateDocDataTable030722.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203070218566_updateDocDataAddColumnDocControlNumber030722.cs" />
+    <Compile Include="Migrations\202203070218566_updateDocDataAddColumnDocControlNumber030722.designer.cs">
+      <DependentUpon>202203070218566_updateDocDataAddColumnDocControlNumber030722.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Addressee.cs" />
     <Compile Include="Model\DocPath.cs" />
     <Compile Include="Model\Modules.cs" />
@@ -129,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\dDocInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\dPDFView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -217,6 +232,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203030527401_addTagColumnDDT.resx">
       <DependentUpon>202203030527401_addTagColumnDDT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203070131267_updateDocDataTable030722.resx">
+      <DependentUpon>202203070131267_updateDocDataTable030722.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203070218566_updateDocDataAddColumnDocControlNumber030722.resx">
+      <DependentUpon>202203070218566_updateDocDataAddColumnDocControlNumber030722.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

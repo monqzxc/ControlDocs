@@ -6,13 +6,13 @@
         xmlns:local="clr-namespace:DocsControl"
         mc:Ignorable="d"
         Background="#1D1B1B"       
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"                   
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"                 
         ResizeMode="NoResize"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         FontFamily="Century Gothic"      
         Title="MainDialog" 
-        Height="594.684" 
+        Height="646.077" 
         Width="565.317" 
         WindowStyle="None">
 
@@ -29,13 +29,14 @@
             VerticalAlignment="Top"/>
 
         <Button   
-            Click="lblSave_Click"
+      
+            Click="btnSave_Click"
             Content="SAVE"
-            Name="lblSave"
+            Name="btnSave"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"    
             Width="100"    
             ToolTip="SAVE" 
-            Margin="342,553,123,10">
+            Margin="342,604,123,10">
         </Button>
 
         <Button 
@@ -45,14 +46,14 @@
             Style="{StaticResource MaterialDesignRaisedAccentButton}"    
             Width="100"    
             ToolTip="CANCEL"
-            Margin="455,553,10,10">
+            Margin="455,604,10,10">
         </Button>
 
 
         <Grid  
             Background="White"
             HorizontalAlignment="Left"
-            Height="498"
+            Height="551"
             Margin="0,38,0,0" 
             VerticalAlignment="Top" 
             Width="565">
@@ -80,7 +81,7 @@
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"    
                 VerticalAlignment="Top"                                   
                 FontSize="14"    
-                Text="hatdog"
+                Name="cmbStatus"
                 materialDesign:HintAssist.Hint="CURRENT STATUS" 
                 Margin="15,103,298,0" Height="Auto">
                 <ComboBoxItem>
@@ -99,37 +100,20 @@
                 VerticalAlignment="Top"                   
                 AcceptsReturn="True"             
                 FontSize="14"    
-      
+                Name="txtDocType"
                 TextWrapping="Wrap"                
                 materialDesign:HintAssist.Hint="DOCUMENT TYPE" 
                 Margin="14,163,299,0" Height="Auto"/>
 
-            <Label 
-                Content="FILE" 
-                HorizontalAlignment="Left"
-                Margin="11,287,0,0" 
-                FontSize="11"
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblPath"
-                Content="D:\Documents\PDF Files\GUIDANCE-IN-THE-FILING-OF-APPLICATION-FOR-THE-CS-EXAMS.pdf" 
-                HorizontalAlignment="Left"
-                Margin="127,315,0,0" 
-                FontSize="11"
-                VerticalAlignment="Top" Width="412"/>
-            <Button                           
-                Content="BROWSE"            
-                x:Name="lblBrowse"            
-                Style="{StaticResource MaterialDesignRaisedDarkButton}"                
-                Width="100"                
-                ToolTip="SAVE"             
-                Margin="13,310,452,156"/>
+
+
 
             <ComboBox    
+                Name="cmbFocals"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"    
                 VerticalAlignment="Top"                                   
-                FontSize="14"    
-            
+                FontSize="14"     
+                IsEditable="True"  
                 materialDesign:HintAssist.Hint="FOCAL" 
                 Margin="15,225,298,0" Height="Auto">
                 <ComboBoxItem Content="MON"/>
@@ -152,7 +136,7 @@
                 VerticalAlignment="Top"                   
                 AcceptsReturn="True"             
                 FontSize="14"    
-               
+                Name="txtOffice"
                 materialDesign:HintAssist.Hint="OFFICE" 
                 Margin="293,43,20,0" Height="Auto"/>
 
@@ -161,7 +145,7 @@
                 VerticalAlignment="Top"                   
                 AcceptsReturn="True"             
                 FontSize="14"    
-              
+                Name="txtFullName"
                 materialDesign:HintAssist.Hint="FULL NAME" 
                 Margin="293,103,20,0" Height="Auto"/>
 
@@ -170,7 +154,7 @@
                 VerticalAlignment="Top"                   
                 AcceptsReturn="True"             
                 FontSize="14"    
-              
+                Name="txtEmail"
                 materialDesign:HintAssist.Hint="EMAIL" 
                 Margin="293,163,20,0" Height="Auto"/>
             <TextBox                   
@@ -178,19 +162,82 @@
                 VerticalAlignment="Top"                   
                 AcceptsReturn="True"             
                 FontSize="14"    
-               
+                Name="txtContact"
                 materialDesign:HintAssist.Hint="CONTACT NO" 
                 Margin="293,225,20,0" Height="Auto"/>
+            <TextBox                   
+                Style="{StaticResource MaterialDesignFloatingHintTextBox}"                   
+                AcceptsReturn="True"             
+                FontSize="14"    
+                Name="txtRemarks"
+                TextWrapping="Wrap"                
+                materialDesign:HintAssist.Hint="REMARKS" 
+                Margin="15,343,9,138"/>
             <TextBox    
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"    
                 VerticalAlignment="Top"                   
                 AcceptsReturn="True"             
                 FontSize="14"    
-                
+                x:Name="txtControlNumber"
                 TextWrapping="Wrap"                
-                materialDesign:HintAssist.Hint="REMARKS" 
-                Margin="14,364,21,0" Height="72"/>
+                materialDesign:HintAssist.Hint="CONTROL NUMBER" 
+                Margin="15,283,298,0" Height="Auto"/>
 
+            <Grid 
+                Margin="0,420,0,3"
+                Background="White">
+
+                <DatePicker                      
+                    SelectedDateFormat="Short"
+                    Name="dpSigned"
+                    VerticalAlignment="Top" 
+                    materialDesign:HintAssist.Hint="Date"                    
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                    Margin="205,12,277,0" Height="36"/>
+                <materialDesign:TimePicker     
+                    Name="tpSigned"                    
+                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                  
+                    materialDesign:HintAssist.Hint="Time" 
+                    Margin="301,12,186,80" Height="36"  />
+                <Button                                          
+                    Content="ADD SIGNED COPY"                            
+                    x:Name="btnSigned"                            
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"                                
+                    ToolTip="SAVE"                                                
+                    Margin="10,19,368,77" Click="btnSigned_Click"/>
+                <Button                                           
+                    Content="ADD RECEIVED COPY"                            
+                    x:Name="btnReceived"                            
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"                                
+                    ToolTip="SAVE"                                                
+                    Margin="10,75,368,21" Click="btnReceived_Click"/>
+                <DatePicker 
+                    materialDesign:HintAssist.Hint="Date"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                    SelectedDateFormat="Short"
+                    Name="dpReceived"
+                    VerticalAlignment="Top"                           
+                    Margin="205,69,277,0"/>
+                <Label 
+                    Name="lblSigned"
+                    Content="..." 
+                    HorizontalAlignment="Left"
+                    Margin="384,25,0,0"
+                    VerticalAlignment="Top"
+                    Width="171"/>
+                <Label 
+                    Name="lblReceived"
+                    Content="..." 
+                    HorizontalAlignment="Left"
+                    Margin="384,80,0,0"
+                    VerticalAlignment="Top"
+                    Width="171"/>
+                <materialDesign:TimePicker     
+                    x:Name="tpReceived"                    
+                    Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                  
+                    materialDesign:HintAssist.Hint="Time" 
+                    Margin="301,67,186,25" Height="36"  />
+            </Grid>
         </Grid>
     </Grid>
 
