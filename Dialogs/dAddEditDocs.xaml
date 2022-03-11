@@ -28,8 +28,7 @@
             Margin="10,5,0,0" 
             VerticalAlignment="Top"/>
 
-        <Button   
-      
+        <Button         
             Click="btnSave_Click"
             Content="SAVE"
             Name="btnSave"

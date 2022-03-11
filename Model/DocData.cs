@@ -67,12 +67,10 @@ namespace DocsControl.Model
         {
             var doc = db.DocDatas.Where(x => x.Id.Equals(Id)).FirstOrDefault();
             doc.DocSubject = DocSubject;
-            doc.CurrentStatus = CurrentStatus;
-            doc.ForSigned = ForSigned;
+            doc.CurrentStatus = CurrentStatus;            
             doc.Signed = Signed;
             doc.ForRelease = ForRelease;
-            doc.FocalID = FocalID;
-            doc.DateAdd = DateAdd;
+            doc.FocalID = FocalID;          
             doc.DoctTypes = DoctTypes;
             doc.AddresseeID = AddresseeID;
             doc.Remarks = Remarks;
@@ -84,6 +82,10 @@ namespace DocsControl.Model
         public void deleteDocData()
         {
 
+        }        
+        public IQueryable<DocData> GetDocDatas()
+        {
+            return db.DocDatas.Where(x => x.Id.Equals(Id));
         }
     }
 }

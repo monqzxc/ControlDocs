@@ -33,6 +33,15 @@ namespace DocsControl.Model
             System.Windows.Forms.MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
+        public static bool showWarning(string message)
+        {
+            var dialog = System.Windows.Forms.MessageBox.Show(message, "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog.Equals(DialogResult.Yes))
+                return true;
+                        
+            return false;
+        }
+
         //opening dialog. 
         //currently disabled
         //public static void openDialog(Window window, Window window2)

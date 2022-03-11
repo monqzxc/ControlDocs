@@ -121,6 +121,10 @@
     <Compile Include="Migrations\202203070218566_updateDocDataAddColumnDocControlNumber030722.designer.cs">
       <DependentUpon>202203070218566_updateDocDataAddColumnDocControlNumber030722.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203100604252_updateDocPathaddColumnDocStatusTag.cs" />
+    <Compile Include="Migrations\202203100604252_updateDocPathaddColumnDocStatusTag.designer.cs">
+      <DependentUpon>202203100604252_updateDocPathaddColumnDocStatusTag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Addressee.cs" />
     <Compile Include="Model\DocPath.cs" />
     <Compile Include="Model\Modules.cs" />
@@ -238,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203070218566_updateDocDataAddColumnDocControlNumber030722.resx">
       <DependentUpon>202203070218566_updateDocDataAddColumnDocControlNumber030722.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203100604252_updateDocPathaddColumnDocStatusTag.resx">
+      <DependentUpon>202203100604252_updateDocPathaddColumnDocStatusTag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

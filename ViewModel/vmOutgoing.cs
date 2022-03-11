@@ -20,16 +20,14 @@ namespace DocsControl.ViewModel
         {
             InitializeComponent();
             //DocList();
-            forSign();
-            signed();
-            released();
+            unselectshit();
             lvForSign.SelectionChanged += LvForSign_SelectionChanged;
             lvSigned.SelectionChanged += LvForSign_SelectionChanged;
             lvForRelease.SelectionChanged += LvForSign_SelectionChanged;
         }        
         private void LvForSign_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var item = (ListBox)sender;
+            var item = (ListBox)sender;       
             var docData = (DocData)item.SelectedItem;
             this.Opacity = .5;
             this.Background = Brushes.Black;
@@ -38,6 +36,7 @@ namespace DocsControl.ViewModel
             this.Opacity = 1;
             this.Background = Brushes.Transparent;
            
+            unselectshit();
         }
         dbDocs db = new dbDocs();       
       
@@ -87,6 +86,12 @@ namespace DocsControl.ViewModel
             lvForRelease.ItemsSource = listDoc;
         }
 
+        private void unselectshit()
+        {
+            forSign();
+            signed();
+            released();
+        }
         private void buttonShowDialog(object sender, RoutedEventArgs e)
         {
             this.Opacity = .5;
@@ -95,6 +100,7 @@ namespace DocsControl.ViewModel
             dialog.ShowDialog();
             this.Opacity = 1;
             this.Background = Brushes.Transparent;
+            unselectshit();
             //lvForSign.SelectedIndex = -1;
             //openDialog(Window, new dAddEditDocs("ADD DOCUMENT"));
         }

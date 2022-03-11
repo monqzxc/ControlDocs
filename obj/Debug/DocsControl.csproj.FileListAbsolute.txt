@@ -54,3 +54,4 @@ C:\Users\Mon\source\repos\DocsControl\obj\Debug\Dialogs\dPDFView.g.cs
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\Dialogs\dPDFView.baml
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateDocDataTable030722.resources
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateDocDataAddColumnDocControlNumber030722.resources
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateDocPathaddColumnDocStatusTag.resources
