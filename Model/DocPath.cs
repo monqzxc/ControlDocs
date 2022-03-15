@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DocsControl.Model
 {
-    public class DocPath
+    public class DocPath 
     {
         public int Id { get; set; }
   

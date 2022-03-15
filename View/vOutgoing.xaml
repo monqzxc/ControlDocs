@@ -5,13 +5,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DocsControl.View"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"    
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:ViewModel="clr-namespace:DocsControl.ViewModel"
              FontFamily="Century Gothic"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Height="856" Width="1034">
+
     <Grid>
         <Label
-            Content="OUTGOING"
+            Content="OUTGOING"            
             Foreground="#008080"
             FontSize="55" Margin="2,0,706,776"/>
         <Label        
@@ -51,7 +53,8 @@
             <ListView             
             BorderThickness="10"
                 Width="1000"
-            Name="lvForSign">
+                Name="lvForSign"
+                ItemsSource="{Binding Path=forSign}">
                 <ListView.View>
                     <GridView>
                         <GridView.ColumnHeaderContainerStyle>
@@ -60,7 +63,6 @@
                                 <Setter Property="FontWeight" Value="Bold"></Setter>
                                 <Setter Property="Width" Value="230"></Setter>
                                 <Setter Property="HorizontalAlignment" Value="Center"/>
-                                
                             </Style>
                         </GridView.ColumnHeaderContainerStyle>
                         <GridViewColumn                       
@@ -101,6 +103,7 @@
                 </ListView.View>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
+                        <!--<EventSetter Event="PreviewMouseLeftButtonDown" Handler="lvMouseButton"/>-->
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="#ef7065"/>
@@ -258,7 +261,7 @@
         
         
         
-        <Button            
+        <!--<Button            
             x:Name="btnAdd"
             Click="buttonShowDialog"
             Margin="977,772,1,28"
@@ -268,6 +271,6 @@
                 Kind="Add"
                 Height="24"
                 Width="24" />
-        </Button>
+        </Button>-->
     </Grid>
 </UserControl>

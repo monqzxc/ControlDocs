@@ -21,10 +21,8 @@ namespace DocsControl.View
     public partial class vOutgoing : UserControl
     {
         public vOutgoing()
-        {
+        {            
             
-        }
-
-    
+        }    
     }
 }
