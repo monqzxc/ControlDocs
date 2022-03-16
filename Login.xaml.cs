@@ -62,12 +62,10 @@ namespace DocsControl
                     }
                     var mainWindow = new MainWindow(user.GetNickname());
                     this.Close();
-
                     mainWindow.Show();
                     
                     break;
-                case "EXIT":
-                    MessageBox.Show("OYOYOYY");
+                case "EXIT":                   
                     this.Close();
                     break;
             }

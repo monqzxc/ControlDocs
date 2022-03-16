@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DocsControl"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"     
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:Model="clr-namespace:DocsControl.Model"
         mc:Ignorable="d"            
         ResizeMode="NoResize"
         AllowsTransparency="True"
@@ -14,8 +14,10 @@
         Title="Login"
         WindowStyle="None"        
         Width="420" Height="400">
-
-    <Grid>
+    <Window.Resources>
+        <Model:User x:Key="u"></Model:User>
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource u}}">
         <StackPanel Background="#1D1B1B" MouseDown="StackPanel_MouseDown">
             <Image
                 Source="D:\Downloads\Icons\tesda logo white.png"
@@ -35,7 +37,7 @@
                     Height="69"                                  
                     Width="88" Margin="110,0,120,0"/>
                 <TextBox
-                        x:Name="txtUsername"
+                        x:Name="txtUsername"                    
                         Margin="0,1,1,1"
                         FontSize="13"
                         Foreground="White"
@@ -80,7 +82,9 @@
                 Margin="-120,-25,-100,0"
                 VerticalAlignment="Top"
                 Width="280"/>
-        </StackPanel>
+     
 
+        </StackPanel>
+       
     </Grid>
 </Window>

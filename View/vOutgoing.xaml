@@ -6,11 +6,15 @@
              xmlns:local="clr-namespace:DocsControl.View"
              xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-             xmlns:ViewModel="clr-namespace:DocsControl.ViewModel"
+             xmlns:ViewModel="clr-namespace:DocsControl.ViewModel" 
+             xmlns:Model="clr-namespace:DocsControl.Model"
              FontFamily="Century Gothic"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Height="856" Width="1034">
 
+    <UserControl.Resources>
+        <Model:DocDataList x:Key="d"></Model:DocDataList>
+    </UserControl.Resources>
     <Grid>
         <Label
             Content="OUTGOING"            
@@ -51,10 +55,9 @@
             Margin="0,152,698,10"
             Background="#ef7065">
             <ListView             
-            BorderThickness="10"
-                Width="1000"
+                BorderThickness="10"
                 Name="lvForSign"
-                ItemsSource="{Binding Path=forSign}">
+                ItemsSource="{Binding Path=ForSign}">
                 <ListView.View>
                     <GridView>
                         <GridView.ColumnHeaderContainerStyle>
@@ -103,7 +106,7 @@
                 </ListView.View>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
-                        <!--<EventSetter Event="PreviewMouseLeftButtonDown" Handler="lvMouseButton"/>-->
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="lvMouseButton"/>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="#ef7065"/>
@@ -113,17 +116,16 @@
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-            </ListView.ItemContainerStyle>
+                </ListView.ItemContainerStyle>
             </ListView>
         </Grid>
 
-        
         <Grid
             Margin="343,152,355,10"
             Background="#b3cc3a">
-            <ListView 
-                Width="1000"
-                Name="lvSigned">
+            <ListView
+                Name="lvSigned"
+                ItemsSource="{Binding Path=Signed}">
                 <ListView.View>
                     <GridView>
                         <GridView.ColumnHeaderContainerStyle>
@@ -175,6 +177,7 @@
                 </ListView.View>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="lvMouseButton"/>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="#b3cc3a"/>
@@ -192,9 +195,9 @@
         <Grid
             Margin="688,152,10,10"
             Background="#0a4054">
-            <ListView                                    
-                Width="1000"            
-                Name="lvForRelease">
+            <ListView            
+                Name="lvForRelease"
+                ItemsSource="{Binding Path=Released}">
                 <ListView.View>
                     <GridView>
                         <GridView.ColumnHeaderContainerStyle>
@@ -246,6 +249,7 @@
                 </ListView.View>
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
+                        <EventSetter Event="PreviewMouseLeftButtonDown" Handler="lvMouseButton"/>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="#0a4054"/>
@@ -258,10 +262,10 @@
                 </ListView.ItemContainerStyle>
             </ListView>
         </Grid>
-        
-        
-        
-        <!--<Button            
+
+
+
+        <Button            
             x:Name="btnAdd"
             Click="buttonShowDialog"
             Margin="977,772,1,28"
@@ -271,6 +275,6 @@
                 Kind="Add"
                 Height="24"
                 Width="24" />
-        </Button>-->
+        </Button>
     </Grid>
 </UserControl>

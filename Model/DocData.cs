@@ -2,6 +2,7 @@ namespace DocsControl.Model
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -12,21 +13,19 @@ namespace DocsControl.Model
     public partial class DocData : INotifyPropertyChanged
     {
         public int Id { get; set; }
-
+        public string DocSubject { get; set; }
         public string DocControlNumber { get; set; }
         public string Remarks { get; set; }
         public string CurrentStatus { get; set; }
+        public DateTime? ForSigned { get; set; }
 
-        private string _docSubject;
-        private DateTime? _forSigned;
-        private DateTime? _signed;
-        private DateTime? _release;
+        public DateTime? Signed { get; set; }
 
+        public DateTime? ForRelease { get; set; }
         public string DoctTypes { get; set; }
 
         public DateTime DateAdd { get; set; }
         public string Tag { get; set; }
-
         public int FocalID { get; set; }
         public int AddresseeID { get; set; }
         public virtual Focal Focal { get; set; }
@@ -34,93 +33,20 @@ namespace DocsControl.Model
         public virtual Addressee Addressee { get; set; }
 
         public virtual ICollection<DocPath> DocPaths { get; set; }
-
-        public string DocSubject
-        {
-            get
-            {
-                return _docSubject;
-
-            }
-            set
-            {
-                if (_docSubject != value)
-                {
-                    _docSubject = value;
-                    NotifyPropertyChanged("DocSubject");
-                }
-            }
-        }
-        public DateTime? ForSigned
-        {
-            get
-            {
-                return _forSigned;
-
-            }
-            set
-            {
-                if (_forSigned != value)
-                {
-                    _forSigned = value;
-                    NotifyPropertyChanged("ForSign");
-                }
-            }
-        }
-
-        public DateTime? Signed
-        {
-            get
-            {
-                return _signed;
-
-            }
-            set
-            {
-                if (_signed != value)
-                {
-                    _signed = value;
-                    NotifyPropertyChanged("Signed");
-                }
-            }
-        }
-
-        public DateTime? ForRelease
-        {
-            get
-            {
-                return _release;
-            }
-            set
-            {
-                if (_release != value)
-                {
-                    _release = value;
-                    NotifyPropertyChanged("ForRelease");
-                }
-            }
-        }
-
+                               
         public IQueryable<DocData> GetUserInfo()
         {
             return new dbDocs().DocDatas;
         }
 
         dbDocs db = new dbDocs();
-
+        
         public event PropertyChangedEventHandler PropertyChanged;
-
-        private void NotifyPropertyChanged(string property)
+     
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(property));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        //private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
 
         public void addDocData()
         {                        

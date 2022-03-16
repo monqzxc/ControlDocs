@@ -126,6 +126,7 @@
       <DependentUpon>202203100604252_updateDocPathaddColumnDocStatusTag.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Addressee.cs" />
+    <Compile Include="Model\DocDataList.cs" />
     <Compile Include="Model\DocPath.cs" />
     <Compile Include="Model\Modules.cs" />
     <Compile Include="ViewModel\vmDocuments.cs" />

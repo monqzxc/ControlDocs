@@ -2,18 +2,34 @@ namespace DocsControl.Model
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
     using System.Data.Entity.Spatial;
     using System.Linq;
+    using System.Runtime.CompilerServices;
 
-    public partial class User
+    public partial class User : INotifyPropertyChanged
     {
         public int Id { get; set; }
 
-        public string UserName { get; set; }
-
+        private string username;
+        public string UserName {
+            get
+            {
+                return username;
+            }
+            set
+            {
+                username = value;
+                NotifyPropertyChanged();
+            }
+        }
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         public string Password { get; set; }
 
         public string FirstName { get; set; }
@@ -30,6 +46,9 @@ namespace DocsControl.Model
 
         dbDocs db = new dbDocs();
 
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+        
 
         public IQueryable<User> GetUserInfo()
         {                      
