@@ -17,6 +17,7 @@ namespace DocsControl.Model
 
         dbDocs db = new dbDocs();
         public List<string> pathList = new List<string>();
+        public List<string> pathItem = new List<string>();
         public void addPath()
         {
             if (pathList.Count > 0)
@@ -37,11 +38,21 @@ namespace DocsControl.Model
 
         public void deletePath()
         {
-            var doc = db.DocPaths.Where(x => x.Id.Equals(Id)).FirstOrDefault();
-            db.DocPaths.Remove(doc);
-            db.SaveChanges();
+            if (pathItem.Count > 0)
+            {
+                foreach (var item in pathItem)
+                {
+                    var doc = db.DocPaths.Where(x => x.Path.Equals(item)).FirstOrDefault();
+                    db.DocPaths.Remove(doc);
+                    db.SaveChanges();
+                    deletePath(item);
+                }
+            }  
         }
-
+        private void deletePath(string path)
+        {
+            System.IO.File.Delete(path);
+        }
         public IQueryable<DocPath> GetDocPaths(string Tag)
         {
             return db.DocPaths.Where(x => x.DocDataID.Equals(DocDataID) && x.DocStatusTag.Equals(Tag));

@@ -44,7 +44,7 @@
             Background="#0a4054"
             Foreground="White"
             FontWeight="Bold"
-            Content="RELEASED"
+            Content="RECEIVED"
             Margin="688,113,10,709"
             FontSize="20"
             Height="Auto"
@@ -197,7 +197,7 @@
             Background="#0a4054">
             <ListView            
                 Name="lvForRelease"
-                ItemsSource="{Binding Path=Released}">
+                ItemsSource="{Binding Path=Received}">
                 <ListView.View>
                     <GridView>
                         <GridView.ColumnHeaderContainerStyle>

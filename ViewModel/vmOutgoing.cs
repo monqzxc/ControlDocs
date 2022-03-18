@@ -96,18 +96,18 @@ namespace DocsControl.ViewModel
                     {
                         Id = item.Id,
                         DocSubject = item.DocSubject,
-                        ForSigned = item.ForSigned
+                        Signed = item.Signed
                     });
                 }
                 return doctList;
             }
         }
 
-        public ObservableCollection<DocData> Released
+        public ObservableCollection<DocData> Received
         {
             get
             {
-                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RELEASED")).ToList();
+                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RECEIVED")).ToList();
                 var doctList = new ObservableCollection<DocData>();
                 foreach (var item in docs)
                 {
@@ -115,7 +115,7 @@ namespace DocsControl.ViewModel
                     {
                         Id = item.Id,
                         DocSubject = item.DocSubject,
-                        ForSigned = item.ForSigned
+                        ForRelease = item.ForRelease
                     });
                 }
                 return doctList;

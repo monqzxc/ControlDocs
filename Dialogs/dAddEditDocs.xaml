@@ -77,12 +77,13 @@
 
 
             <ComboBox    
-                Style="{StaticResource MaterialDesignFloatingHintComboBox}"    
-                VerticalAlignment="Top"                                   
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"   
+                HorizontalAlignment="Left"
+                VerticalContentAlignment="Top"                                   
                 FontSize="14"    
                 Name="cmbStatus"
                 materialDesign:HintAssist.Hint="CURRENT STATUS" 
-                Margin="15,103,298,0" Height="Auto">
+                Margin="15,103,0,409" Height="Auto" Width="251">
                 <ComboBoxItem>
                     FOR SIGNATURE
                 </ComboBoxItem>
@@ -90,7 +91,7 @@
                     SIGNED
                 </ComboBoxItem>
                 <ComboBoxItem>
-                    RELEASED
+                    RECEIVED
                 </ComboBoxItem>
             </ComboBox>
 
@@ -110,11 +111,12 @@
             <ComboBox    
                 Name="cmbFocals"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"    
-                VerticalAlignment="Top"                                   
+                VerticalAlignment="Top"
+                VerticalContentAlignment="Top"
                 FontSize="14"     
                 IsEditable="True"  
                 materialDesign:HintAssist.Hint="FOCAL" 
-                Margin="15,225,298,0" Height="Auto">
+                Margin="16,225,298,0" Height="Auto" Width="251">
                 <ComboBoxItem Content="MON"/>
                 <ComboBoxItem Content="ANNGEL"/>
                 <ComboBoxItem Content="YEN"/>
@@ -204,19 +206,7 @@
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"                                
                     ToolTip="SAVE"                                                
                     Margin="10,19,368,77" Click="btnSigned_Click"/>
-                <Button                                           
-                    Content="ADD RECEIVED COPY"                            
-                    x:Name="btnReceived"                            
-                    Style="{StaticResource MaterialDesignRaisedDarkButton}"                                
-                    ToolTip="SAVE"                                                
-                    Margin="10,75,368,21" Click="btnReceived_Click"/>
-                <DatePicker 
-                    materialDesign:HintAssist.Hint="Date"
-                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                    SelectedDateFormat="Short"
-                    Name="dpReceived"
-                    VerticalAlignment="Top"                           
-                    Margin="205,69,277,0"/>
+
                 <Label 
                     Name="lblSigned"
                     Content="..." 
@@ -224,6 +214,22 @@
                     Margin="384,25,0,0"
                     VerticalAlignment="Top"
                     Width="171"/>
+                
+                <Button                                           
+                    Content="ADD RECEIVED COPY"                            
+                    x:Name="btnReceived"                            
+                    Style="{StaticResource MaterialDesignRaisedDarkButton}"                                
+                    ToolTip="SAVE"                                                
+                    Margin="10,75,368,21" Click="btnReceived_Click"/>
+                
+                <DatePicker 
+                    materialDesign:HintAssist.Hint="Date"
+                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                    SelectedDateFormat="Short"
+                    Name="dpReceived"
+                    VerticalAlignment="Top"                           
+                    Margin="205,69,277,0"/>
+                
                 <Label 
                     Name="lblReceived"
                     Content="..." 
@@ -231,6 +237,7 @@
                     Margin="384,80,0,0"
                     VerticalAlignment="Top"
                     Width="171"/>
+                
                 <materialDesign:TimePicker     
                     x:Name="tpReceived"                    
                     Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                  
