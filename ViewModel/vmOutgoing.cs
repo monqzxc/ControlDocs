@@ -25,19 +25,10 @@ namespace DocsControl.ViewModel
             InitializeComponent();           
             this.DataContext = this;
         }
-        //public event PropertyChangedEventHandler PropertyChanged;
 
-        //private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        //{
-        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        //}
-        DocDataList DocDataList = new DocDataList();
-        public ObservableCollection<DocData> forSignature
-        {
-            get { return DocDataList.newList; }
-        }
-        
-        private void lvMouseButton(object sender, MouseButtonEventArgs e)
+        dbDocs db = new dbDocs();
+
+        private void lvMouseButton(object sender, MouseButtonEventArgs e) //event for clicking listview item
         {
             var item = sender as ListViewItem;
             {
@@ -46,7 +37,7 @@ namespace DocsControl.ViewModel
                     var docData = (DocData)item.Content;
                     this.Opacity = .5;
                     this.Background = Brushes.Black;
-                    var dialog = new dAddEditDocs("EDIT DOCUMENT", docData.Id);
+                    var dialog = new dAddEditDocs("EDIT DOCUMENT", docData.Id); //show edit form
                     dialog.ShowDialog();
                     this.Opacity = 1;
                     this.Background = Brushes.Transparent;
@@ -54,7 +45,7 @@ namespace DocsControl.ViewModel
             }
         }
 
-        private void buttonShowDialog(object sender, RoutedEventArgs e)
+        private void buttonShowDialog(object sender, RoutedEventArgs e) //event for clicking add button
         {
             this.Opacity = .5;
             this.Background = Brushes.Black;
@@ -63,9 +54,8 @@ namespace DocsControl.ViewModel
             this.Opacity = 1;
             this.Background = Brushes.Transparent;            
         }
-
-        dbDocs db = new dbDocs();
-        public ObservableCollection<DocData> ForSign
+        
+        public ObservableCollection<DocData> ForSign //list of forSignature documents
         {
             get
             {
@@ -83,8 +73,7 @@ namespace DocsControl.ViewModel
                 return doctList;
             }
         }
-
-        public ObservableCollection<DocData> Signed
+        public ObservableCollection<DocData> Signed //list of signed documents
         {
             get
             {
@@ -102,8 +91,7 @@ namespace DocsControl.ViewModel
                 return doctList;
             }
         }
-
-        public ObservableCollection<DocData> Received
+        public ObservableCollection<DocData> Received //list of received documents
         {
             get
             {
@@ -120,41 +108,6 @@ namespace DocsControl.ViewModel
                 }
                 return doctList;
             }           
-        }
-
-        //public ObservableCollection<DocData> _forSignature = new ObservableCollection<DocData>();
-        //public ObservableCollection<DocData> forSignature { get { return new DocData().DocDataList; } }
-
-        //private void signed()
-        //{
-        //    var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("SIGNED")).ToList();
-        //    var listDoc = new ObservableCollection<DocData>();
-        //    foreach (var item in docs)
-        //    {
-        //        listDoc.Add(new DocData()
-        //        {
-        //            Id = item.Id,
-        //            DocSubject = item.DocSubject,
-        //            Signed = item.Signed
-        //        });
-        //    }
-        //    lvSigned.ItemsSource = listDoc;
-        //}
-        //private void released()
-        //{
-        //    var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RELEASED")).ToList();
-        //    var listDoc = new ObservableCollection<DocData>();
-        //    foreach (var item in docs)
-        //    {
-        //        listDoc.Add(new DocData()
-        //        {
-        //            Id = item.Id,
-        //            DocSubject = item.DocSubject,
-        //            ForRelease = item.ForRelease
-        //        });
-        //    }
-        //    lvForRelease.ItemsSource = listDoc;
-        //}   
-        
+        }       
     }
 }

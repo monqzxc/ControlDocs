@@ -26,55 +26,100 @@
 
         <Grid Margin="10,91,10,695">
             <ComboBox
-                
-                Margin="34,10,642,19" 
+                Name="cmbSubject"
+                Margin="34,10,690,19" 
                 materialDesign:HintAssist.Hint="SUBJECT"  
                 IsEditable="True"  
                 HorizontalContentAlignment="Left"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBoxItem    
-                    IsSelected="True" Content="Apple"/>
-                <ComboBoxItem Content="Banana"/>
-                <ComboBoxItem Content="Pear"/>
-                <ComboBoxItem Content="Orange"/>
+                <ComboBox.ItemContainerStyle>
+                    <Style>
+                        <EventSetter Event="ComboBoxItem.PreviewMouseDown" Handler="ComboBoxEvent"/>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
             </ComboBox>
 
             <ComboBox
-                Margin="411,10,417,19" 
+                Name="cmbDocType"
+                Margin="335,9,493,20" 
                 materialDesign:HintAssist.Hint="DOCUMENT TYPE"  
                 IsEditable="True"  
                 HorizontalContentAlignment="Left"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBoxItem    
-                    IsSelected="True" Content="Apple"/>
-                <ComboBoxItem Content="Banana"/>
-                <ComboBoxItem Content="Pear"/>
-                <ComboBoxItem Content="Orange"/>
+                <ComboBox.ItemContainerStyle>
+                    <Style>
+                        <EventSetter Event="ComboBoxItem.PreviewMouseDown" Handler="ComboBoxEvent"/>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
             </ComboBox>
 
             <ComboBox
-                Margin="631,10,197,19" 
+                Name="cmbControlNumber"
+                Margin="541,10,287,19" 
                 materialDesign:HintAssist.Hint="CONTROL NUMBER"  
                 IsEditable="True"  
                 HorizontalContentAlignment="Left"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBoxItem    
-                    IsSelected="True" Content="Apple"/>
-                <ComboBoxItem Content="Banana"/>
-                <ComboBoxItem Content="Pear"/>
-                <ComboBoxItem Content="Orange"/>
+                <ComboBox.ItemContainerStyle>
+                    <Style>
+                        <EventSetter Event="ComboBoxItem.PreviewMouseDown" Handler="ComboBoxEvent"/>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
             </ComboBox>
 
             <DatePicker  
+                Name="dtpDate"
                 materialDesign:HintAssist.Hint="DATE ADDED"
-                Margin="853,9,33,19"   
-                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" Height="42" />
+                Margin="743,9,143,19"   
+                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                Height="42" />
+            <Button 
+                Content="SEARCH" 
+                HorizontalAlignment="Left" 
+                Margin="890,18,0,0" 
+                VerticalAlignment="Top" 
+                Width="105"/>
         </Grid>
+        <DataGrid 
+            IsReadOnly="True"
+            x:Name="dgDocList"
+            HorizontalAlignment="Left" 
+            Height="631" 
+            Margin="10,166,0,0" 
+            VerticalAlignment="Top"
+            AutoGenerateColumns="False"
+            Width="1014"
+            ItemsSource="{Binding Path=DocDatas}">
+            <DataGrid.Columns>
+                <DataGridTextColumn
+                    Header="Date Add"                    
+                    MinWidth="150"
+                    Width="50"
+                    Binding="{Binding Path=DateAdd, StringFormat='yyyy-MM-dd'}"/>
+                <DataGridTextColumn
+                    Header="Document Type"
+                    MinWidth="150"
+                    Width="150"
+                    Binding="{Binding Path=DoctTypes}"/>
+                <DataGridTextColumn
+                    Header="Subject"
+                    MinWidth="200"
+                    Width="500"
+                    Binding="{Binding Path=DocSubject}"/>
+                <DataGridTextColumn
+                    Header="Control Number"
+                    MinWidth="200"
+                    Width="50"
+                    Binding="{Binding Path=DocControlNumber}"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
-        <ListView             
+        <!--<ListView           
+            Width="1000"
             BorderThickness="10"
-            Name="lvForSign"
-            Margin="10,172,10,61">
+            Name="lvDocs"
+            Margin="10,172,10,61"
+            ItemsSource="{Binding Path=docList}">
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
@@ -94,17 +139,18 @@
                                     Padding="-1"
                                     Margin="8"
                                     Height="30"
+                                    HorizontalAlignment="Center"
                                     TextWrapping="Wrap"                                 
                                     Width="190"        
                                     x:Name="txt"                                    
-                                    Text="{Binding Path=OperatingUnit}" 
+                                    Text="{Binding Path=DateAdd, StringFormat='yyyy-MM-dd'}" 
                                     Foreground="#EC4D37">
                                 </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
                     <GridViewColumn                       
-                       Width="150"                        
+                       Width="200"                        
                        Header="DOCUMENT TYPE">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -112,16 +158,18 @@
                                     Padding="-1"
                                     Margin="8"
                                     Height="30"
+                                    HorizontalAlignment="Center"
                                     TextWrapping="Wrap"                                 
-                                    Width="140"        
+                                    Width="190"        
                                     x:Name="txt"                                    
-                                    Text="{Binding Path=OperatingUnit}" 
+                                    Text="{Binding Path=DocControlNumber}" 
                                     Foreground="#EC4D37">
                                 </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn                       
+                    -->
+        <!--<GridViewColumn                       
                        Width="380"                        
                        Header="SUBJECT">
                         <GridViewColumn.CellTemplate>
@@ -133,13 +181,13 @@
                                     TextWrapping="Wrap"                                 
                                     Width="370"        
                                     x:Name="txt"                                    
-                                    Text="{Binding Path=OperatingUnit}" 
+                                    Text="{Binding Path=DocSubject}" 
                                     Foreground="#EC4D37">
                                 </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn                       
+                    </GridViewColumn>-->
+        <!--<GridViewColumn                       
                        Width="280"                        
                        Header="CONTROL NUMBER">
                         <GridViewColumn.CellTemplate>
@@ -151,14 +199,15 @@
                                     TextWrapping="Wrap"                                 
                                     Width="270"        
                                     x:Name="txt"                                    
-                                    Text="{Binding Path=OperatingUnit}" 
+                                    Text="{Binding Path=DocControlNumber}" 
                                     Foreground="#EC4D37">
                                 </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                    </GridViewColumn>-->
+        <!--
                 </GridView>
             </ListView.View>
-        </ListView>
+        </ListView>-->
     </Grid>
 </UserControl>

@@ -56,17 +56,6 @@ namespace DocsControl.Model
         public IQueryable<DocPath> GetDocPaths(string Tag)
         {
             return db.DocPaths.Where(x => x.DocDataID.Equals(DocDataID) && x.DocStatusTag.Equals(Tag));
-        }
-        //public void editPath()
-        //{
-     
-        //    var doc = new DocPath()
-        //    {
-        //        DocDataID = DocDataID,
-        //        Path = Path
-        //    };
-        //    db.DocPaths.Add(doc);
-        //    db.SaveChanges();
-        //}
+        }       
     }
 }

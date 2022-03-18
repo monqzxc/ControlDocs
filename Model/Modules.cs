@@ -15,13 +15,12 @@ namespace DocsControl.Model
         {
             cmb.Items.Clear();
             var list = new List<string>();
-           
+    
             foreach (var item in data.ToList())
             {
                 list.Add(item);
             }            
-            cmb.ItemsSource = list;
-            cmb.SelectedIndex = 0;
+            cmb.ItemsSource = list;     
         }
 
         public static void showInfo(string message)
