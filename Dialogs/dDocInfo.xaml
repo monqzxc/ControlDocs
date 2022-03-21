@@ -12,25 +12,36 @@
         WindowStartupLocation="CenterScreen"
         FontFamily="Century Gothic"      
         Title="MainDialog" 
-        Height="594.684" 
+        Height="806.684" 
         Width="565.317" 
         WindowStyle="None">
     <Grid>
-        <Label 
+        <Label             
             FontSize="20"
             FontFamily="Century Gothic"
             Foreground="White"
             FontWeight="Bold"
             Name="lblTitle"
-            Content="DOCUMENT DETAILS" 
             HorizontalAlignment="Left" 
-            Margin="10,5,0,0" 
-            VerticalAlignment="Top"/>
+            Margin="10,19,0,0" 
+            VerticalAlignment="Top" 
+            Height="113"
+            Width="531">
+            <Label.Content>
+                <AccessText 
+                        TextWrapping="Wrap"
+                        x:Name="lblSubject" 
+                        Text="For IAS-Region IV-A Submission of UTPRAS 
+                        PTCACS Compliance Audit Reports as of End of December 2021"
+                        Width="531"
+                        Height="103" />
+            </Label.Content>
+        </Label>
         <Grid  
             Background="White"
             HorizontalAlignment="Left"
             Height="178"
-            Margin="0,38,0,0" 
+            Margin="0,219,0,0" 
             VerticalAlignment="Top" 
             Width="565">
 
@@ -47,7 +58,7 @@
                 <Label.Content>
                     <AccessText 
                         TextWrapping="Wrap"
-                        x:Name="lblSubject" 
+                        
                         Text="For IAS-Region IV-A Submission of UTPRAS 
                         PTCACS Compliance Audit Reports as of End of December 2021"
                         Width="273"
@@ -61,6 +72,7 @@
                 Margin="348,17,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
+                Name="lblControlNumber"
                 Content="CONTROL NUMBER"                                                  
                 HorizontalAlignment="Left"                  
                 Margin="348,40,0,0"                 
@@ -78,7 +90,7 @@
                 <Label.Content>
                     <AccessText 
                         TextWrapping="Wrap"
-                       
+                        x:Name="lblDocTypes"
                         Text="For IAS-Region IV-A Submission of UTPRAS 
                         PTCACS Compliance Audit Reports as of End of December 2021"
                         Width="273"
@@ -92,6 +104,7 @@
                 Margin="348,95,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
+                Name="lblDateAdded"
                 Content="DATE ADDED"                                                  
                 HorizontalAlignment="Left"                  
                 Margin="348,118,0,0"                 
@@ -104,78 +117,106 @@
             Style="{StaticResource MaterialDesignRaisedDarkButton}"       
             Width="100"    
             ToolTip="OKAY"
-            Margin="455,553,10,10">
+            Margin="455,735,10,40">
         </Button>
         <Grid  
             Background="White"
             HorizontalAlignment="Left"
-            Height="144"
-            Margin="0,221,0,0" 
+            Height="197"
+            Margin="0,402,0,0" 
             VerticalAlignment="Top" 
             Width="565">
 
             <Label 
-                Content="FROM"                    
+                Content="ORIGIN"                    
                 FontWeight="Bold"                   
                 HorizontalAlignment="Left"                  
                 Margin="24,10,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="TO"                    
+                Content="ADDRESSEE"                    
                 FontWeight="Bold"                   
                 HorizontalAlignment="Left"                  
                 Margin="348,10,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="FULL NAME"                    
+                Content="OFFICE NAME"                    
                 FontWeight="Bold"                   
                 HorizontalAlignment="Left"                  
                 Margin="24,38,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="DATE ADDED"                    
+                Content="FOCAL NAME"                    
                 FontWeight="Bold"                   
                 HorizontalAlignment="Left"                  
                 Margin="24,90,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="EMAIL"                                                  
+                Name="lblFocalName"
+                Content="FOCAL NAME"                                                  
                 HorizontalAlignment="Left"                  
                 Margin="24,113,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="FULL NAME"                                       
+                Name="lblOfficeOrigin"
+                Content="OFFICE NAME"                                       
                 HorizontalAlignment="Left"                  
                 Margin="24,61,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="FULL NAME"                    
+                Content="OFFICE NAME"                    
                 FontWeight="Bold"                   
                 HorizontalAlignment="Left"                  
                 Margin="348,38,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="DATE ADDED"                    
+                Content="ADDRESSEE NAME"                    
                 FontWeight="Bold"                   
                 HorizontalAlignment="Left"                  
                 Margin="348,90,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="EMAIL"                                                  
+                Name="lblAddresseeName"
+                Content="ADDRESSEE NAME"                                                  
                 HorizontalAlignment="Left"                  
                 Margin="348,113,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="FULL NAME"                                       
+                Name="lblOfficeAddressee"
+                Content="OFFICE NAME"                                       
                 HorizontalAlignment="Left"                  
                 Margin="348,61,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label 
+                Content="EMAIL"                    
+                FontWeight="Bold"                   
+                HorizontalAlignment="Left"                  
+                Margin="24,141,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label 
+                Name="lblFocalEmail"
+                Content="EMAIL"                                                  
+                HorizontalAlignment="Left"                  
+                Margin="24,164,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label 
+                Content="EMAIL"                    
+                FontWeight="Bold"                   
+                HorizontalAlignment="Left"                  
+                Margin="348,141,0,0"                 
+                VerticalAlignment="Top"/>
+            <Label 
+                Name="lblAddresseeEmail"
+                Content="EMAIL"                                                  
+                HorizontalAlignment="Left"                  
+                Margin="348,164,0,0"                 
                 VerticalAlignment="Top"/>
         </Grid>
         <Grid  
             Background="White"
             HorizontalAlignment="Left"
-            Height="144"
-            Margin="0,370,0,0" 
+            Height="102"
+            Margin="0,604,0,0" 
             VerticalAlignment="Top" 
             Width="565">
 
@@ -192,7 +233,8 @@
                 Margin="24,38,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="FULL NAME"                                       
+                Name="lblForSign"
+                Content="FOR SIGN DATE"                                       
                 HorizontalAlignment="Left"                  
                 Margin="24,61,0,0"                 
                 VerticalAlignment="Top"/>
@@ -200,23 +242,25 @@
                 Content="SIGNED BY RD"                    
                 FontWeight="Bold"                   
                 HorizontalAlignment="Left"                  
-                Margin="245,38,0,0"                 
+                Margin="234,38,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="RELEASED"                    
+                Content="RECEIVED/EMAILED"                    
                 FontWeight="Bold"                   
                 HorizontalAlignment="Left"                  
-                Margin="457,38,0,0"                 
+                Margin="425,38,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="EMAIL"                                                  
+                Name="lblReceived"
+                Content="RECEIVED DATE"                                                  
                 HorizontalAlignment="Left"                  
-                Margin="457,61,0,0"                 
+                Margin="425,61,0,0"                 
                 VerticalAlignment="Top"/>
             <Label 
-                Content="FULL NAME"                                       
+                Name="lblSigned"
+                Content="SIGNED DATE"                                       
                 HorizontalAlignment="Left"                  
-                Margin="245,61,0,0"                 
+                Margin="234,61,0,0"                 
                 VerticalAlignment="Top"/>
         </Grid>
     </Grid>

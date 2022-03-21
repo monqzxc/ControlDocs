@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DocsControl"
+        xmlns:Model="clr-namespace:DocsControl.Model"
         mc:Ignorable="d"
         Background="#1D1B1B"       
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"                 
@@ -14,9 +15,11 @@
         Title="MainDialog" 
         Height="646.077" 
         Width="565.317" 
-        WindowStyle="None">
+        WindowStyle="None" >
+
 
     <Grid>
+
         <Label 
             FontSize="20"
             FontFamily="Century Gothic"
@@ -49,7 +52,7 @@
         </Button>
 
 
-        <Grid  
+        <Grid DataContext="{Binding Path=docInfo}"
             Background="White"
             HorizontalAlignment="Left"
             Height="551"
@@ -66,22 +69,22 @@
                 VerticalAlignment="Top"/>
 
             <TextBox    
+                Text="{Binding Path=DocSubject}"
                 x:Name="txtSubject"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"    
                 VerticalAlignment="Top"                   
                 AcceptsReturn="True"             
-                FontSize="14"    
-          
+                FontSize="14"              
                 materialDesign:HintAssist.Hint="SUBJECT" 
                 Margin="15,43,299,0" Height="Auto"/>
 
-
-            <ComboBox    
+            <ComboBox                    
+                SelectedIndex="{Binding Path=CurrentStatus}"  
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"   
                 HorizontalAlignment="Left"
                 VerticalContentAlignment="Top"                                   
                 FontSize="14"    
-                Name="cmbStatus"
+                Name="cmbStatus"                                
                 materialDesign:HintAssist.Hint="CURRENT STATUS" 
                 Margin="15,103,0,409" Height="Auto" Width="251">
                 <ComboBoxItem>
@@ -101,14 +104,13 @@
                 AcceptsReturn="True"             
                 FontSize="14"    
                 Name="txtDocType"
+                Text="{Binding Path=DoctTypes}"
                 TextWrapping="Wrap"                
                 materialDesign:HintAssist.Hint="DOCUMENT TYPE" 
                 Margin="14,163,299,0" Height="Auto"/>
 
-
-
-
             <ComboBox    
+                SelectedIndex="{Binding Path=FocalID}"
                 Name="cmbFocals"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"    
                 VerticalAlignment="Top"
@@ -122,80 +124,41 @@
                 <ComboBoxItem Content="YEN"/>
             </ComboBox>
 
-
-
-            <Label
-                Content="ADDRESSEE" 
-                FontSize="15"
-                FontWeight="Bold"
-                HorizontalAlignment="Left"
-                Margin="290,10,0,0"
-                VerticalAlignment="Top"/>
-
+            <TextBox                          
+                    Text="{Binding Path=Remarks}"               
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"                                   
+                    AcceptsReturn="True"                             
+                    FontSize="14"                    
+                    Name="txtRemarks"                
+                    TextWrapping="Wrap"                                
+                    materialDesign:HintAssist.Hint="REMARKS"                 
+                    Margin="15,343,9,138"/>
             <TextBox                   
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"    
-                VerticalAlignment="Top"                   
-                AcceptsReturn="True"             
-                FontSize="14"    
-                Name="txtOffice"
-                materialDesign:HintAssist.Hint="OFFICE" 
-                Margin="293,43,20,0" Height="Auto"/>
-
-            <TextBox                   
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"    
-                VerticalAlignment="Top"                   
-                AcceptsReturn="True"             
-                FontSize="14"    
-                Name="txtFullName"
-                materialDesign:HintAssist.Hint="FULL NAME" 
-                Margin="293,103,20,0" Height="Auto"/>
-
-            <TextBox                   
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"    
-                VerticalAlignment="Top"                   
-                AcceptsReturn="True"             
-                FontSize="14"    
-                Name="txtEmail"
-                materialDesign:HintAssist.Hint="EMAIL" 
-                Margin="293,163,20,0" Height="Auto"/>
-            <TextBox                   
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"    
-                VerticalAlignment="Top"                   
-                AcceptsReturn="True"             
-                FontSize="14"    
-                Name="txtContact"
-                materialDesign:HintAssist.Hint="CONTACT NO" 
-                Margin="293,225,20,0" Height="Auto"/>
-            <TextBox                   
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"                   
-                AcceptsReturn="True"             
-                FontSize="14"    
-                Name="txtRemarks"
-                TextWrapping="Wrap"                
-                materialDesign:HintAssist.Hint="REMARKS" 
-                Margin="15,343,9,138"/>
-            <TextBox    
-                Style="{StaticResource MaterialDesignFloatingHintTextBox}"    
-                VerticalAlignment="Top"                   
-                AcceptsReturn="True"             
-                FontSize="14"    
-                x:Name="txtControlNumber"
-                TextWrapping="Wrap"                
-                materialDesign:HintAssist.Hint="CONTROL NUMBER" 
-                Margin="15,283,298,0" Height="Auto"/>
+                    Text="{Binding Path=DocControlNumber}"                
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"                    
+                    VerticalAlignment="Top"                                   
+                    AcceptsReturn="True"                             
+                    FontSize="14"                    
+                    x:Name="txtControlNumber"                
+                    TextWrapping="Wrap"                                
+                    materialDesign:HintAssist.Hint="CONTROL NUMBER"                 
+                    Margin="15,283,298,0" Height="Auto"/>
 
             <Grid 
+                Tag="Files"
                 Margin="0,420,0,3"
                 Background="White">
 
-                <DatePicker                      
+                <DatePicker          
+                    SelectedDate="{Binding Path=Signed}"
                     SelectedDateFormat="Short"
                     Name="dpSigned"
                     VerticalAlignment="Top" 
                     materialDesign:HintAssist.Hint="Date"                    
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                     Margin="205,12,277,0" Height="36"/>
-                <materialDesign:TimePicker     
+                <materialDesign:TimePicker
+                    SelectedTime="{Binding Path=Signed}"
                     Name="tpSigned"                    
                     Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                  
                     materialDesign:HintAssist.Hint="Time" 
@@ -214,36 +177,84 @@
                     Margin="384,25,0,0"
                     VerticalAlignment="Top"
                     Width="171"/>
-                
+
                 <Button                                           
                     Content="ADD RECEIVED COPY"                            
                     x:Name="btnReceived"                            
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"                                
                     ToolTip="SAVE"                                                
                     Margin="10,75,368,21" Click="btnReceived_Click"/>
-                
+
                 <DatePicker 
+                    SelectedDate="{Binding Path=ForRelease}"
                     materialDesign:HintAssist.Hint="Date"
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                     SelectedDateFormat="Short"
                     Name="dpReceived"
                     VerticalAlignment="Top"                           
                     Margin="205,69,277,0"/>
-                
-                <Label 
+
+                <Label                     
                     Name="lblReceived"
                     Content="..." 
                     HorizontalAlignment="Left"
                     Margin="384,80,0,0"
                     VerticalAlignment="Top"
                     Width="171"/>
-                
+
                 <materialDesign:TimePicker     
+                    SelectedTime="{Binding Path=ForRelease}"
                     x:Name="tpReceived"                    
                     Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                  
                     materialDesign:HintAssist.Hint="Time" 
                     Margin="301,67,186,25" Height="36"  />
             </Grid>
+        </Grid>
+        <Grid DataContext="{Binding Path=addresseeInfo}">
+            <Label                
+                    Content="ADDRESSEE"                 
+                    FontSize="15"                
+                    FontWeight="Bold"                
+                    HorizontalAlignment="Left"               
+                    Margin="286,48,0,0"                
+                    VerticalAlignment="Top"/>
+            <TextBox    
+                    Text="{Binding Path=Office}"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"                    
+                    VerticalAlignment="Top"                                   
+                    AcceptsReturn="True"                             
+                    FontSize="14"                    
+                    Name="txtOffice"               
+                    materialDesign:HintAssist.Hint="OFFICE"                 
+                    Margin="289,81,24,0"
+                    Height="Auto"/>
+            <TextBox             
+                    Text="{Binding Path=FullName}"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"                    
+                    VerticalAlignment="Top"                                   
+                    AcceptsReturn="True"                             
+                    FontSize="14"                    
+                    Name="txtFullName"                
+                    materialDesign:HintAssist.Hint="FULL NAME"                 
+                    Margin="289,141,24,0" Height="Auto"/>
+            <TextBox   
+                    Text="{Binding Path=Email}"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"                   
+                    VerticalAlignment="Top"                                   
+                    AcceptsReturn="True"                            
+                    FontSize="14"                 
+                    Name="txtEmail"            
+                    materialDesign:HintAssist.Hint="EMAIL"             
+                    Margin="289,201,24,0" Height="Auto"/>
+            <TextBox   
+                    Text="{Binding Path=ContactNo}"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"                    
+                    VerticalAlignment="Top"                                   
+                    AcceptsReturn="True"                             
+                    FontSize="14"                    
+                    Name="txtContact"                
+                    materialDesign:HintAssist.Hint="CONTACT NO"                 
+                    Margin="289,263,24,0" Height="Auto"/>
         </Grid>
     </Grid>
 

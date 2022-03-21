@@ -2,6 +2,7 @@
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -23,22 +24,33 @@ namespace DocsControl.Dialogs
     /// </summary>
     public partial class dAddEditDocs : Window
     {
+
+        public class DocDataContext
+        {
+            public ObservableCollection<DocData> docDatas { get; set; }
+        }
         public dAddEditDocs(string dialogName, int id)
         {
             InitializeComponent();
             lblTitle.Content = dialogName;
             this.docDataID = id;
-            docData.Id = id;
+            //docData.Id = id;
 
             var focals = db.Focals.Select(x => x.FullName).ToList(); //populate combo box with focal names
             ComboBox(cmbFocals, focals); //method for populating //Models>Modules static
 
             //load info if the form is in editing view
-            if (dialogName.Contains("EDIT"))
+            //if (dialogName.Contains("EDIT"))
+            //{
+            //   //oadInfo();
+            //    addresseeID = docData.GetDocDatas().FirstOrDefault().AddresseeID;
+            //}
+
+            DataContext = new
             {
-                loadInfo();
-                addresseeID = docData.GetDocDatas().FirstOrDefault().AddresseeID;
-            }
+                docInfo = doctDatas,
+                addresseeInfo = addressees
+            };
         }
         dbDocs db = new dbDocs(); //instantiate Model Docs
         Addressee addressee = new Addressee();
@@ -52,6 +64,94 @@ namespace DocsControl.Dialogs
         private int addresseeID;
         private string signedCopyFile;
         private string receivedCopyFile;
+  
+        public ObservableCollection<DocData> doctDatas 
+        {
+            get
+            {
+                var doc = new DocData();
+                doc.Id = docDataID;
+   
+                var doctList = new ObservableCollection<DocData>();
+                foreach (var item in doc.GetDocDatas())
+                {
+                    switch (item.CurrentStatus) //selected index for current status
+                    {
+                        case "FOR SIGNATURE":
+                            item.CurrentStatus = "0";
+                            break;
+                        case "SIGNED":
+                            item.CurrentStatus = "1";
+                            break;
+                        case "RECEIVED":
+                            item.CurrentStatus = "2";
+                            break;
+                    }
+                    doctList.Add(new DocData()
+                    {
+                        Id = item.Id,                        
+                        DocSubject = item.DocSubject,
+                        CurrentStatus = item.CurrentStatus,
+                        DoctTypes = item.DoctTypes,
+                        DocControlNumber = item.DocControlNumber,
+                        Remarks = item.Remarks,
+                        DateAdd = item.DateAdd,
+                        Tag = item.Tag,
+                        ForSigned = item.ForSigned,
+                        Signed = item.Signed,
+                        ForRelease = item.ForRelease,                     
+                        FocalID = item.FocalID - 1,                                               
+                    });
+                }
+                return doctList;
+            }
+        }
+
+        public ObservableCollection<Addressee> addressees
+        {
+            get
+            {
+                var doc = new DocData();
+                doc.Id = docDataID;
+
+                var addresseeList = new ObservableCollection<Addressee>();
+                foreach (var item in doc.GetDocDatas())
+                {
+                    addresseeList.Add(new Addressee()
+                    {
+                        Id = item.Addressee.Id,
+                        Office = item.Addressee.Office,
+                        FullName = item.Addressee.FullName,
+                        Email = item.Addressee.Email,
+                        ContactNo = item.Addressee.ContactNo
+                    });
+                }
+                return addresseeList;
+            }            
+        }
+
+        public ObservableCollection<DocPath> docPaths
+        {
+            get
+            {
+                var doc = new DocData();
+                doc.Id = docDataID;
+
+                var addresseeList = new ObservableCollection<DocPath>();
+                foreach (var item in doc.GetDocDatas())
+                {
+                    addresseeList.Add(new DocPath()
+                    {
+                        Id = item.Addressee.Id,
+                        Office = item.Addressee.Office,
+                        FullName = item.Addressee.FullName,
+                        Email = item.Addressee.Email,
+                        ContactNo = item.Addressee.ContactNo
+                    });
+                }
+                return addresseeList;
+            }
+        }
         private void loadInfo()
         {
             //bind data to textfields and combo boxes
@@ -220,7 +320,6 @@ namespace DocsControl.Dialogs
                 btn.Background = Brushes.Teal;
             }
         }
-
         private void bindAddressee()
         {
             addressee = new Addressee()
@@ -232,7 +331,6 @@ namespace DocsControl.Dialogs
                 Id = addresseeID
             };
         }
-
         private void bindDocData()
         {
             docData = new DocData()
@@ -244,7 +342,7 @@ namespace DocsControl.Dialogs
                 Signed = signedDate,
                 ForRelease = receivedDate,
                 FocalID = db.Focals.Where(x => x.FullName.Equals(cmbFocals.Text)).FirstOrDefault().Id,
-                DateAdd = DateTime.Now,
+                DateAdd = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                 DoctTypes = txtDocType.Text,
                 AddresseeID = lblTitle.Content.ToString().Contains("ADD") ? db.Addressees.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault() : addresseeID,
                 Remarks = txtRemarks.Text,

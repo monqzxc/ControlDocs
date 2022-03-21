@@ -19,7 +19,7 @@ namespace DocsControl.Dialogs
     /// </summary>
     public partial class dDocInfo : Window
     {
-        public dDocInfo()
+        public dDocInfo(int id)
         {
             InitializeComponent();
         }

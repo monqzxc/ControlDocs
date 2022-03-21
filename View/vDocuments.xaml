@@ -32,11 +32,11 @@
                 IsEditable="True"  
                 HorizontalContentAlignment="Left"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBox.ItemContainerStyle>
+                <!--<ComboBox.ItemContainerStyle>
                     <Style>
                         <EventSetter Event="ComboBoxItem.PreviewMouseDown" Handler="ComboBoxEvent"/>
                     </Style>
-                </ComboBox.ItemContainerStyle>
+                </ComboBox.ItemContainerStyle>-->
             </ComboBox>
 
             <ComboBox
@@ -46,11 +46,11 @@
                 IsEditable="True"  
                 HorizontalContentAlignment="Left"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBox.ItemContainerStyle>
+                <!--<ComboBox.ItemContainerStyle>
                     <Style>
                         <EventSetter Event="ComboBoxItem.PreviewMouseDown" Handler="ComboBoxEvent"/>
                     </Style>
-                </ComboBox.ItemContainerStyle>
+                </ComboBox.ItemContainerStyle>-->
             </ComboBox>
 
             <ComboBox
@@ -60,11 +60,11 @@
                 IsEditable="True"  
                 HorizontalContentAlignment="Left"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBox.ItemContainerStyle>
+                <!--<ComboBox.ItemContainerStyle>
                     <Style>
                         <EventSetter Event="ComboBoxItem.PreviewMouseDown" Handler="ComboBoxEvent"/>
                     </Style>
-                </ComboBox.ItemContainerStyle>
+                </ComboBox.ItemContainerStyle>-->
             </ComboBox>
 
             <DatePicker  
@@ -74,6 +74,7 @@
                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                 Height="42" />
             <Button 
+                Click="btnSearch_Click"
                 Content="SEARCH" 
                 HorizontalAlignment="Left" 
                 Margin="890,18,0,0" 
@@ -94,8 +95,8 @@
                 <DataGridTextColumn
                     Header="Date Add"                    
                     MinWidth="150"
-                    Width="50"
-                    Binding="{Binding Path=DateAdd, StringFormat='yyyy-MM-dd'}"/>
+                    Width="*"
+                    Binding="{Binding Path=DateAdd}"/>
                 <DataGridTextColumn
                     Header="Document Type"
                     MinWidth="150"
@@ -104,13 +105,25 @@
                 <DataGridTextColumn
                     Header="Subject"
                     MinWidth="200"
-                    Width="500"
+                    Width="400"
                     Binding="{Binding Path=DocSubject}"/>
                 <DataGridTextColumn
                     Header="Control Number"
-                    MinWidth="200"
-                    Width="50"
+                    MinWidth="100"
+                    Width="175"
                     Binding="{Binding Path=DocControlNumber}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Click="buttonShowDialog"
+                                Width="100" 
+                                Tag="{Binding Path=Id}"
+                                Content="View" 
+                                Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 

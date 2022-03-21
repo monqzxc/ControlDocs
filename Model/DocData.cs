@@ -24,7 +24,7 @@ namespace DocsControl.Model
         public DateTime? ForRelease { get; set; }
         public string DoctTypes { get; set; }
 
-        public DateTime DateAdd { get; set; }
+        public string DateAdd { get; set; }
         public string Tag { get; set; }
         public int FocalID { get; set; }
         public int AddresseeID { get; set; }
@@ -32,12 +32,7 @@ namespace DocsControl.Model
 
         public virtual Addressee Addressee { get; set; }
 
-        public virtual ICollection<DocPath> DocPaths { get; set; }
-                               
-        public IQueryable<DocData> GetUserInfo()
-        {
-            return new dbDocs().DocDatas;
-        }
+        public virtual ICollection<DocPath> DocPaths { get; set; }                                     
 
         dbDocs db = new dbDocs();
         

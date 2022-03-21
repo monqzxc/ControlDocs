@@ -69,19 +69,14 @@ namespace DocsControl.ViewModel
         
         private void buttonShowDialog(object sender, RoutedEventArgs e) //event for clicking add button
         {
-            //continue here the event of searching
+            var item = sender as Button;
+            Console.WriteLine(item.Tag);
         }
         public void loadDocList()
         {
 
             sampleDocs.Clear();
-            var doc = db.DocDatas.ToList();
-
-            //var doc = db.DocDatas.Where(x => 
-            //x.DocSubject.Contains(cmbSubject.Text) && 
-            //x.DocControlNumber.Contains(cmbControlNumber.Text) && 
-            //x.DoctTypes.Contains(cmbDocType.Text) && 
-            //x.DateAdd.Equals(dtpDate.SelectedDate)).ToList();
+            var doc = db.DocDatas.ToList();         
 
             if (!string.IsNullOrWhiteSpace(cmbControlNumber.Text))
                 doc = doc.Where(x => x.DocControlNumber.Contains(cmbControlNumber.Text)).ToList();
@@ -91,9 +86,9 @@ namespace DocsControl.ViewModel
 
             if (!string.IsNullOrWhiteSpace(cmbDocType.Text))
                 doc = doc.Where(x => x.DoctTypes.Contains(cmbDocType.Text)).ToList();
-            
-            //if (!string.IsNullOrWhiteSpace(dtpDate.Text))
-            //    doc = doc.Where(x => x.DateAdd.Equals(dtpDate.SelectedDate)).ToList();
+
+            if (!string.IsNullOrWhiteSpace(dtpDate.Text))
+                doc = doc.Where(x => x.DateAdd.Contains(DateTime.Parse(dtpDate.Text).ToString("yyyy-MM-dd"))).ToList();
             var docList = new ObservableCollection<DocData>();
             {
                 foreach (var item in doc)
@@ -110,14 +105,10 @@ namespace DocsControl.ViewModel
                 }
             }
         }
-        public void ComboBoxEvent(object sender, MouseButtonEventArgs eventArgs)
+        public void btnSearch_Click(object sender, RoutedEventArgs eventArgs)
         {
-            var item = sender as ComboBoxItem;
-            if (item != null)
-            {
-                loadDocList();
-                Console.WriteLine("z");
-            }
+            loadDocList();
+            
         }
     }
 }
