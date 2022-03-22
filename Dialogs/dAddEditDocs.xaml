@@ -212,6 +212,8 @@
         </Grid>
         <Grid DataContext="{Binding Path=addresseeInfo}">
             <Label                
+                    Name="lblAddressee"
+                    Tag="{Binding Path=Id}"
                     Content="ADDRESSEE"                 
                     FontSize="15"                
                     FontWeight="Bold"                

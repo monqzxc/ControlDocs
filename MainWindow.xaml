@@ -51,7 +51,7 @@
         <materialDesign:Card
             Name="navHeader"
              
-            Background="#1D1B1B"
+            Background="White"
             Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
             Padding="8" Grid.Column="1" Margin="155,0,0,80" MouseDown="navHeader_MouseDown"/>
 

@@ -1,4 +1,5 @@
-﻿using DocsControl.Model;
+﻿using DocsControl.Dialogs;
+using DocsControl.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using static DocsControl.Model.Modules;
 
 namespace DocsControl.ViewModel
@@ -70,7 +72,13 @@ namespace DocsControl.ViewModel
         private void buttonShowDialog(object sender, RoutedEventArgs e) //event for clicking add button
         {
             var item = sender as Button;
-            Console.WriteLine(item.Tag);
+
+            this.Opacity = .6;
+            this.Background = Brushes.Black;
+            var dialog = new dDocInfo(int.Parse(item.Tag.ToString()));
+            dialog.ShowDialog();
+            this.Opacity = 1;
+            this.Background = Brushes.Transparent;
         }
         public void loadDocList()
         {

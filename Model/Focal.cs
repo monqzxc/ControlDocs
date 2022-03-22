@@ -5,6 +5,7 @@ namespace DocsControl.Model
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Linq;
 
     public partial class Focal
     {
@@ -36,5 +37,12 @@ namespace DocsControl.Model
         public virtual Office Office { get; set; }
 
         public virtual Plantilla Plantilla { get; set; }
+
+        dbDocs db = new dbDocs();
+
+        public IQueryable<Focal> GetFocals()
+        {
+            return db.Focals.Where(x => x.Id.Equals(Id));
+        }
     }
 }

@@ -5,263 +5,268 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DocsControl.Dialogs"
         mc:Ignorable="d"
-        Background="#1D1B1B"       
+        Background="#EC4D37"       
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"                   
         ResizeMode="NoResize"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         FontFamily="Century Gothic"      
         Title="MainDialog" 
-        Height="806.684" 
+        Height="750.660" 
         Width="565.317" 
         WindowStyle="None">
     <Grid>
-        <Label             
-            FontSize="20"
-            FontFamily="Century Gothic"
+
+        <Label          
             Foreground="White"
-            FontWeight="Bold"
-            Name="lblTitle"
-            HorizontalAlignment="Left" 
-            Margin="10,19,0,0" 
-            VerticalAlignment="Top" 
-            Height="113"
-            Width="531">
-            <Label.Content>
-                <AccessText 
-                        TextWrapping="Wrap"
-                        x:Name="lblSubject" 
-                        Text="For IAS-Region IV-A Submission of UTPRAS 
-                        PTCACS Compliance Audit Reports as of End of December 2021"
-                        Width="531"
-                        Height="103" />
-            </Label.Content>
-        </Label>
-        <Grid  
+            FontSize="25"                   
+            FontWeight="DemiBold"                   
+            HorizontalAlignment="Left" Width="407"                   
+            Content="DOCUMENT INFORMATION" 
+            Margin="10,6,0,0" Height="39"
+            VerticalAlignment="Top"/>
+
+        <Grid            
             Background="White"
             HorizontalAlignment="Left"
-            Height="178"
-            Margin="0,219,0,0" 
-            VerticalAlignment="Top" 
+            Margin="0,50,0,54"
             Width="565">
 
-            <Label 
-                Content="SUBJECT"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="24,10,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label                            
-                HorizontalAlignment="Left"                                 
-                Margin="24,32,0,0"                                 
-                VerticalAlignment="Top" Height="57" Width="278">
-                <Label.Content>
-                    <AccessText 
-                        TextWrapping="Wrap"
-                        
-                        Text="For IAS-Region IV-A Submission of UTPRAS 
-                        PTCACS Compliance Audit Reports as of End of December 2021"
-                        Width="273"
-                        Height="51" />
-                </Label.Content>
-            </Label>
-            <Label 
-                Content="CONTROL NUMBER"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="348,17,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblControlNumber"
-                Content="CONTROL NUMBER"                                                  
-                HorizontalAlignment="Left"                  
-                Margin="348,40,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Content="DOCUMENT TYPE"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="24,95,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label                            
-                HorizontalAlignment="Left"                                 
-                 Margin="24,118,0,0"                                     
-                VerticalAlignment="Top" Height="46" Width="278">
-                <Label.Content>
-                    <AccessText 
-                        TextWrapping="Wrap"
-                        x:Name="lblDocTypes"
-                        Text="For IAS-Region IV-A Submission of UTPRAS 
-                        PTCACS Compliance Audit Reports as of End of December 2021"
-                        Width="273"
-                        Height="42" />
-                </Label.Content>
-            </Label>
-            <Label 
-                Content="DATE ADDED"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="348,95,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblDateAdded"
-                Content="DATE ADDED"                                                  
-                HorizontalAlignment="Left"                  
-                Margin="348,118,0,0"                 
-                VerticalAlignment="Top"/>
-        </Grid>
+            <Border                        
+                Padding="2"                        
+                BorderBrush="Teal"                       
+                CornerRadius="5"                       
+                BorderThickness="2" Margin="10">
+            </Border>
+            <Grid
+                DataContext="{Binding Path=docInfo}"
+                Tag="DocDatas">
+                <Label       
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="20,15,0,0"                                 
+                    VerticalAlignment="Top" Height="57" Width="407"
+                    Content="SUBJECT">
+                </Label>
 
+                <Label  
+                    Foreground="CadetBlue"
+                    FontSize="14"
+                    HorizontalAlignment="Left"                                 
+                    Margin="30,35,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" Width="510">
+                    <Label.Content>
+                        <AccessText 
+                        TextWrapping="Wrap"                        
+                        Text="{Binding Path=DocSubject}"
+                        Width="500"
+                        Height="51" />
+                    </Label.Content>
+                </Label>
+
+
+                <Label       
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="20,75,0,0"                                 
+                    VerticalAlignment="Top" Height="57" Width="407"
+                    Content="TYPE">
+                </Label>
+
+                <Label  
+                    Foreground="CadetBlue"
+                    FontSize="15"
+                    HorizontalAlignment="Left"                                 
+                    Margin="30,95,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" Width="407"
+                    Content="{Binding Path=DoctTypes}">
+                </Label>
+                
+                
+                <Label        
+                    FontSize="18"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="20,120,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="407"
+                    Content="CONTROL NUMBER">
+                </Label>
+
+                <Label     
+                    Foreground="CadetBlue"
+                    FontSize="14"
+                    HorizontalAlignment="Left"                                 
+                    Margin="30,140,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" Width="407"
+                    Content="{Binding Path=DocControlNumber}">
+                </Label>
+
+                <Label                            
+                    FontSize="18"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="20,160,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="407"
+                    Content="DATE ADDED">
+                </Label>
+
+                <Label    
+                    Foreground="CadetBlue"
+                    FontSize="14"
+                    HorizontalAlignment="Left"                                 
+                    Margin="30,180,0,0"                                 
+                    VerticalAlignment="Top"
+                    Height="57" Width="407"
+                    Content="{Binding Path=DateAdd, StringFormat='yyyy-MM-dd'}">
+                </Label>
+
+                <Label                            
+                    FontSize="25"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="20,220,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="407"
+                    Content="ROUTES">
+                </Label>
+
+                <Label                            
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="20,255,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="407"
+                    Content="ORIGIN/OFFICE">
+                </Label>
+
+                <Label                            
+                    FontSize="14"
+                    Foreground="Teal"
+                    HorizontalAlignment="Left"                                 
+                    Margin="30,275,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="230">
+                    <Label.Content>
+                        <AccessText                         
+                            TextWrapping="Wrap"                                                
+                            Text="{Binding Path}"                        
+                            Width="220"                        
+                            Height="51" />
+                    </Label.Content>
+                </Label>
+
+                <Label                            
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="20,310,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="407"
+                    Content="FOCAL">
+                </Label>
+
+                <Label                            
+                    FontSize="14"
+                    Foreground="Teal"
+                    HorizontalAlignment="Left"                                 
+                    Margin="30,330,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="230">
+                    <Label.Content>
+                        <AccessText                         
+                            TextWrapping="Wrap"                                                
+                            Text="{Binding Path=FocalID}"                          
+                            Width="220"                        
+                            Height="51" />
+                    </Label.Content>
+                </Label>
+            </Grid>
+
+
+            <Grid
+                DataContext="{Binding Path=addresseeInfo}"
+                Tag="Addressee">
+ 
+
+                <Label                            
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="310,255,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="407"
+                    Content="ADDRESSEE/OFFICE">
+                </Label>
+
+                <Label                            
+                    FontSize="14"
+                    Foreground="Teal"
+                    HorizontalAlignment="Left"                                 
+                    Margin="320,275,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="230">
+                    <Label.Content>
+                        <AccessText                         
+                            TextWrapping="Wrap"                                                
+                            Text="{Binding Path=Office}"                        
+                            Width="220"                        
+                            Height="51" />
+                    </Label.Content>
+                </Label>
+                
+                <Label                            
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="310,310,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="407"
+                    Content="FULL NAME">
+                </Label>
+                
+                <Label                            
+                    FontSize="14"
+                    Foreground="Teal"
+                    HorizontalAlignment="Left"                                 
+                    Margin="320,330,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="230">
+                    <Label.Content>
+                        <AccessText                         
+                            TextWrapping="Wrap"                                                
+                            Text="{Binding Path=FullName}"                        
+                            Width="215"                        
+                            Height="51" />
+                    </Label.Content>
+                </Label>
+            </Grid>
+
+        </Grid>
+       
         <Button            
             Content="OKAY"
             Name="btnCancel"
-            Style="{StaticResource MaterialDesignRaisedDarkButton}"       
-            Width="100"    
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"    
             ToolTip="OKAY"
-            Margin="455,735,10,40">
-        </Button>
-        <Grid  
-            Background="White"
-            HorizontalAlignment="Left"
-            Height="197"
-            Margin="0,402,0,0" 
-            VerticalAlignment="Top" 
-            Width="565">
-
-            <Label 
-                Content="ORIGIN"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="24,10,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Content="ADDRESSEE"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="348,10,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Content="OFFICE NAME"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="24,38,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Content="FOCAL NAME"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="24,90,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblFocalName"
-                Content="FOCAL NAME"                                                  
-                HorizontalAlignment="Left"                  
-                Margin="24,113,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblOfficeOrigin"
-                Content="OFFICE NAME"                                       
-                HorizontalAlignment="Left"                  
-                Margin="24,61,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Content="OFFICE NAME"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="348,38,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Content="ADDRESSEE NAME"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="348,90,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblAddresseeName"
-                Content="ADDRESSEE NAME"                                                  
-                HorizontalAlignment="Left"                  
-                Margin="348,113,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblOfficeAddressee"
-                Content="OFFICE NAME"                                       
-                HorizontalAlignment="Left"                  
-                Margin="348,61,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Content="EMAIL"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="24,141,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblFocalEmail"
-                Content="EMAIL"                                                  
-                HorizontalAlignment="Left"                  
-                Margin="24,164,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Content="EMAIL"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="348,141,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblAddresseeEmail"
-                Content="EMAIL"                                                  
-                HorizontalAlignment="Left"                  
-                Margin="348,164,0,0"                 
-                VerticalAlignment="Top"/>
-        </Grid>
-        <Grid  
-            Background="White"
-            HorizontalAlignment="Left"
-            Height="102"
-            Margin="0,604,0,0" 
-            VerticalAlignment="Top" 
-            Width="565">
-
-            <Label 
-                Content="TIMEFRAME"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="24,10,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Content="FOR SIGNATURE"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="24,38,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblForSign"
-                Content="FOR SIGN DATE"                                       
-                HorizontalAlignment="Left"                  
-                Margin="24,61,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Content="SIGNED BY RD"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="234,38,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Content="RECEIVED/EMAILED"                    
-                FontWeight="Bold"                   
-                HorizontalAlignment="Left"                  
-                Margin="425,38,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblReceived"
-                Content="RECEIVED DATE"                                                  
-                HorizontalAlignment="Left"                  
-                Margin="425,61,0,0"                 
-                VerticalAlignment="Top"/>
-            <Label 
-                Name="lblSigned"
-                Content="SIGNED DATE"                                       
-                HorizontalAlignment="Left"                  
-                Margin="234,61,0,0"                 
-                VerticalAlignment="Top"/>
-        </Grid>
+            Margin="0,697,0,0" Height="Auto" Click="btnCancel_Click"/>
     </Grid>
 </Window>

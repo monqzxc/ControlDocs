@@ -25,9 +25,10 @@ namespace DocsControl.Dialogs
     public partial class dAddEditDocs : Window
     {
 
-        public class DocDataContext
+        public class path
         {
-            public ObservableCollection<DocData> docDatas { get; set; }
+            public string signed { get; set; }
+            public string received { get; set; }
         }
         public dAddEditDocs(string dialogName, int id)
         {
@@ -52,6 +53,7 @@ namespace DocsControl.Dialogs
                 addresseeInfo = addressees
             };
         }
+
         dbDocs db = new dbDocs(); //instantiate Model Docs
         Addressee addressee = new Addressee();
         DocData docData = new DocData();
@@ -61,7 +63,6 @@ namespace DocsControl.Dialogs
         private string destinationPath;
         private DateTime? signedDate;
         private DateTime? receivedDate;
-        private int addresseeID;
         private string signedCopyFile;
         private string receivedCopyFile;
   
@@ -103,11 +104,43 @@ namespace DocsControl.Dialogs
                         FocalID = item.FocalID - 1,                                               
                     });
                 }
+
+                //this code will load the file path
+                docPath.DocDataID = docDataID;
+
+                if (docPath.GetDocPaths("S").Count() > 0) //get file name and trim (if there's any)
+                    signedCopyFile = new FileInfo(docPath.GetDocPaths("S").FirstOrDefault().Path).Name;
+                else
+                    signedCopyFile = "...";
+
+                if (docPath.GetDocPaths("R").Count() > 0) //get file name and trim (if there's any)
+                    receivedCopyFile = new FileInfo(docPath.GetDocPaths("R").FirstOrDefault().Path).Name;
+                else
+                    receivedCopyFile = "...";
+
+                //bind file name (if there's any)
+                lblSigned.Content = lblSigned.Content.ToString().Contains("ADD") ? "..." : signedCopyFile;
+                lblReceived.Content = lblReceived.Content.ToString().Contains("ADD") ? "..." : receivedCopyFile;
+
+
+                //change of content and color in buttons
+                if (!lblSigned.Content.Equals("..."))
+                {
+                    btnSigned.Content = "REMOVE";
+                    btnSigned.Background = Brushes.OrangeRed;
+                }
+                if (!lblReceived.Content.Equals("..."))
+                {
+                    btnReceived.Content = "REMOVE";
+                    btnReceived.Background = Brushes.OrangeRed;
+                }
+
+                //return docdata
                 return doctList;
             }
         }
 
-        public ObservableCollection<Addressee> addressees
+        public ObservableCollection<Addressee> addressees //collection of addressees
         {
             get
             {
@@ -128,77 +161,7 @@ namespace DocsControl.Dialogs
                 }
                 return addresseeList;
             }            
-        }
-
-        public ObservableCollection<DocPath> docPaths
-        {
-            get
-            {
-                var doc = new DocData();
-                doc.Id = docDataID;
-
-                var addresseeList = new ObservableCollection<DocPath>();
-                foreach (var item in doc.GetDocDatas())
-                {
-                    addresseeList.Add(new DocPath()
-                    {
-                        Id = item.Addressee.Id,
-                        Office = item.Addressee.Office,
-                        FullName = item.Addressee.FullName,
-                        Email = item.Addressee.Email,
-                        ContactNo = item.Addressee.ContactNo
-                    });
-                }
-                return addresseeList;
-            }
-        }
-        private void loadInfo()
-        {
-            //bind data to textfields and combo boxes
-            txtSubject.Text = docData.GetDocDatas().FirstOrDefault().DocSubject;
-            cmbStatus.Text = docData.GetDocDatas().FirstOrDefault().CurrentStatus;
-            txtDocType.Text = docData.GetDocDatas().FirstOrDefault().DoctTypes;
-            cmbFocals.Text = docData.GetDocDatas().FirstOrDefault().Focal.FullName;
-            txtControlNumber.Text = docData.GetDocDatas().FirstOrDefault().DocControlNumber;
-            txtRemarks.Text = docData.GetDocDatas().FirstOrDefault().Remarks;
-            txtOffice.Text = docData.GetDocDatas().FirstOrDefault().Addressee.Office;
-            txtFullName.Text = docData.GetDocDatas().FirstOrDefault().Addressee.FullName;
-            txtEmail.Text = docData.GetDocDatas().FirstOrDefault().Addressee.Email;
-            txtContact.Text = docData.GetDocDatas().FirstOrDefault().Addressee.ContactNo;
-
-            dpSigned.SelectedDate = docData.GetDocDatas().FirstOrDefault().Signed;
-            dpReceived.SelectedDate = docData.GetDocDatas().FirstOrDefault().ForRelease;
-            tpSigned.SelectedTime = docData.GetDocDatas().FirstOrDefault().Signed;
-            tpReceived.SelectedTime = docData.GetDocDatas().FirstOrDefault().ForRelease;
-
-            docPath.DocDataID = docData.Id;
-
-            if (docPath.GetDocPaths("S").Count() > 0) //get file name and trim (if there's any)
-                signedCopyFile = new FileInfo(docPath.GetDocPaths("S").FirstOrDefault().Path).Name;
-            else
-                signedCopyFile = "...";
-
-            if (docPath.GetDocPaths("R").Count() > 0) //get file name and trim (if there's any)
-                receivedCopyFile = new FileInfo(docPath.GetDocPaths("R").FirstOrDefault().Path).Name;
-            else
-                receivedCopyFile = "...";
-
-            //bind file name (if there's any)
-            lblSigned.Content = lblSigned.Content.ToString().Contains("ADD") ? "..." : signedCopyFile;
-            lblReceived.Content = lblReceived.Content.ToString().Contains("ADD") ? "..." : receivedCopyFile;
-
-            //change of content and color in buttons
-            if (!string.IsNullOrWhiteSpace(dpSigned.Text) || !string.IsNullOrWhiteSpace(tpSigned.Text))
-            {
-                btnSigned.Content = "REMOVE";
-                btnSigned.Background = Brushes.OrangeRed;
-            }
-            if (!string.IsNullOrWhiteSpace(dpReceived.Text) || !string.IsNullOrWhiteSpace(tpReceived.Text))
-            {
-                btnReceived.Content = "REMOVE";
-                btnReceived.Background = Brushes.OrangeRed;
-            }
-        }
+        }               
         bool isValid() //validation of inputs before saving. skip if no errors
         {
             if (string.IsNullOrWhiteSpace(txtSubject.Text) ||
@@ -328,7 +291,7 @@ namespace DocsControl.Dialogs
                 Email = txtEmail.Text,
                 FullName = txtFullName.Text,
                 Office = txtOffice.Text,
-                Id = addresseeID
+                Id = lblTitle.Content.ToString().Contains("ADD") ? 0 : int.Parse(lblAddressee.Tag.ToString())
             };
         }
         private void bindDocData()
@@ -342,9 +305,9 @@ namespace DocsControl.Dialogs
                 Signed = signedDate,
                 ForRelease = receivedDate,
                 FocalID = db.Focals.Where(x => x.FullName.Equals(cmbFocals.Text)).FirstOrDefault().Id,
-                DateAdd = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
+                DateAdd = DateTime.Now.ToString("yyyy-MM-dd HH:mmtt"),
                 DoctTypes = txtDocType.Text,
-                AddresseeID = lblTitle.Content.ToString().Contains("ADD") ? db.Addressees.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault() : addresseeID,
+                AddresseeID = lblTitle.Content.ToString().Contains("ADD") ? db.Addressees.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault() : int.Parse(lblAddressee.Tag.ToString()),
                 Remarks = txtRemarks.Text,
                 Tag = "O",
                 DocControlNumber = txtControlNumber.Text
@@ -383,7 +346,7 @@ namespace DocsControl.Dialogs
 
             //insert new data in DocPath
 
-            docPath.DocDataID = db.DocDatas.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault();
+            docPath.DocDataID = docDataID == 0 ? db.DocDatas.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault() : docDataID;
             docPath.addPath();
 
             if (docPath.pathItem.Count > 0)
@@ -410,6 +373,7 @@ namespace DocsControl.Dialogs
                 }
             }
         }
+
         //private void btnBrowse_Copy_Click(object sender, RoutedEventArgs e)
         //{
         //    var pdfView = new dPDFView(lblPath.Content.ToString());

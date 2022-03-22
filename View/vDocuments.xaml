@@ -82,6 +82,7 @@
                 Width="105"/>
         </Grid>
         <DataGrid 
+            Background="White"
             IsReadOnly="True"
             x:Name="dgDocList"
             HorizontalAlignment="Left" 
@@ -89,26 +90,28 @@
             Margin="10,166,0,0" 
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
+            
             Width="1014"
+            AlternatingRowBackground="WhiteSmoke"
             ItemsSource="{Binding Path=DocDatas}">
             <DataGrid.Columns>
-                <DataGridTextColumn
-                    Header="Date Add"                    
+                <DataGridTextColumn                    
+                    Header=" Date Added"                    
                     MinWidth="150"
                     Width="*"
                     Binding="{Binding Path=DateAdd}"/>
                 <DataGridTextColumn
-                    Header="Document Type"
+                    Header=" Document Type"
                     MinWidth="150"
                     Width="150"
                     Binding="{Binding Path=DoctTypes}"/>
                 <DataGridTextColumn
-                    Header="Subject"
+                    Header=" Subject"
                     MinWidth="200"
                     Width="400"
                     Binding="{Binding Path=DocSubject}"/>
                 <DataGridTextColumn
-                    Header="Control Number"
+                    Header=" Control Number"
                     MinWidth="100"
                     Width="175"
                     Binding="{Binding Path=DocControlNumber}"/>
@@ -125,6 +128,15 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
+            <DataGrid.Resources>
+                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="#d5d6d7"/>
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+
+                </Style>
+                
+            </DataGrid.Resources>
         </DataGrid>
 
         <!--<ListView           
