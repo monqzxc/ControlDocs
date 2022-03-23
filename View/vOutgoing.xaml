@@ -18,7 +18,7 @@
             Foreground="#008080"
             FontSize="55" Margin="2,0,706,776"/>
         <Label        
-            Background="#ef7065"
+            Background="#EC4D37"
             Foreground="White"
             FontWeight="Bold"
             Content="FOR SIGNATURE"
@@ -28,8 +28,8 @@
             Width="Auto"
             HorizontalContentAlignment="Center"/>
         <Label
-            Background="#b3cc3a"
-            Foreground="#008080"
+            Background="#EC4D37"
+            Foreground="White"
             Content="SIGNED"
             FontWeight="Bold"
             Margin="343,113,355,709"
@@ -38,7 +38,7 @@
             Width="Auto"
             HorizontalContentAlignment="Center"/>
         <Label  
-            Background="#0a4054"
+            Background="#EC4D37"
             Foreground="White"
             FontWeight="Bold"
             Content="RECEIVED"
@@ -48,10 +48,10 @@
             Width="Auto"
             HorizontalContentAlignment="Center"/>
 
-        <Grid             
+        <Grid Tag="For Signature"
             Margin="0,152,698,10"
-            Background="#ef7065">
-            <ListView             
+            Background="#EC4D37">
+            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled"                       
                 BorderThickness="10"
                 Name="lvForSign"
                 ItemsSource="{Binding Path=ForSign}">
@@ -66,7 +66,7 @@
                             </Style>
                         </GridView.ColumnHeaderContainerStyle>
                         <GridViewColumn                       
-                       Width="230"                        
+                       Width="220"                        
                        Header="SUBJECT">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -84,8 +84,8 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn   
-                        Width="110"                         
-                        Header="DATE                 ">
+                        Width="120"                         
+                        Header="DATE">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock 
@@ -109,18 +109,20 @@
                                 <Setter Property="Background" Value="#ef7065"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Red"/>
+                                <Setter Property="Background" Value="Pink"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
+                    
                 </ListView.ItemContainerStyle>
             </ListView>
         </Grid>
 
-        <Grid
-            Margin="343,152,355,10"
-            Background="#b3cc3a">
+        <Grid Tag="Signed"              
+              Margin="343,152,355,10"
+              Background="#EC4D37">
             <ListView
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"      
                 Name="lvSigned"
                 ItemsSource="{Binding Path=Signed}">
                 <ListView.View>
@@ -133,40 +135,37 @@
                                 <Setter Property="HorizontalAlignment" Value="Center"/>
                             </Style>
                         </GridView.ColumnHeaderContainerStyle>
-                        <!--<GridViewColumn                       
-                        DisplayMemberBinding="{Binding DocType}"
-                        Header="Type" />-->
                         <GridViewColumn                       
-                       Width="230"                        
+                       Width="220"                        
                        Header="SUBJECT">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock
-                                    Padding="-1"
-                                    Margin="11"
-                                    Height="30"
-                                    TextWrapping="Wrap"                                 
-                                    Width="220"        
-                                    x:Name="txt"                                    
-                                    Text="{Binding Path=DocSubject}" 
-                                    Foreground="#EC4D37">
-                                    </TextBlock>
+                                        Padding="-1"
+                                        Margin="11"
+                                        Height="30"
+                                        TextWrapping="Wrap"                                 
+                                        Width="220"        
+                                        x:Name="txt"                                    
+                                        Text="{Binding Path=DocSubject}" 
+                                        Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn   
-                        Width="110"                         
-                        Header="DATE                 ">
+                        Width="120"                         
+                        Header="DATE">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock 
-                                    Margin="11"                               
-                                    Width="100"        
-                                    x:Name="txt"   
-                                    TextWrapping="Wrap"
-                                    TextAlignment="Left"                                     
-                                    Text="{Binding Path=Signed}" 
-                                    Foreground="#EC4D37"></TextBlock>
+                                        
+                                        Margin="11"                               
+                                        Width="90"        
+                                        x:Name="txt"   
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Left"                                     
+                                        Text="{Binding Path=Signed}" 
+                                        Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -177,10 +176,10 @@
                         <EventSetter Event="PreviewMouseLeftButtonDown" Handler="lvMouseButton"/>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#b3cc3a"/>
+                                <Setter Property="Background" Value="#ef7065"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="White"/>
+                                <Setter Property="Background" Value="Pink"/>
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -188,11 +187,11 @@
             </ListView>
         </Grid>
 
-
-        <Grid
-            Margin="688,152,10,10"
-            Background="#0a4054">
-            <ListView            
+        <Grid Tag="Recieved"            
+              Margin="688,152,10,10"
+              Background="#EC4D37">
+            <ListView        
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"      
                 Name="lvForRelease"
                 ItemsSource="{Binding Path=Received}">
                 <ListView.View>
@@ -206,36 +205,35 @@
                             </Style>
                         </GridView.ColumnHeaderContainerStyle>
                         <GridViewColumn                       
-                       Width="230"                        
+                       Width="220"                        
                        Header="SUBJECT">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock
-                                    Padding="-1"
-                                    Margin="11"
-                                    Height="30"
-                                    TextWrapping="Wrap"                                 
-                                    Width="220"        
-                                    x:Name="txt"                                    
-                                    Text="{Binding Path=DocSubject}" 
-                                    Foreground="White">
-                                    </TextBlock>
+                                        Padding="-1"
+                                        Margin="11"
+                                        Height="30"
+                                        TextWrapping="Wrap"                                 
+                                        Width="220"        
+                                        x:Name="txt"                                    
+                                        Text="{Binding Path=DocSubject}" 
+                                        Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                         <GridViewColumn   
-                        Width="110"                         
-                        Header="DATE                 ">
+                        Width="120"                         
+                        Header="DATE">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock 
-                                    Margin="11"                               
-                                    Width="100"        
-                                    x:Name="txt"   
-                                    TextWrapping="Wrap"
-                                    TextAlignment="Left"                                      
-                                    Text="{Binding Path=ForRelease}" 
-                                    Foreground="White"></TextBlock>
+                                    <TextBlock                                         
+                                        Margin="11"                               
+                                        Width="100"        
+                                        x:Name="txt"   
+                                        TextWrapping="Wrap"
+                                        TextAlignment="Left"                                      
+                                        Text="{Binding Path=ForRelease}" 
+                                        Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -246,18 +244,17 @@
                         <EventSetter Event="PreviewMouseLeftButtonDown" Handler="lvMouseButton"/>
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="#0a4054"/>
+                                <Setter Property="Background" Value="#ef7065"/>
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="Red"/>
+                                <Setter Property="Background" Value="Pink"/>
                             </Trigger>
                         </Style.Triggers>
+
                     </Style>
                 </ListView.ItemContainerStyle>
             </ListView>
         </Grid>
-
-
 
         <Button            
             x:Name="btnAdd"

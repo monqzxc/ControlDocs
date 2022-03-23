@@ -228,15 +228,15 @@ namespace DocsControl.Dialogs
                 if (!btnReceived.Content.ToString().Contains("ADD") && lblReceived.Content.ToString().Contains(@"\"))
                 {
                     var f = new FileInfo(receivedCopy);
-                    File.Copy(receivedCopy, destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmmss"), f.Name), true);//copy and renaming of file
-                    destinationPath = destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmmss"), f.Name);//storing the path to database
+                    File.Copy(receivedCopy, destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name), true);//copy and renaming of file
+                    destinationPath = destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name);//storing the path to database
                     docPath.pathList.Add(string.Format("{0}|{1}", destinationPath, "R"));//add to list 
                 }
                 if (!btnSigned.Content.ToString().Contains("ADD") && lblSigned.Content.ToString().Contains(@"\"))
             {
                     var f = new FileInfo(signedCopy);
-                    File.Copy(signedCopy, destinationDirectory + string.Format("{0}-{1}", "SIGNED" + DateTime.Now.ToString("yyyyMMddHHmmss"), f.Name), true);
-                    destinationPath = destinationDirectory + string.Format("{0}-{1}", "SIGNED" + DateTime.Now.ToString("yyyyMMddHHmmss"), f.Name);
+                    File.Copy(signedCopy, destinationDirectory + string.Format("{0}-{1}", "SIGNED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name), true);
+                    destinationPath = destinationDirectory + string.Format("{0}-{1}", "SIGNED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name);
                     docPath.pathList.Add(string.Format("{0}|{1}", destinationPath, "S"));
                 }                                 
         }
@@ -374,11 +374,7 @@ namespace DocsControl.Dialogs
             }
         }
 
-        //private void btnBrowse_Copy_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var pdfView = new dPDFView(lblPath.Content.ToString());
-        //    pdfView.Show();
-        //}
+        
 
 
 

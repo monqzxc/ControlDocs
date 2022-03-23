@@ -43,31 +43,7 @@ namespace DocsControl.ViewModel
         {
             get { return sampleDocs; }
             set { sampleDocs = value; }
-        }
-        //public ObservableCollection<DocData> docList
-        //{
-        //    get
-        //    {
-
-        //        //var doc = db.DocDatas.Where(x => x.DocSubject.Contains(cmbSubject.Text) && x.DocControlNumber.Contains(cmbControlNumber.Text) && x.DoctTypes.Contains(cmbDocType.Text) && x.DateAdd.Equals(dtpDate.SelectedDate)).ToList();
-        //        var doc = db.DocDatas.ToList();
-        //        var docList = new ObservableCollection<DocData>();
-        //        {
-        //            foreach (var item in doc)
-        //            {
-        //                docList.Add(new DocData()
-        //                {
-        //                    Id = item.Id,
-        //                    DocSubject = item.DocSubject,
-        //                    DocControlNumber = item.DocControlNumber,
-        //                    DoctTypes = item.DoctTypes,
-        //                    DateAdd = item.DateAdd
-        //                });
-        //            }
-        //            return docList;
-        //        }
-        //    }
-        //}
+        }       
         
         private void buttonShowDialog(object sender, RoutedEventArgs e) //event for clicking add button
         {
@@ -115,8 +91,7 @@ namespace DocsControl.ViewModel
         }
         public void btnSearch_Click(object sender, RoutedEventArgs eventArgs)
         {
-            loadDocList();
-            
+            loadDocList();            
         }
     }
 }

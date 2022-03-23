@@ -29,7 +29,7 @@ namespace DocsControl.Dialogs
             DataContext = new
             {
                 docInfo = doctDatas,
-                addresseeInfo = addressees
+                routeInfo = routes
             };
         }
         int docDataId;
@@ -72,6 +72,18 @@ namespace DocsControl.Dialogs
                         ForRelease = item.ForRelease,
                         FocalID = item.FocalID - 1,
                     });
+
+                    if (!string.IsNullOrWhiteSpace(item.Signed.ToString()))
+                    {
+                        btnSigned.Visibility = Visibility.Visible;
+                        btnSigned.Tag = item.DocPaths.Where(x =>x.DocStatusTag.Equals("S")).Select(x => x.Path).First();
+                    }                        
+
+                    if (!string.IsNullOrWhiteSpace(item.ForRelease.ToString()))
+                    {
+                        btnReceived.Visibility = Visibility.Visible;
+                        btnReceived.Tag = item.DocPaths.Where(x => x.DocStatusTag.Equals("R")).Select(x => x.Path).First();
+                    }
                 }
 
                 //this code will load the file path
@@ -97,50 +109,23 @@ namespace DocsControl.Dialogs
                 //return docdata
                 return doctList;
             }
-        }
-        public ObservableCollection<Addressee> addressees //collection of addressees
+        }        
+
+        public ObservableCollection<Routes> routes //collection of addressees
         {
             get
             {
-                var doc = new DocData();
-                doc.Id = docDataId;
-
-                var addresseeList = new ObservableCollection<Addressee>();
-                foreach (var item in doc.GetDocDatas())
+                var db = new dbDocs();
+                var focal = db.DocDatas.Where(x => x.Id.Equals(docDataId)).ToList();
+                var addresseeList = new ObservableCollection<Routes>();
+                foreach (var item in focal)
                 {
-                    addresseeList.Add(new Addressee()
+                    addresseeList.Add(new Routes()
                     {
-                        Id = item.Addressee.Id,
-                        Office = item.Addressee.Office,
-                        FullName = item.Addressee.FullName,
-                        Email = item.Addressee.Email,
-                        ContactNo = item.Addressee.ContactNo
-                    });
-                }
-                return addresseeList;
-            }
-        }
-
-        public ObservableCollection<Focal> focals //collection of addressees
-        {
-            get
-            {
-                var focal = new Focal();
-                focal.Id = focalId;
-
-                var addresseeList = new ObservableCollection<Focal>();
-                foreach (var item in focal.GetFocals())
-                {
-                    addresseeList.Add(new Focal()
-                    {
-                        Id = item.Id,
-                        Office = item.Office,
-                        FullName = item.FullName,
-                        Email = item.Email,
-                        ContactNumber = item.ContactNumber,
-                        PlantillaID = item.PlantillaID,
-                        FocalshipID = item.FocalshipID,
-                        OfficeID = item.OfficeID
+                        FocalName = item.Focal.FullName,
+                        OriginOffice = item.Focal.Office.OperatingUnit,
+                        AddresseeName = item.Addressee.FullName,
+                        AddresseeOffice = item.Addressee.Office
                     });
                 }
                 return addresseeList;
@@ -149,6 +134,13 @@ namespace DocsControl.Dialogs
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+        private void buttonShowPDF(object sender, RoutedEventArgs e)
+        {
+            var btn = sender as Button;
+            var pdfView = new dPDFView(btn.Tag.ToString());
+            Console.WriteLine(btn.Tag);
+            pdfView.Show();
         }
     }
 }

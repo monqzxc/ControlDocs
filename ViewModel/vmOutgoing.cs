@@ -95,7 +95,7 @@ namespace DocsControl.ViewModel
         {
             get
             {
-                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RECEIVED")).ToList();
+                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RECEIVED") && x.ForRelease.Value).ToList();
                 var doctList = new ObservableCollection<DocData>();
                 foreach (var item in docs)
                 {

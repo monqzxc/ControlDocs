@@ -59,7 +59,7 @@
         <materialDesign:Card
             Name="navHeader2"
              
-            Background="#1D1B1B"
+            Background="White"
             Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
             Padding="8" Grid.Column="1" Margin="155,760,0,0" Grid.Row="1">
             <materialDesign:TimePicker HorizontalAlignment="Left" Margin="898,0,0,0" VerticalAlignment="Top"/>
