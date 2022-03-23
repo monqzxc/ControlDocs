@@ -88,10 +88,21 @@ namespace DocsControl.ViewModel
                     sampleDocs.Add(item);
                 }
             }
+            lblTotalDocs.Content = string.Format("TOTAL DOCUMENT(S): {0}", docList.Count());
+            totalDocs = docList.Count();
         }
         public void btnSearch_Click(object sender, RoutedEventArgs eventArgs)
         {
             loadDocList();            
+        }
+        int totalDocs;
+        public void pagination()
+        {
+            var pages = totalDocs >= 12 ? totalDocs / 12 : 1; //if the total items is more than 12, generate new page. else 1 page
+            for (int i = 0; i < totalDocs; i++)
+            {
+
+            }
         }
     }
 }

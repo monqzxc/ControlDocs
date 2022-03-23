@@ -16,11 +16,12 @@
             FontSize="55" Margin="2,0,674,776"/>
 
             <Label
+                Name="lblTotalDocs"
                 Content="Total Documents"
                 Foreground="#008080"
                 FontSize="14" 
                 Height="Auto"
-                Margin="731,815,10,10"
+                Margin="731,805,20,10"
                 HorizontalContentAlignment="Right"/>
         </Grid>
 
@@ -32,11 +33,6 @@
                 IsEditable="True"  
                 HorizontalContentAlignment="Left"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <!--<ComboBox.ItemContainerStyle>
-                    <Style>
-                        <EventSetter Event="ComboBoxItem.PreviewMouseDown" Handler="ComboBoxEvent"/>
-                    </Style>
-                </ComboBox.ItemContainerStyle>-->
             </ComboBox>
 
             <ComboBox
@@ -46,11 +42,6 @@
                 IsEditable="True"  
                 HorizontalContentAlignment="Left"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <!--<ComboBox.ItemContainerStyle>
-                    <Style>
-                        <EventSetter Event="ComboBoxItem.PreviewMouseDown" Handler="ComboBoxEvent"/>
-                    </Style>
-                </ComboBox.ItemContainerStyle>-->
             </ComboBox>
 
             <ComboBox
@@ -60,11 +51,6 @@
                 IsEditable="True"  
                 HorizontalContentAlignment="Left"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <!--<ComboBox.ItemContainerStyle>
-                    <Style>
-                        <EventSetter Event="ComboBoxItem.PreviewMouseDown" Handler="ComboBoxEvent"/>
-                    </Style>
-                </ComboBox.ItemContainerStyle>-->
             </ComboBox>
 
             <DatePicker  
@@ -74,6 +60,7 @@
                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                 Height="42" />
             <Button 
+                ToolTip="SEARCH DOCUMENT"
                 Click="btnSearch_Click"
                 Content="SEARCH" 
                 HorizontalAlignment="Left" 
@@ -119,6 +106,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Button
+                                ToolTip="SEE DETAILS"
                                 Click="buttonShowDialog"
                                 Width="100" 
                                 Tag="{Binding Path=Id}"
@@ -138,101 +126,6 @@
                 
             </DataGrid.Resources>
         </DataGrid>
-
-        <!--<ListView           
-            Width="1000"
-            BorderThickness="10"
-            Name="lvDocs"
-            Margin="10,172,10,61"
-            ItemsSource="{Binding Path=docList}">
-            <ListView.View>
-                <GridView>
-                    <GridView.ColumnHeaderContainerStyle>
-                        <Style TargetType="GridViewColumnHeader">
-                            <Setter Property="Foreground" Value="#008080"></Setter>
-                            <Setter Property="FontWeight" Value="Bold"></Setter>
-                            <Setter Property="Width" Value="2000"></Setter>
-                            <Setter Property="HorizontalAlignment" Value="Center"/>
-                        </Style>
-                    </GridView.ColumnHeaderContainerStyle>
-                    <GridViewColumn                       
-                       Width="200"                        
-                       Header="DATE ADDED">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    Padding="-1"
-                                    Margin="8"
-                                    Height="30"
-                                    HorizontalAlignment="Center"
-                                    TextWrapping="Wrap"                                 
-                                    Width="190"        
-                                    x:Name="txt"                                    
-                                    Text="{Binding Path=DateAdd, StringFormat='yyyy-MM-dd'}" 
-                                    Foreground="#EC4D37">
-                                </TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    <GridViewColumn                       
-                       Width="200"                        
-                       Header="DOCUMENT TYPE">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    Padding="-1"
-                                    Margin="8"
-                                    Height="30"
-                                    HorizontalAlignment="Center"
-                                    TextWrapping="Wrap"                                 
-                                    Width="190"        
-                                    x:Name="txt"                                    
-                                    Text="{Binding Path=DocControlNumber}" 
-                                    Foreground="#EC4D37">
-                                </TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                    -->
-        <!--<GridViewColumn                       
-                       Width="380"                        
-                       Header="SUBJECT">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    Padding="-1"
-                                    Margin="8"
-                                    Height="30"
-                                    TextWrapping="Wrap"                                 
-                                    Width="370"        
-                                    x:Name="txt"                                    
-                                    Text="{Binding Path=DocSubject}" 
-                                    Foreground="#EC4D37">
-                                </TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>-->
-        <!--<GridViewColumn                       
-                       Width="280"                        
-                       Header="CONTROL NUMBER">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <TextBlock
-                                    Padding="-1"
-                                    Margin="8"
-                                    Height="30"
-                                    TextWrapping="Wrap"                                 
-                                    Width="270"        
-                                    x:Name="txt"                                    
-                                    Text="{Binding Path=DocControlNumber}" 
-                                    Foreground="#EC4D37">
-                                </TextBlock>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>-->
-        <!--
-                </GridView>
-            </ListView.View>
-        </ListView>-->
+        
     </Grid>
 </UserControl>

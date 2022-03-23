@@ -119,17 +119,17 @@ namespace DocsControl.Dialogs
                     receivedCopyFile = "...";
 
                 //bind file name (if there's any)
-                lblSigned.Content = lblSigned.Content.ToString().Contains("ADD") ? "..." : signedCopyFile;
-                lblReceived.Content = lblReceived.Content.ToString().Contains("ADD") ? "..." : receivedCopyFile;
+                lblSigned.Text = lblSigned.Text.Contains("ADD") ? "..." : signedCopyFile;
+                lblReceived.Text = lblReceived.Text.Contains("ADD") ? "..." : receivedCopyFile;
 
 
                 //change of content and color in buttons
-                if (!lblSigned.Content.Equals("..."))
+                if (!lblSigned.Text.Equals("..."))
                 {
                     btnSigned.Content = "REMOVE";
                     btnSigned.Background = Brushes.OrangeRed;
                 }
-                if (!lblReceived.Content.Equals("..."))
+                if (!lblReceived.Text.Equals("..."))
                 {
                     btnReceived.Content = "REMOVE";
                     btnReceived.Background = Brushes.OrangeRed;
@@ -216,29 +216,27 @@ namespace DocsControl.Dialogs
         }
         private void uploadFile()  
         {
-            //try
-            //{
-                //getting the current path
-                string signedCopy = lblSigned.Content.ToString();
-                string receivedCopy = lblReceived.Content.ToString();
-                //setting the destination path
-                string destinationDirectory = @"\\R4A_FileServer\Control of Documents\";
+            //getting the current path
+            string signedCopy = lblSigned.Text;
+            string receivedCopy = lblReceived.Text;
+            //setting the destination path
+            string destinationDirectory = @"\\R4A_FileServer\Control of Documents\";
 
-                //combine current and destination path then copy            
-                if (!btnReceived.Content.ToString().Contains("ADD") && lblReceived.Content.ToString().Contains(@"\"))
-                {
-                    var f = new FileInfo(receivedCopy);
-                    File.Copy(receivedCopy, destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name), true);//copy and renaming of file
-                    destinationPath = destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name);//storing the path to database
-                    docPath.pathList.Add(string.Format("{0}|{1}", destinationPath, "R"));//add to list 
-                }
-                if (!btnSigned.Content.ToString().Contains("ADD") && lblSigned.Content.ToString().Contains(@"\"))
+            //combine current and destination path then copy            
+            if (!btnReceived.Content.ToString().Contains("ADD") && lblReceived.Text.Contains(@"\"))
             {
-                    var f = new FileInfo(signedCopy);
-                    File.Copy(signedCopy, destinationDirectory + string.Format("{0}-{1}", "SIGNED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name), true);
-                    destinationPath = destinationDirectory + string.Format("{0}-{1}", "SIGNED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name);
-                    docPath.pathList.Add(string.Format("{0}|{1}", destinationPath, "S"));
-                }                                 
+                var f = new FileInfo(receivedCopy);
+                File.Copy(receivedCopy, destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name), true);//copy and renaming of file
+                destinationPath = destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name);//storing the path to database
+                docPath.pathList.Add(string.Format("{0}|{1}", destinationPath, "R"));//add to list 
+            }
+            if (!btnSigned.Content.ToString().Contains("ADD") && lblSigned.Text.Contains(@"\"))
+            {
+                var f = new FileInfo(signedCopy);
+                File.Copy(signedCopy, destinationDirectory + string.Format("{0}-{1}", "SIGNED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name), true);
+                destinationPath = destinationDirectory + string.Format("{0}-{1}", "SIGNED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name);
+                docPath.pathList.Add(string.Format("{0}|{1}", destinationPath, "S"));
+            }
         }
         private void btnSigned_Click(object sender, RoutedEventArgs e)
         {
@@ -248,7 +246,7 @@ namespace DocsControl.Dialogs
         {
             changeButtonContent(btnReceived, "ADD RECEIVED COPY", "REMOVE", dpReceived, tpReceived, lblReceived);
         }
-        private void changeButtonContent(Button btn, string currentContent, string newcontent, DatePicker dp, TimePicker tp, Label lbl)
+        private void changeButtonContent(Button btn, string currentContent, string newcontent, DatePicker dp, TimePicker tp, AccessText lbl)
         {            
             if (btn.Content.ToString().Contains("ADD")) //
             {
@@ -257,19 +255,19 @@ namespace DocsControl.Dialogs
                 btn.Content = newcontent;
                 dp.SelectedDate = DateTime.Now;
                 tp.SelectedTime = DateTime.Now;
-                lbl.Content = currentFileName;
+                lbl.Text = currentFileName;
                 btn.Background = Brushes.OrangeRed;
             }
             else
             {
                 if (lblTitle.Content.ToString().Contains("EDIT"))
                 {
-                    if (btn.Content.ToString().Contains("REMOVE") && !lbl.Content.ToString().Contains(@"\"))
+                    if (btn.Content.ToString().Contains("REMOVE") && !lbl.Text.Contains(@"\"))
                     {
                         if (showWarning("DO YOU WANT TO REMOVE THIS FILE?").Equals(true))
                         {                            
                             //store the path in the list to be deleted/removed
-                            var itemPath = docPath.GetDocPaths(lbl.Content.ToString()[0].ToString()).FirstOrDefault().Path;                            
+                            var itemPath = docPath.GetDocPaths(lbl.Text[0].ToString()).FirstOrDefault().Path;                            
                             docPath.pathItem.Add(itemPath);                                                                              
                         }
                         else                        
@@ -279,7 +277,7 @@ namespace DocsControl.Dialogs
                 btn.Content = currentContent;
                 dp.SelectedDate = null;
                 tp.SelectedTime = null;
-                lbl.Content = "...";
+                lbl.Text = "...";
                 btn.Background = Brushes.Teal;
             }
         }
@@ -368,8 +366,8 @@ namespace DocsControl.Dialogs
                 }
                 catch (Exception ex)
                 {
-                    showError("An error has occured" + ex.Message);
-                    return;
+                    //showError("An error has occured" + ex.Message);
+                    this.Close();
                 }
             }
         }

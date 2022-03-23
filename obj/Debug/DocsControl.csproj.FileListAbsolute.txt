@@ -58,3 +58,5 @@ C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateDoc
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\Style\DataGrid.baml
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateDocDataDateTimeColumntoString.resources
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\View\ListPage.g.cs
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\View\ListPage.baml

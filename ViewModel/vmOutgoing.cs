@@ -95,10 +95,16 @@ namespace DocsControl.ViewModel
         {
             get
             {
-                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RECEIVED") && x.ForRelease.Value).ToList();
+                //subtracting of datessssss.
+
+                var removeDate = DateTime.Now.AddDays(3);
+                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RECEIVED")).ToList();
                 var doctList = new ObservableCollection<DocData>();
                 foreach (var item in docs)
                 {
+                    if (DateTime.Now.Subtract(item.ForRelease.Value).TotalDays > 7)
+                        continue;
+                    //Console.WriteLine(DateTime.Now.Subtract(item.ForRelease.Value).TotalDays);
                     doctList.Add(new DocData()
                     {
                         Id = item.Id,

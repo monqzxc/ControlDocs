@@ -135,6 +135,9 @@
     <Compile Include="Model\Routes.cs" />
     <Compile Include="ViewModel\vmDocuments.cs" />
     <Compile Include="ViewModel\vmOutgoing.cs" />
+    <Compile Include="View\ListPage.xaml.cs">
+      <DependentUpon>ListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\vDashboard.xaml.cs">
       <DependentUpon>vDashboard.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Style\DataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

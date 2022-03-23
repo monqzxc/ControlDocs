@@ -1,4 +1,4 @@
-﻿C:\Users\Mon\source\repos\DocsControl\obj\Debug\GeneratedInternalTypeHelper.g.cs
+﻿
 FC:\Users\Mon\source\repos\DocsControl\App.xaml;;
 FC:\Users\Mon\source\repos\DocsControl\Dialogs\dAddEditDocs.xaml;;
 FC:\Users\Mon\source\repos\DocsControl\Dialogs\dDocInfo.xaml;;
@@ -8,4 +8,5 @@ FC:\Users\Mon\source\repos\DocsControl\MainWindow.xaml;;
 FC:\Users\Mon\source\repos\DocsControl\View\vDashboard.xaml;;
 FC:\Users\Mon\source\repos\DocsControl\View\vDocuments.xaml;;
 FC:\Users\Mon\source\repos\DocsControl\View\vOutgoing.xaml;;
+FC:\Users\Mon\source\repos\DocsControl\View\ListPage.xaml;;
 

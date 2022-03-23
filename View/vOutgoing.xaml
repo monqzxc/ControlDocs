@@ -94,7 +94,7 @@
                                     x:Name="txt"   
                                     TextWrapping="Wrap"
                                     TextAlignment="Left"                                        
-                                    Text="{Binding Path=ForSigned}" 
+                                    Text="{Binding Path=ForSigned, StringFormat='MM/dd/yyyy hh:mm tt'}" 
                                     Foreground="White"></TextBlock>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -164,7 +164,7 @@
                                         x:Name="txt"   
                                         TextWrapping="Wrap"
                                         TextAlignment="Left"                                     
-                                        Text="{Binding Path=Signed}" 
+                                        Text="{Binding Path=Signed ,StringFormat='MM/dd/yyyy hh:mm tt'}" 
                                         Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -232,7 +232,7 @@
                                         x:Name="txt"   
                                         TextWrapping="Wrap"
                                         TextAlignment="Left"                                      
-                                        Text="{Binding Path=ForRelease}" 
+                                        Text="{Binding Path=ForRelease ,StringFormat='MM/dd/yyyy hh:mm tt'}" 
                                         Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>

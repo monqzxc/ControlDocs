@@ -217,6 +217,7 @@
                     Margin="0,217,0,284"/>
 
                 <Button
+                    ToolTip="VIEW"
                     Click="buttonShowPDF"
                     Visibility="Hidden"
                     x:Name="btnSigned"
@@ -225,6 +226,7 @@
                 </Button>
 
                 <Button     
+                    ToolTip="VIEW"
                     Click="buttonShowPDF"
                     Visibility="Hidden"
                     x:Name="btnReceived"

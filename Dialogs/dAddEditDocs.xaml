@@ -13,12 +13,12 @@
         WindowStartupLocation="CenterScreen"
         FontFamily="Century Gothic"      
         Title="MainDialog" 
-        Height="646.077" 
+        Height="685.244" 
         Width="565.317" 
         WindowStyle="None" >
 
 
-    <Grid>
+    <Grid Margin="0,0,0,10">
 
         <Label 
             FontSize="20"
@@ -38,7 +38,7 @@
             Style="{StaticResource MaterialDesignRaisedDarkButton}"    
             Width="100"    
             ToolTip="SAVE" 
-            Margin="342,604,123,10">
+            Margin="342,643,123,0">
         </Button>
 
         <Button 
@@ -48,7 +48,7 @@
             Style="{StaticResource MaterialDesignRaisedAccentButton}"    
             Width="100"    
             ToolTip="CANCEL"
-            Margin="455,604,10,10">
+            Margin="455,643,10,0">
         </Button>
 
 
@@ -62,8 +62,8 @@
 
             <Label
                 Content="OUTGOING DETAILS" 
-                FontWeight="Bold"
-                FontSize="15"
+                FontWeight="DemiBold"
+                FontSize="17"
                 HorizontalAlignment="Left"
                 Margin="11,10,0,0"
                 VerticalAlignment="Top"/>
@@ -141,12 +141,12 @@
                     FontSize="14"                    
                     x:Name="txtControlNumber"                
                     TextWrapping="Wrap"                                
-                    materialDesign:HintAssist.Hint="CONTROL NUMBER"                 
+                    materialDesign:HintAssist.Hint="DOCUMENT NUMBER"                 
                     Margin="15,283,298,0" Height="Auto"/>
 
             <Grid 
                 Tag="Files"
-                Margin="0,420,0,3"
+                Margin="0,420,0,-39"
                 Background="White">
 
                 <DatePicker          
@@ -156,34 +156,41 @@
                     VerticalAlignment="Top" 
                     materialDesign:HintAssist.Hint="Date"                    
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                    Margin="205,12,277,0" Height="36"/>
+                    Margin="202,27,275,0" Height="36"/>
                 <materialDesign:TimePicker
                     SelectedTime="{Binding Path=Signed}"
                     Name="tpSigned"                    
                     Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                  
                     materialDesign:HintAssist.Hint="Time" 
-                    Margin="301,12,186,80" Height="36"  />
+                    Margin="301,27,186,107" Height="36"  />
                 <Button                                          
                     Content="ADD SIGNED COPY"                            
                     x:Name="btnSigned"                            
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"                                
                     ToolTip="SAVE"                                                
-                    Margin="10,19,368,77" Click="btnSigned_Click"/>
+                    Margin="10,34,368,104" Click="btnSigned_Click"/>
 
-                <Label 
-                    Name="lblSigned"
-                    Content="..." 
+                <Label                                       
                     HorizontalAlignment="Left"
-                    Margin="384,25,0,0"
-                    VerticalAlignment="Top"
-                    Width="171"/>
+                    Margin="384,27,0,0"
+                    VerticalAlignment="Top"       
+                    Width="171" Height="42">
+                    <AccessText     
+                        TextAlignment="Left"                      
+                        FontSize="10"                        
+                        Name="lblSigned"  
+                        TextWrapping="Wrap"
+                        Text="..." 
+                        Width="161"
+                        Height="35"/>
+                </Label>
 
                 <Button                                           
                     Content="ADD RECEIVED COPY"                            
                     x:Name="btnReceived"                            
                     Style="{StaticResource MaterialDesignRaisedDarkButton}"                                
                     ToolTip="SAVE"                                                
-                    Margin="10,75,368,21" Click="btnReceived_Click"/>
+                    Margin="10,107,368,31" Click="btnReceived_Click"/>
 
                 <DatePicker 
                     SelectedDate="{Binding Path=ForRelease}"
@@ -192,31 +199,61 @@
                     SelectedDateFormat="Short"
                     Name="dpReceived"
                     VerticalAlignment="Top"                           
-                    Margin="205,69,277,0"/>
+                    Margin="202,101,275,0"/>
 
                 <Label                     
-                    Name="lblReceived"
-                    Content="..." 
+                                             
                     HorizontalAlignment="Left"
-                    Margin="384,80,0,0"
+                    Margin="384,103,0,0"
                     VerticalAlignment="Top"
-                    Width="171"/>
+                    Width="171" Height="40">
+                    <AccessText
+                        FontSize="10"
+                        Name="lblReceived"  
+                        VerticalAlignment="Center"
+                        TextWrapping="Wrap"
+                        Text="..."                         
+                        Width="161"
+                        Height="33"/>
+                </Label>
 
                 <materialDesign:TimePicker     
                     SelectedTime="{Binding Path=ForRelease}"
                     x:Name="tpReceived"                    
                     Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                  
                     materialDesign:HintAssist.Hint="Time" 
-                    Margin="301,67,186,25" Height="36"  />
+                    Margin="301,100,186,34" Height="36"  />
+
+
+                <Label 
+
+                    Content="SIGNED" 
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"
+                    Margin="10,5,0,0"
+                    VerticalAlignment="Top"
+                    Width="171"/>
+                <Label 
+         
+                    Content="RECIEVED" 
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"
+                    Margin="10,77,0,0"
+                    VerticalAlignment="Top"
+                    Width="171"/>
+
+
             </Grid>
         </Grid>
-        <Grid DataContext="{Binding Path=addresseeInfo}">
+        <Grid DataContext="{Binding Path=addresseeInfo}" Margin="0,0,0,-9">
             <Label                
                     Name="lblAddressee"
                     Tag="{Binding Path=Id}"
                     Content="ADDRESSEE"                 
-                    FontSize="15"                
-                    FontWeight="Bold"                
+                    FontSize="17"                
+                    FontWeight="DemiBold"                
                     HorizontalAlignment="Left"               
                     Margin="286,48,0,0"                
                     VerticalAlignment="Top"/>
