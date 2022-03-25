@@ -195,7 +195,13 @@ namespace DocsControl.Dialogs
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }               
+        }
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton.Equals(MouseButton.Left))
+                DragMove();
+        }
+
         private bool browseFile()
         {
             //open dialog tool to open a file then store the filename into label
@@ -230,6 +236,7 @@ namespace DocsControl.Dialogs
                 destinationPath = destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name);//storing the path to database
                 docPath.pathList.Add(string.Format("{0}|{1}", destinationPath, "R"));//add to list 
             }
+
             if (!btnSigned.Content.ToString().Contains("ADD") && lblSigned.Text.Contains(@"\"))
             {
                 var f = new FileInfo(signedCopy);
@@ -303,7 +310,7 @@ namespace DocsControl.Dialogs
                 Signed = signedDate,
                 ForRelease = receivedDate,
                 FocalID = db.Focals.Where(x => x.FullName.Equals(cmbFocals.Text)).FirstOrDefault().Id,
-                DateAdd = DateTime.Now.ToString("yyyy-MM-dd HH:mmtt"),
+                DateAdd = DateTime.Now,
                 DoctTypes = txtDocType.Text,
                 AddresseeID = lblTitle.Content.ToString().Contains("ADD") ? db.Addressees.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault() : int.Parse(lblAddressee.Tag.ToString()),
                 Remarks = txtRemarks.Text,

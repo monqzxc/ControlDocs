@@ -135,6 +135,12 @@ namespace DocsControl.Dialogs
         {
             this.Close();
         }
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton.Equals(MouseButton.Left))
+                DragMove();
+        }
+
         private void buttonShowPDF(object sender, RoutedEventArgs e)
         {
             var btn = sender as Button;

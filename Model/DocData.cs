@@ -24,7 +24,7 @@ namespace DocsControl.Model
         public DateTime? ForRelease { get; set; }
         public string DoctTypes { get; set; }
 
-        public string DateAdd { get; set; }
+        public DateTime DateAdd { get; set; }
         public string Tag { get; set; }
         public int FocalID { get; set; }
         public int AddresseeID { get; set; }

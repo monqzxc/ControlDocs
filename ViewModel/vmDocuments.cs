@@ -70,9 +70,14 @@ namespace DocsControl.ViewModel
 
             if (!string.IsNullOrWhiteSpace(cmbDocType.Text))
                 doc = doc.Where(x => x.DoctTypes.Contains(cmbDocType.Text)).ToList();
-
+            
             if (!string.IsNullOrWhiteSpace(dtpDate.Text))
-                doc = doc.Where(x => x.DateAdd.Contains(DateTime.Parse(dtpDate.Text).ToString("yyyy-MM-dd"))).ToList();
+            {
+                DateTime fromDate = new DateTime(dtpDate.SelectedDate.Value.Year, dtpDate.SelectedDate.Value.Month, dtpDate.SelectedDate.Value.Day, 00, 00, 00);
+                DateTime toDate = new DateTime(dtpDate.SelectedDate.Value.Year, dtpDate.SelectedDate.Value.Month, dtpDate.SelectedDate.Value.Day, 23, 59, 59);
+                doc = doc.Where(x => x.DateAdd >= fromDate && x.DateAdd <= toDate).ToList();
+            }
+               
             var docList = new ObservableCollection<DocData>();
             {
                 foreach (var item in doc)

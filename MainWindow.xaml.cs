@@ -52,6 +52,16 @@ namespace DocsControl
             lblDateTime.Content = dateNow;
         }
 
+        private void buttonLogout(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("HHHH");
+        }
+        private void buttonShowList(object sender, RoutedEventArgs e)
+        {
+            var item = sender as TreeViewItem;        
+            sp1.Children.Clear();
+            sp1.Children.Add(new ViewModel.vmListPage(item.Header.ToString()));
+        }
         private void navHeader_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton.Equals(MouseButton.Left))
@@ -69,7 +79,8 @@ namespace DocsControl
 
         private void buttonIncoming(object sender, RoutedEventArgs e)
         {
-
+            sp1.Children.Clear();
+            sp1.Children.Add(new ViewModel.vmIncoming());
         }
         private void buttonDocuments(object sender, RoutedEventArgs e)
         {

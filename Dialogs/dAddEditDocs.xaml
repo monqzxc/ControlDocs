@@ -18,8 +18,8 @@
         WindowStyle="None" >
 
 
-    <Grid Margin="0,0,0,10">
-
+    <Grid Margin="0,0,0,10" MouseDown="StackPanel_MouseDown">
+       
         <Label 
             FontSize="20"
             FontFamily="Century Gothic"
@@ -50,7 +50,6 @@
             ToolTip="CANCEL"
             Margin="455,643,10,0">
         </Button>
-
 
         <Grid DataContext="{Binding Path=docInfo}"
             Background="White"

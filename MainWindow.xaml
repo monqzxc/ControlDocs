@@ -210,7 +210,8 @@
             FontWeight="Bold"
             Foreground="#EC4D37"
             HorizontalAlignment="Center"
-            FontSize="14" Grid.Column="1"
+            FontSize="14" Grid.Column="1"     
+            PreviewMouseDown="buttonLogout"
             Margin="1125,0,10,80">
             LOGOUT
         </Label>
@@ -249,6 +250,7 @@
                     FontSize="14"
                     Padding="0"
                     Foreground="white"
+                    PreviewMouseDown="buttonShowList"
                     Header="USERS">
                     <!--<TextBlock
                         x:Name="ADD USER">
@@ -260,74 +262,41 @@
                         <Run
                             Text="COMPENDIUM" />
                     </TextBlock>-->
+                    
                 </TreeViewItem>
 
                 <TreeViewItem
                     FontSize="14"
                     Padding="0"
                     Foreground="white"
+                    PreviewMouseDown="buttonShowList"
                     Header="FOCALSHIP">
-                    <!--<TextBlock
-                        x:Name="tvEmpty3">
-                        <Run
-                            Text="EMPTY" />
-                    </TextBlock>
-                    <TextBlock
-                        x:Name="tvEmpty4">
-                        <Run
-                            Text="EMPTY" />
-                    </TextBlock>-->
                 </TreeViewItem>
 
                 <TreeViewItem
                     FontSize="14"
                     Padding="0"
                     Foreground="white"
+                    PreviewMouseDown="buttonShowList"
                     Header="FOCALS">
-                    <!--<TextBlock
-                        x:Name="tvEmpty3">
-                        <Run
-                            Text="EMPTY" />
-                    </TextBlock>
-                    <TextBlock
-                        x:Name="tvEmpty4">
-                        <Run
-                            Text="EMPTY" />
-                    </TextBlock>-->
                 </TreeViewItem>
 
                 <TreeViewItem
                     FontSize="14"
                     Padding="0"
                     Foreground="white"
+                    PreviewMouseDown="buttonShowList"
                     Header="DOCUMENT TYPES">
-                    <!--<TextBlock
-                        x:Name="tvEmpty1">
-                        <Run
-                            Text="EMPTY" />
-                    </TextBlock>
-                    <TextBlock
-                        x:Name="tvEmpty2">
-                        <Run
-                            Text="EMPTY" />
-                    </TextBlock>-->
+             
                 </TreeViewItem>
 
                 <TreeViewItem
                     FontSize="14"
                     Padding="0"
                     Foreground="white"
+                    PreviewMouseDown="buttonShowList"
                     Header="POSITIONS">
-                    <!--<TextBlock
-                        x:Name="tvEmpty3">
-                        <Run
-                            Text="EMPTY" />
-                    </TextBlock>
-                    <TextBlock
-                        x:Name="tvEmpty4">
-                        <Run
-                            Text="EMPTY" />
-                    </TextBlock>-->
+                   
                 </TreeViewItem>
 
 
@@ -336,17 +305,9 @@
                     FontSize="14"
                     Padding="0"
                     Foreground="white"
+                    PreviewMouseDown="buttonShowList"
                     Header="OFFICES">
-                    <!--<TextBlock
-                        x:Name="tvEmpty3">
-                        <Run
-                            Text="EMPTY" />
-                    </TextBlock>
-                    <TextBlock
-                        x:Name="tvEmpty4">
-                        <Run
-                            Text="EMPTY" />
-                    </TextBlock>-->
+                    
                 </TreeViewItem>
 
             </TreeViewItem>

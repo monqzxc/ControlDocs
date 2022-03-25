@@ -16,13 +16,13 @@ using System.Windows.Shapes;
 namespace DocsControl.View
 {
     /// <summary>
-    /// Interaction logic for ListPage.xaml
+    /// Interaction logic for vListPage.xaml
     /// </summary>
-    public partial class ListPage : UserControl
+    public partial class vListPage : UserControl
     {
-        public ListPage()
+        public vListPage()
         {
-            InitializeComponent();
+            
         }
     }
 }

@@ -87,6 +87,9 @@
     <Compile Include="Dialogs\dAddEditDocs.xaml.cs">
       <DependentUpon>dAddEditDocs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\dAddEditDocs2.xaml.cs">
+      <DependentUpon>dAddEditDocs2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\dDocInfo.xaml.cs">
       <DependentUpon>dDocInfo.xaml</DependentUpon>
     </Compile>
@@ -129,25 +132,39 @@
     <Compile Include="Migrations\202203210151076_updateDocDataDateTimeColumntoString.designer.cs">
       <DependentUpon>202203210151076_updateDocDataDateTimeColumntoString.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203250151582_updateDocDataDateAddDateTimeColumn.cs" />
+    <Compile Include="Migrations\202203250151582_updateDocDataDateAddDateTimeColumn.designer.cs">
+      <DependentUpon>202203250151582_updateDocDataDateAddDateTimeColumn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Addressee.cs" />
     <Compile Include="Model\DocPath.cs" />
     <Compile Include="Model\Modules.cs" />
     <Compile Include="Model\Routes.cs" />
+    <Compile Include="Model\NewCheckBox.cs" />
     <Compile Include="ViewModel\vmDocuments.cs" />
+    <Compile Include="ViewModel\vmIncoming.cs" />
+    <Compile Include="ViewModel\vmListPage.cs" />
     <Compile Include="ViewModel\vmOutgoing.cs" />
-    <Compile Include="View\ListPage.xaml.cs">
-      <DependentUpon>ListPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\vDashboard.xaml.cs">
       <DependentUpon>vDashboard.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\vDocuments.xaml.cs">
       <DependentUpon>vDocuments.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\vIncoming.xaml.cs">
+      <DependentUpon>vIncoming.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\vListPage.xaml.cs">
+      <DependentUpon>vListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\vOutgoing.xaml.cs">
       <DependentUpon>vOutgoing.xaml</DependentUpon>
     </Compile>
     <Page Include="Dialogs\dAddEditDocs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\dAddEditDocs2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,19 +195,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Style\DataGrid.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ListPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\vDashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\vDocuments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\vIncoming.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\vListPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -264,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203210151076_updateDocDataDateTimeColumntoString.resx">
       <DependentUpon>202203210151076_updateDocDataDateTimeColumntoString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203250151582_updateDocDataDateAddDateTimeColumn.resx">
+      <DependentUpon>202203250151582_updateDocDataDateAddDateTimeColumn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

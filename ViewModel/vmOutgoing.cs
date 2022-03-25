@@ -37,7 +37,7 @@ namespace DocsControl.ViewModel
                     var docData = (DocData)item.Content;
                     this.Opacity = .5;
                     this.Background = Brushes.Black;
-                    var dialog = new dAddEditDocs("EDIT DOCUMENT", docData.Id); //show edit form
+                    var dialog = new dAddEditDocs("EDIT OUTGOING DOCUMENT", docData.Id); //show edit form
                     dialog.ShowDialog();
                     this.Opacity = 1;
                     this.Background = Brushes.Transparent;
@@ -49,7 +49,7 @@ namespace DocsControl.ViewModel
         {
             this.Opacity = .5;
             this.Background = Brushes.Black;
-            var dialog = new dAddEditDocs("ADD DOCUMENT", 0);
+            var dialog = new dAddEditDocs("ADD OUTGOING DOCUMENT", 0);
             dialog.ShowDialog();
             this.Opacity = 1;
             this.Background = Brushes.Transparent;            

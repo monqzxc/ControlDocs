@@ -82,26 +82,54 @@
             AlternatingRowBackground="WhiteSmoke"
             ItemsSource="{Binding Path=DocDatas}">
             <DataGrid.Columns>
-                <DataGridTextColumn                    
-                    Header=" Date Added"                    
-                    MinWidth="165"
-                    Width="*"
-                    Binding="{Binding Path=DateAdd}"/>
-                <DataGridTextColumn
-                    Header=" Document Type"
-                    MinWidth="150"
-                    Width="150"
-                    Binding="{Binding Path=DoctTypes}"/>
-                <DataGridTextColumn
-                    Header=" Subject"
-                    MinWidth="200"
-                    Width="400"
-                    Binding="{Binding Path=DocSubject}"/>
-                <DataGridTextColumn
-                    Header=" Control Number"
+                <DataGridTemplateColumn  Header=" DATE ADD/RECEIVED"                    
                     MinWidth="100"
-                    Width="175"
-                    Binding="{Binding Path=DocControlNumber}"/>
+                    Width="176">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <AccessText 
+                                VerticalAlignment="Center"                                                                 
+                                Text="{Binding Path=DateAdd, StringFormat='MMM dd, yyyy HH:mm tt'}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn  Header=" DOCUMENT TYPE"
+                    MinWidth="15"
+                    Width="150">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <AccessText 
+                                TextWrapping="Wrap"
+                                VerticalAlignment="Center"                                                                 
+                                Text="{Binding Path=DoctTypes}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+              
+                <DataGridTemplateColumn Header=" SUBJECT"                    
+                    MinWidth="180"
+                    Width="400">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <AccessText 
+                                VerticalAlignment="Center"
+                                TextWrapping="Wrap"                                        
+                                Text="{Binding Path=DocSubject}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header=" CONTROL NUMBER"
+                    MinWidth="150"
+                    Width="155">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <AccessText 
+                                VerticalAlignment="Center"
+                                TextWrapping="Wrap"                                        
+                                Text="{Binding Path=DocControlNumber}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -110,7 +138,7 @@
                                 Click="buttonShowDialog"
                                 Width="100" 
                                 Tag="{Binding Path=Id}"
-                                Content="View" 
+                                Content="VIEW" 
                                 Style="{StaticResource MaterialDesignRaisedAccentButton}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -118,12 +146,10 @@
             </DataGrid.Columns>
             <DataGrid.Resources>
                 <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="#d5d6d7"/>
-                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Background" Value="#303134"/>
+                    <Setter Property="Foreground" Value="White"/>
                     <Setter Property="FontWeight" Value="Bold"/>
-
                 </Style>
-                
             </DataGrid.Resources>
         </DataGrid>
         
