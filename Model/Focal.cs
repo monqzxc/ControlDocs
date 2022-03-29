@@ -2,6 +2,7 @@ namespace DocsControl.Model
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -12,13 +13,13 @@ namespace DocsControl.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Focal()
         {
-            DocDatas = new HashSet<DocData>();
+           
         }
 
         public int Id { get; set; }
 
         public string FullName { get; set; }
-
+        public string NickName { get; set; }
         public double? ContactNumber { get; set; }
 
         public string Email { get; set; }
@@ -29,8 +30,6 @@ namespace DocsControl.Model
         public int OfficeID { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DocData> DocDatas { get; set; }
-
 
         public virtual Focalship Focalship { get; set; }
 
@@ -40,9 +39,7 @@ namespace DocsControl.Model
 
         dbDocs db = new dbDocs();
 
-        public IQueryable<Focal> GetFocals()
-        {
-            return db.Focals.Where(x => x.Id.Equals(Id));
-        }
+
+       
     }
 }

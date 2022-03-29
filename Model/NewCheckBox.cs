@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using static DocsControl.Model.Modules;
 
 namespace DocsControl.Model
 {
@@ -13,14 +15,13 @@ namespace DocsControl.Model
     {       
         public NewCheckBox()
         {
-            Margin = new Thickness(5, 2, 0, 0);
-            Width = 200;
+            Margin = new Thickness(5, 6, 0, 0);
+            Width = 123;
         }
-
+            
         protected override void OnChecked(RoutedEventArgs e)
         {
-            base.OnChecked(e);
-            Console.WriteLine(this.Tag.ToString());
-        }
+            checkList.Add(this.Tag.ToString());            
+        }        
     }
 }

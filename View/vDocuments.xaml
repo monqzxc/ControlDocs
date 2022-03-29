@@ -69,12 +69,12 @@
                 Width="105"/>
         </Grid>
         <DataGrid 
+            Height="631" 
+            Margin="10,166,0,0"
             Background="White"
             IsReadOnly="True"
             x:Name="dgDocList"
-            HorizontalAlignment="Left" 
-            Height="631" 
-            Margin="10,166,0,0" 
+            HorizontalAlignment="Left"              
             VerticalAlignment="Top"
             AutoGenerateColumns="False"
             HorizontalScrollBarVisibility="Disabled"

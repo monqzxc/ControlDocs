@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen"
         FontFamily="Century Gothic"      
         Title="MainDialog" 
-        Height="685.244" 
+        Height="885.244" 
         Width="565.317"         
         WindowStyle="None">
     <Grid  MouseDown="StackPanel_MouseDown">
@@ -25,26 +25,26 @@
 
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="1"
+        <Label
+            Name="lblTitle"
                Foreground="White"
-               Background="Black"
-               Margin="0,-1,0,0"
-               FontSize="20"
+               Background="Teal"
+               Margin="0,0,0,595"
+               FontSize="25"
                FontWeight="DemiBold"
-               Content="ADD INCOMING DOCUMENT" Grid.ColumnSpan="2">
-        </Label>
+               Content="ADD INCOMING DOCUMENT" Grid.RowSpan="3" />
         <Border Grid.Row="2"                      
                 Padding="1"                        
                 BorderBrush="Teal"                       
                 CornerRadius="5"                       
                 BorderThickness="2" 
-                Margin="10,10,10,10">
+                Margin="10,10,10,54" Grid.RowSpan="2">
 
             <StackPanel            
                     Margin="0,0,0,0"                    
                     Background="White" Grid.ColumnSpan="2">
 
-                <Grid Height="575">
+                <Grid Height="784">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="600"/>
@@ -57,55 +57,49 @@
                     <StackPanel Grid.Column="1" 
                                 Grid.Row="1"   
                             VerticalAlignment="Top"
-                            Height="573"
+                            Height="782"
                             Orientation="Vertical"
-                            Background="White" Margin="0,0,62,0">
-                        <Label                                                              
-                            Content="INCOMING DETAILS"                                         
-                            FontWeight="DemiBold"                                        
-                            FontSize="17"                
-                            HorizontalAlignment="Left"                                        
-                            Margin="10,10,0,0"                
-                            VerticalAlignment="Top"/>
+                            Background="White" Margin="0,0,62,-181">
+
                         <TextBox  
                             x:Name="txtSubject" 
-                            Margin="15,0,0,0"                                        
+                            Margin="15,40,0,0"                                        
                             HorizontalAlignment="Left"                                        
-                            Text="{Binding Path=DocSubject}"                                                                                                          
+                            Text="{Binding DocSubject}"                                                                                                          
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"                                           
                             VerticalAlignment="Top"                                                           
                             AcceptsReturn="True"                             
                             FontSize="14"                      
                             Width="235"                
-                            materialDesign:HintAssist.Hint="SUBJECT"                              
+                            materialDesign:HintAssist.Hint="SUBJECT*"                              
                             Height="Auto"/>
                         <TextBox
-                            Name="txtNumberORD"
+                            x:Name="txtNumberORD"
                             Margin="15,15,0,0"
                             HorizontalAlignment="Left"
                             Text=""                            
                             FontSize="14"
                             Width="235"
-                            materialDesign:HintAssist.Hint="ORD NUMBER"
+                            materialDesign:HintAssist.Hint="ORD NUMBER*"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <TextBox
-                            Name="txtNumberROD"
+                            x:Name="txtNumberROD"
                             Margin="15,15,0,0"
                             HorizontalAlignment="Left"
                             Text=""                            
                             FontSize="14"
                             Width="235"
-                            materialDesign:HintAssist.Hint="ROD DOCUMENT NUMBER"
+                            materialDesign:HintAssist.Hint="ROD DOCUMENT NUMBER*"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
                         <TextBox
-                            Name="txtDocType"
+                            x:Name="txtDocType"
                             Margin="15,15,0,0"
                             HorizontalAlignment="Left"
                             Text=""                            
                             FontSize="14"
                             Width="235"
-                            materialDesign:HintAssist.Hint="DOCUMENT TYPE"
+                            materialDesign:HintAssist.Hint="DOCUMENT TYPE*"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
                     </StackPanel>
@@ -113,7 +107,7 @@
                     <StackPanel Grid.Row="1"
                                 Grid.Column="1"
                             Orientation="Vertical"
-                            Background="White" Margin="261,0,62,100">
+                            Background="White" Margin="261,0,62,350">
 
                         <TextBox    
                             x:Name="txtNumberDoc"
@@ -125,26 +119,27 @@
                             AcceptsReturn="True"                             
                             FontSize="14"                      
                             Width="240"                
-                            materialDesign:HintAssist.Hint="DOCUMENT NUMBER"                              
+                            materialDesign:HintAssist.Hint="DOCUMENT NUMBER*"                              
                             Height="Auto"/>
                         <DatePicker      
                             x:Name="dpDateOfDocFS"
                             FontSize="14"
                             Margin="10,15,26,0"
                             SelectedDate="{Binding ForRelease}"                    
-                            materialDesign:HintAssist.Hint="DATE OF DOCUMENT"                    
+                            materialDesign:HintAssist.Hint="DATE OF DOCUMENT*"                    
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"                    
                             SelectedDateFormat="Short"                   
                             />
 
                         <TextBox
+                            Tag="{Binding Path=Id}"
                             Name="txtAddresseeOffice"
                             Margin="10,15,0,0"
                             HorizontalAlignment="Left"
                             Text=""                            
                             FontSize="14"
                             Width="240"
-                            materialDesign:HintAssist.Hint="ORIGIN OFFICE"
+                            materialDesign:HintAssist.Hint="ORIGIN OFFICE*"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
 
                         <TextBox
@@ -154,164 +149,177 @@
                             Text=""                            
                             FontSize="14"
                             Width="240"
-                            materialDesign:HintAssist.Hint="ORIGIN SIGNATORY"
+                            materialDesign:HintAssist.Hint="ORIGIN SIGNATORY*"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     </StackPanel>
 
                     <StackPanel Grid.Row="1"
                                 Grid.Column="1"
-                                Margin="0,251,62,36">
+                                Margin="0,251,62,-181">
+
                         <Label                                                              
-                            Content="MONITORING"                                         
+                            Content="PERSONNEL*"                                         
                             FontWeight="DemiBold"                                        
-                            FontSize="17"                
+                            FontSize="14"                
                             HorizontalAlignment="Left"                                        
-                            Margin="10,10,0,0"                
-                            Width="250"/>
+                            Margin="10,50,0,0"/>
 
-                        <ItemsControl ItemsSource="{Binding Path=CheckBoxes}">
-                            <ItemsControl.ItemsPanel>
-                                <ItemsPanelTemplate>
-                                    <WrapPanel Orientation="Horizontal" IsItemsHost="True"/>
-                                </ItemsPanelTemplate>
-                            </ItemsControl.ItemsPanel>
-                        </ItemsControl>
-                        <!--<ItemsControl ItemsSource="{Binding Path=CheckBoxes}"
-                            Margin="15,0,10,0" 
-                            Height="141">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate >
-                                    <WrapPanel Orientation="Horizontal">
-                                            <CheckBox Background="Red" Content="{Binding Path=Content}" Tag="{Binding Path=Tag}" />
-                                        </WrapPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>-->
+                        <ScrollViewer  Margin="5,5,0,0" VerticalScrollBarVisibility="Hidden" Width="Auto" Height="128">
+                            <ItemsControl Name="icPersonnel" ItemsSource="{Binding Path=CheckBoxes}" Width="533">
+                                <ItemsControl.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel IsItemsHost="True"/>
+                                    </ItemsPanelTemplate>
+                                </ItemsControl.ItemsPanel>
+                            </ItemsControl>
+                        </ScrollViewer>
 
-                        
-                        <!--<TextBox
+                        <TextBox
                             Name="txtRemarks1"
-                            Margin="15,15,10,0"
-                            Width="235"
+                            Margin="15,0,0,0"
+                            Width="290"
+                            TextWrapping="Wrap"
                             HorizontalAlignment="Left"
                             Text=""                            
                             FontSize="14"                         
-                            materialDesign:HintAssist.Hint="INSTRUCTION/REMARKS"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                            materialDesign:HintAssist.Hint="INSTRUCTION/REMARKS*"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="52"/>
 
                         <DatePicker     
                             Name="dpRecievedByFocalS"
-                            FontSize="14"
-                            Margin="15,15,10,0"
-                            Width="235"
+                            FontSize="13"
+                            Margin="325,-38,20,0"
+                          
                             SelectedDate="{Binding Path=ForRelease}"                    
-                            materialDesign:HintAssist.Hint="DATE RECEIVED BY FOCAL"                    
+                            materialDesign:HintAssist.Hint="DATE RECEIVED BY FOCAL*"                    
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"                    
-                            SelectedDateFormat="Short"                   
-                            />-->
+                            SelectedDateFormat="Short"/>
 
-                        <!--<Label 
-                            HorizontalAlignment="Center"
-                            Margin="10,60,7,0"
-                            FontSize="12"
-                            Content="DATE &amp; TIME RECIEVED BY ROIVA-ROD"/>
-                        <DatePicker   
-                             x:Name="dpAddedReceived"
-                            FontSize="14"
-                            Margin="10,0,133,0"
-                            SelectedDate="{Binding Path=DateAdd}"                    
-                            materialDesign:HintAssist.Hint="DATE"                    
-                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"                    
-                            SelectedDateFormat="Short"                   
-                            Height="39"/>
-
-                        <materialDesign:TimePicker  
-                            
-                            SelectedTime="{Binding Path=DateAdd}"                    
-                                                                   
-                            Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                                      
-                            materialDesign:HintAssist.Hint="TIME"                    
-                            Margin="135,-36,0,0" Height="36"  />-->
-                    </StackPanel>
-
-                    <!--<StackPanel Grid.Row="2"
-                                Grid.Column="1" Margin="261,0,62,26">
                         <Label                                                              
-                            Content="ACTIVITY"                                         
+                            Content="RESPONSE/MEASURES"                                         
                             FontWeight="DemiBold"                                        
-                            FontSize="17"                
+                            FontSize="14"                
                             HorizontalAlignment="Left"                                        
-                            Margin="5,260,0,0"                
+                            Margin="10,10,0,0"
                             Width="250"/>
 
                         <TextBox
                             Name="txtRemarks2"
-                            Margin="10,0,0,0"
+                            Margin="15,-5,0,0"
                             HorizontalAlignment="Left"
-                            Text=""                            
-                            FontSize="14"                      
-                            Width="240"
+                            Text=""              
+                            TextWrapping="Wrap"
+                            FontSize="13"                      
+                            Width="300"
                             materialDesign:HintAssist.Hint="ACTION/S TAKEN"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="48"/>
+
 
                         <DatePicker  
                             Name="dpDateOfActionR"
                             FontSize="14"
-                            Margin="10,15,147,0"
+                          
                             SelectedDate="{Binding Path=ForRelease}"                    
                             materialDesign:HintAssist.Hint="ACTION DATE"                    
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"                    
-                            SelectedDateFormat="Short"/>
+                            SelectedDateFormat="Short" Margin="15,8,380,0"/>
 
                         <materialDesign:TimePicker
                             Name="tpDateOfActionR"
                             SelectedTime="{Binding Path=DateAdd}"                                                                                   
                             Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                                      
                             materialDesign:HintAssist.Hint="ACTION TIME"                    
-                            Margin="150,-36,28,0" Height="36"/>
+                            Margin="180,-36,250,0" Height="36"/>
                         <TextBox
                             Name="txtStatus"
-                            Margin="10,15,0,0"
+                            Margin="310,-39,0,0"
                             HorizontalAlignment="Left"
                             Text=""                            
-                            FontSize="14"
-                            Width="245"
+                            FontSize="14"                           
                             materialDesign:HintAssist.Hint="STATUS"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="208"/>
 
-                        <Label 
-                            HorizontalAlignment="Center"                            
-                            HorizontalContentAlignment="Center"
-                            Margin="10,55,22,0"
+                        <Label                     
+                            Margin="10,60,278,0"
                             FontSize="12"
-                            Content="FILE COPY" Width="245"/>
+                            FontWeight="DemiBold"
+                            Content="DATE &amp; TIME RECIEVED BY ROIVA-ROD"/>
+
+                        <DatePicker   
+                             x:Name="dpAddedReceived"
+                            FontSize="14"
+                            Margin="10,0,417,0"
+                            SelectedDate="{Binding Path=DateAdd}"                    
+                            materialDesign:HintAssist.Hint="DATE*"                    
+                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}"                    
+                            SelectedDateFormat="Short"                   
+                            Height="39"/>
+
+                        <materialDesign:TimePicker  
+                            Name="tpAddedReceived"
+                            SelectedTime="{Binding Path=DateAdd}"                                                                                       
+                            Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                                      
+                            materialDesign:HintAssist.Hint="TIME*"                    
+                            Margin="135,-36,307,0" Height="36"  />
 
                         <StackPanel 
-                            Margin="10,0,22,0"
-                            Height="60"
+                            Margin="265,-60,10,0"
+                            Height="75"
                             Orientation="Vertical">
-                            <Button                                                              
+                            
+                            <Label                             
+                                HorizontalAlignment="Center"                                                       
+                                HorizontalContentAlignment="Center"                           
+                                Margin="0,0,101,0"                           
+                                FontWeight="DemiBold"
+                                FontSize="12"                           
+                                Content="FILE COPY"
+                                Height="26" Width="162" />
+                            <Label                                                
+                                FontSize="11"                    
+                                Foreground="Teal"   
+                                HorizontalContentAlignment="Center"
+                                HorizontalAlignment="Left"                                                                
+                                Margin="0,-7,0,0"                                      
+                                VerticalAlignment="Top"                                          
+                                Width="162">
+                                <Label.Content>
+                                    <AccessText 
+                                        HorizontalAlignment="Center"
+                                        Name="lblPath"
+                                        TextWrapping="Wrap"                                                                            
+                                        Text="{Binding Path=Path}"                                                      
+                                        Width="155"                                                    
+                                        Height="39" />
+                                </Label.Content>
+                            </Label>
+                            <Button                                               
                                 Name="btnViewDocFile"                                                      
                                 Tag="{Binding Path=Path}"                           
-                                HorizontalAlignment="Center"      
+                                HorizontalAlignment="Right"     
+                                Margin="0,-106,0,0"
                                 ToolTip="BROWSE"
                                 Width="96"           
                                 FontSize="13"
-                                Content="BROWSE" Height="23" />
+                                Content="BROWSE"
+                                Height="23"
+                                Click="btnViewDocFile_Click" />
 
                             <Button      
                                 Name="btnRemoveDoc"
                                 Style="{StaticResource MaterialDesignRaisedAccentButton}" 
                                 Tag="{Binding Path=Path}"                           
-                                HorizontalAlignment="Center"                                                                               
+                                HorizontalAlignment="Right"                                                                               
                                 Width="96"           
                                 FontSize="13"
                                 Content="REMOVE"
                                 ToolTip="REMOVE"
                                 Height="23" 
-                                Margin="0,10,0,0"/>
+                                Margin="0,-23,0,0" Click="btnRemoveDoc_Click"/>
+
+                            
                         </StackPanel>
-                    </StackPanel>-->
+                    </StackPanel>
 
                 </Grid>
             </StackPanel>
@@ -319,7 +327,7 @@
         <StackPanel Grid.Row="3"
                     Background="#1D1B1B"
                     HorizontalAlignment="Right"
-                    Margin="0,0,0,0" Width="565"
+                    Margin="0,206,0,0" Width="565"
                     Orientation="Horizontal">
             <Button                                          
                 Content="SAVE"            
@@ -327,7 +335,7 @@
                 Margin="345,0,0,0"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"                
                 Width="100"                
-                ToolTip="SAVE">
+                ToolTip="SAVE" Click="btnSave_Click">
             </Button>
             <Button             
                 Click="btnCancel_Click"            
@@ -340,15 +348,38 @@
             </Button>
         </StackPanel>
         <Grid 
-            Margin="0,463,0,95"
+            Margin="0,65,0,150"
             Background="#EC4D37" 
-            Grid.Row="2">
+            Grid.Row="3">
             <Label 
                 Margin="10,1,0,0"
-                FontSize="23"
+                FontSize="22"
                 FontWeight="DemiBold"
                 Content="OTHER DETAILS"
                 Foreground="White"/>
         </Grid>
+        <Grid 
+            Margin="0,18,0,545"
+            Background="#EC4D37" 
+            Grid.Row="2">
+            <Label 
+                Margin="10,1,0,0"
+                FontSize="22"
+                FontWeight="DemiBold"
+                Content="INCOMING DETAILS"
+                Foreground="White"/>
+        </Grid>
+        <Grid 
+            Margin="0,275,0,288"
+            Background="#EC4D37" 
+            Grid.Row="2">
+            <Label 
+                Margin="10,1,0,0"
+                FontSize="22"
+                FontWeight="DemiBold"
+                Content="MONITORING"
+                Foreground="White"/>
+        </Grid>
+
     </Grid>
 </Window>

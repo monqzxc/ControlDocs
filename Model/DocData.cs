@@ -26,9 +26,8 @@ namespace DocsControl.Model
 
         public DateTime DateAdd { get; set; }
         public string Tag { get; set; }
-        public int FocalID { get; set; }
-        public int AddresseeID { get; set; }
-        public virtual Focal Focal { get; set; }
+        public string FocalID { get; set; }
+        public int AddresseeID { get; set; }      
 
         public virtual Addressee Addressee { get; set; }
 
@@ -88,6 +87,18 @@ namespace DocsControl.Model
         public IQueryable<DocData> GetDocDatas()
         {
             return db.DocDatas.Where(x => x.Id.Equals(Id));
+        }
+        public List<string> GetFocals() //doing this for listing of all focals based on their id
+        {
+            var focalID = db.DocDatas.Where(x => x.Id.Equals(Id)).Select(x => x.FocalID).FirstOrDefault().Split(',').ToList();
+            var focals = new List<string>();
+
+            foreach (var item in focalID)
+            {
+                var fID = int.Parse(item);
+                focals.Add(db.Focals.Where(x => x.Id.Equals(fID)).Select(x => x.NickName).FirstOrDefault());
+            }
+            return focals;
         }
     }
 }

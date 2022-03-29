@@ -136,6 +136,14 @@
     <Compile Include="Migrations\202203250151582_updateDocDataDateAddDateTimeColumn.designer.cs">
       <DependentUpon>202203250151582_updateDocDataDateAddDateTimeColumn.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202203280120257_updateFocalTableAddNickname.cs" />
+    <Compile Include="Migrations\202203280120257_updateFocalTableAddNickname.designer.cs">
+      <DependentUpon>202203280120257_updateFocalTableAddNickname.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202203290231247_updateDocDataFocalIDRelationship.cs" />
+    <Compile Include="Migrations\202203290231247_updateDocDataFocalIDRelationship.designer.cs">
+      <DependentUpon>202203290231247_updateDocDataFocalIDRelationship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Addressee.cs" />
     <Compile Include="Model\DocPath.cs" />
     <Compile Include="Model\Modules.cs" />
@@ -284,6 +292,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202203250151582_updateDocDataDateAddDateTimeColumn.resx">
       <DependentUpon>202203250151582_updateDocDataDateAddDateTimeColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203280120257_updateFocalTableAddNickname.resx">
+      <DependentUpon>202203280120257_updateFocalTableAddNickname.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202203290231247_updateDocDataFocalIDRelationship.resx">
+      <DependentUpon>202203290231247_updateDocDataFocalIDRelationship.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -59,7 +59,7 @@ namespace DocsControl.ViewModel
         {
             get
             {
-                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("FOR SIGNATURE")).ToList();
+                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("FOR SIGNATURE") && x.Tag.Equals("O")).ToList();
                 var doctList = new ObservableCollection<DocData>();
                 foreach (var item in docs)
                 {
@@ -77,7 +77,7 @@ namespace DocsControl.ViewModel
         {
             get
             {
-                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("SIGNED")).ToList();
+                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("SIGNED") && x.Tag.Equals("O")).ToList();
                 var doctList = new ObservableCollection<DocData>();
                 foreach (var item in docs)
                 {
@@ -98,7 +98,7 @@ namespace DocsControl.ViewModel
                 //subtracting of datessssss.
 
                 var removeDate = DateTime.Now.AddDays(3);
-                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RECEIVED")).ToList();
+                var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RECEIVED") && x.Tag.Equals("O")).ToList();
                 var doctList = new ObservableCollection<DocData>();
                 foreach (var item in docs)
                 {

@@ -64,3 +64,5 @@ C:\Users\Mon\source\repos\DocsControl\obj\Debug\Dialogs\dAddEditDocs2.baml
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\View\vIncoming.g.cs
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\View\vIncoming.baml
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateDocDataDateAddDateTimeColumn.resources
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateFocalTableAddNickname.resources
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateDocDataFocalIDRelationship.resources

@@ -56,7 +56,7 @@ namespace DocsControl.Dialogs
                             item.CurrentStatus = "2";
                             break;
                     }
-                    focalId = item.FocalID;
+                    focalId = int.Parse(item.FocalID);
                     doctList.Add(new DocData()
                     {
                         Id = item.Id,
@@ -70,7 +70,7 @@ namespace DocsControl.Dialogs
                         ForSigned = item.ForSigned,
                         Signed = item.Signed,
                         ForRelease = item.ForRelease,
-                        FocalID = item.FocalID - 1,
+                        FocalID = (int.Parse(item.FocalID) - 1).ToString(),
                     });
 
                     if (!string.IsNullOrWhiteSpace(item.Signed.ToString()))
@@ -122,8 +122,8 @@ namespace DocsControl.Dialogs
                 {
                     addresseeList.Add(new Routes()
                     {
-                        FocalName = item.Focal.FullName,
-                        OriginOffice = item.Focal.Office.OperatingUnit,
+                       // FocalName = item.Focal.FullName,
+                       // OriginOffice = item.Focal.Office.OperatingUnit,
                         AddresseeName = item.Addressee.FullName,
                         AddresseeOffice = item.Addressee.Office
                     });
@@ -143,10 +143,10 @@ namespace DocsControl.Dialogs
 
         private void buttonShowPDF(object sender, RoutedEventArgs e)
         {
-            var btn = sender as Button;
-            var pdfView = new dPDFView(btn.Tag.ToString());
-            Console.WriteLine(btn.Tag);
-            pdfView.Show();
+                var btn = sender as Button;
+                var pdfView = new dPDFView(btn.Tag.ToString());
+                Console.WriteLine(btn.Tag);
+                pdfView.Show();
         }
     }
 }

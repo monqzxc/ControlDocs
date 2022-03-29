@@ -17,7 +17,7 @@
             <RowDefinition Height="70"/>
             <RowDefinition Height="90"/>
             <RowDefinition Height="635"/>
-            
+
         </Grid.RowDefinitions>
 
         <Label Grid.Row="1"
@@ -25,12 +25,13 @@
                Content="INCOMING"                           
                Foreground="#008080"            
                FontSize="55"/>
-        
+
         <StackPanel Grid.Row="2"                    
                     Orientation="Horizontal"
                     Margin="40,0,0,0">
-            
+
             <ComboBox 
+                Name="cmbSubject"
                 materialDesign:HintAssist.Hint="SUBJECT"  
                 IsEditable="True"  
                 Height="40"
@@ -39,62 +40,109 @@
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
 
             <ComboBox 
+                Name="cmbORDRODNumber"
                 Margin="20,0,0,0"
-                materialDesign:HintAssist.Hint="CONTROL NUMBER"  
+                materialDesign:HintAssist.Hint="ORD | ROD NUMBER"  
                 IsEditable="True"  
                 Height="40"
-                Width="200"
+                Width="250"
                 HorizontalContentAlignment="Left"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
 
             <ComboBox 
+                Name="cmbPersonnel"
                 Margin="20,0,0,0"
                 materialDesign:HintAssist.Hint="ASSIGNED PERSONNEL"  
                 IsEditable="True"  
                 Height="40"
-                Width="200"
+                Width="150"
                 HorizontalContentAlignment="Left"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
             <DatePicker  
-                Margin="20,0,0,0"
                 Name="dtpDate"
+                Margin="20,0,0,0"
+                
                 Width="110"
-                materialDesign:HintAssist.Hint="DATE ADDED"               
+                materialDesign:HintAssist.Hint="DATE RECEIVED"               
                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                 Height="42" />
             <Button
+                ToolTip="SEARCH DOCUMENT"
+                Click="btnSearch_Click"
                 Margin="30,10,0,0"
                 Width="100"
                 Content="SEARCH"/>
         </StackPanel>
         <StackPanel Grid.Row="3">
             <DataGrid                                       
-                Height="690"                  
-                Margin="10,0,10,0"
-                Background="White">
+                Height="690"      
+                Width="1014"
+                Margin="10,0,0,0"
+                IsReadOnly="True"            
+                x:Name="dgDocList"            
+                HorizontalAlignment="Left"                         
+                AlternatingRowBackground="WhiteSmoke"
+                VerticalAlignment="Top"                            
+                AutoGenerateColumns="False"            
+                HorizontalScrollBarVisibility="Disabled"            
+                ItemsSource="{Binding Path=DocDatas}">
                 <DataGrid.Columns>
-                    <DataGridTextColumn                                           
-                        Header="DATE RECEIVED"                    
-                        Width="20"                    
-                        MinWidth="200"/>
-                    <DataGridTextColumn                    
-                        Header="SUBJECT"                    
-                        Width="300"                    
-                        MinWidth="150"/>
-                    <DataGridTextColumn                                            
-                        Header="ROD NUMBER"                    
-                        Width="50"                    
-                        MinWidth="200"/>
-                    <DataGridTextColumn                    
-                        Header="ASSIGNED PERSONNEL"                    
-                        Width="200"                    
-                        MinWidth="200"/>
+                    <DataGridTemplateColumn  
+                        Header=" DATE RECEIVED"                                        
+                        MinWidth="150"                    
+                        Width="175">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText 
+                                VerticalAlignment="Center"                                                                 
+                                Text="{Binding Path=DateAdd, StringFormat='MMM dd, yyyy HH:mm tt'}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  
+                        Header=" SUBJECT"                                        
+                        MinWidth="200"                    
+                        Width="315">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText 
+                                VerticalAlignment="Center"                                                                 
+                                Text="{Binding Path=DocSubject}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  
+                        Header=" ORD | ROD NUMBER"                                        
+                        MinWidth="180"                    
+                        Width="180">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText
+                                    TextWrapping="Wrap"
+                                    VerticalAlignment="Center"                                                                 
+                                    Text="{Binding Path=DocControlNumber}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  
+                        Header=" ASSIGNED PERSONNEL"                                        
+                        MinWidth="220"                    
+                        Width="200">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText
+                                    TextWrapping="Wrap"
+                                    VerticalAlignment="Center"                                                                 
+                                    Text="{Binding Path=FocalID}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
                     <DataGridTemplateColumn >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <Button
                                 ToolTip="SEE DETAILS"                              
-                                Width="100"                                
+                                Width="90"                                
                                 Content="VIEW" 
                                 Style="{StaticResource MaterialDesignRaisedAccentButton}" />
                             </DataTemplate>
@@ -109,9 +157,11 @@
                     </Style>
                 </DataGrid.Resources>
             </DataGrid>
+
+
             <Button
                 Click="buttonShowDialog"
-                Margin="930,-210,0,0"                
+                Margin="940,-190,0,0"                
                 Style="{StaticResource MaterialDesignFloatingActionButton}"            
                 ToolTip="ADD NEW DOCUMENT">
                 <materialDesign:PackIcon                                    
@@ -120,6 +170,14 @@
                     Width="24" />
             </Button>
         </StackPanel>
-                
+        <Label
+            x:Name="lblTotalDocs"
+            Content="Total Documents"
+            Foreground="#008080"
+            FontSize="14" 
+            Height="Auto"
+            Margin="731,641,20,-46"
+            HorizontalContentAlignment="Right" Grid.Row="3"/>
+
     </Grid>
 </UserControl>

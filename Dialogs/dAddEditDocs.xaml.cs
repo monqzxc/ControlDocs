@@ -38,14 +38,7 @@ namespace DocsControl.Dialogs
             //docData.Id = id;
 
             var focals = db.Focals.Select(x => x.FullName).ToList(); //populate combo box with focal names
-            ComboBox(cmbFocals, focals); //method for populating //Models>Modules static
-
-            //load info if the form is in editing view
-            //if (dialogName.Contains("EDIT"))
-            //{
-            //   //oadInfo();
-            //    addresseeID = docData.GetDocDatas().FirstOrDefault().AddresseeID;
-            //}
+            ComboBox(cmbFocals, focals); //method for populating //Models>Modules static           
 
             DataContext = new
             {
@@ -54,13 +47,18 @@ namespace DocsControl.Dialogs
             };
         }
 
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton.Equals(MouseButton.Left))
+                DragMove();
+        }
+
         dbDocs db = new dbDocs(); //instantiate Model Docs
         Addressee addressee = new Addressee();
         DocData docData = new DocData();
         DocPath docPath = new DocPath();
         private int docDataID;
         private string currentFileName;
-        private string destinationPath;
         private DateTime? signedDate;
         private DateTime? receivedDate;
         private string signedCopyFile;
@@ -101,7 +99,7 @@ namespace DocsControl.Dialogs
                         ForSigned = item.ForSigned,
                         Signed = item.Signed,
                         ForRelease = item.ForRelease,                     
-                        FocalID = item.FocalID - 1,                                               
+                        FocalID = (int.Parse(item.FocalID) - 1).ToString(),                                               
                     });
                 }
 
@@ -196,12 +194,7 @@ namespace DocsControl.Dialogs
         {
             this.Close();
         }
-        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            if (e.ChangedButton.Equals(MouseButton.Left))
-                DragMove();
-        }
-
+       
         private bool browseFile()
         {
             //open dialog tool to open a file then store the filename into label
@@ -220,31 +213,7 @@ namespace DocsControl.Dialogs
                 return false;
             }
         }
-        private void uploadFile()  
-        {
-            //getting the current path
-            string signedCopy = lblSigned.Text;
-            string receivedCopy = lblReceived.Text;
-            //setting the destination path
-            string destinationDirectory = @"\\R4A_FileServer\Control of Documents\";
-
-            //combine current and destination path then copy            
-            if (!btnReceived.Content.ToString().Contains("ADD") && lblReceived.Text.Contains(@"\"))
-            {
-                var f = new FileInfo(receivedCopy);
-                File.Copy(receivedCopy, destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name), true);//copy and renaming of file
-                destinationPath = destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name);//storing the path to database
-                docPath.pathList.Add(string.Format("{0}|{1}", destinationPath, "R"));//add to list 
-            }
-
-            if (!btnSigned.Content.ToString().Contains("ADD") && lblSigned.Text.Contains(@"\"))
-            {
-                var f = new FileInfo(signedCopy);
-                File.Copy(signedCopy, destinationDirectory + string.Format("{0}-{1}", "SIGNED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name), true);
-                destinationPath = destinationDirectory + string.Format("{0}-{1}", "SIGNED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name);
-                docPath.pathList.Add(string.Format("{0}|{1}", destinationPath, "S"));
-            }
-        }
+        
         private void btnSigned_Click(object sender, RoutedEventArgs e)
         {
             changeButtonContent(btnSigned, "ADD SIGNED COPY", "REMOVE", dpSigned, tpSigned, lblSigned);                       
@@ -309,7 +278,7 @@ namespace DocsControl.Dialogs
                 ForSigned = DateTime.Now,
                 Signed = signedDate,
                 ForRelease = receivedDate,
-                FocalID = db.Focals.Where(x => x.FullName.Equals(cmbFocals.Text)).FirstOrDefault().Id,
+                FocalID = db.Focals.Where(x => x.FullName.Equals(cmbFocals.Text)).FirstOrDefault().Id.ToString(),
                 DateAdd = DateTime.Now,
                 DoctTypes = txtDocType.Text,
                 AddresseeID = lblTitle.Content.ToString().Contains("ADD") ? db.Addressees.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault() : int.Parse(lblAddressee.Tag.ToString()),
@@ -317,6 +286,33 @@ namespace DocsControl.Dialogs
                 Tag = "O",
                 DocControlNumber = txtControlNumber.Text
             };
+        }
+
+        private void uploadFile()
+        {
+            //getting the current path
+            string signedCopy = lblSigned.Text;
+            string receivedCopy = lblReceived.Text;
+            //setting the destination path
+            string destinationDirectory = @"\\R4A_FileServer\Control of Documents\";
+
+            //combine current and destination path then copy            
+            if (!btnReceived.Content.ToString().Contains("ADD") && lblReceived.Text.Contains(@"\"))
+            {
+                var f = new FileInfo(receivedCopy);
+                var fileName = destinationDirectory + string.Format("{0}-{1}", "RECEIVED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name);
+                File.Copy(receivedCopy, fileName, true);//copy and renaming of file               
+
+                docPath.pathList.Add(string.Format("{0}|{1}", fileName, "R"));//add to list 
+            }
+
+            if (!btnSigned.Content.ToString().Contains("ADD") && lblSigned.Text.Contains(@"\"))
+            {
+                var f = new FileInfo(signedCopy);
+                var fileName = destinationDirectory + string.Format("{0}-{1}", "SIGNED" + DateTime.Now.ToString("yyyyMMddHHmm"), f.Name);
+                File.Copy(signedCopy, fileName, true);
+                docPath.pathList.Add(string.Format("{0}|{1}", fileName, "S"));
+            }
         }
         private void updateDatabase()
         {
@@ -378,11 +374,7 @@ namespace DocsControl.Dialogs
                 }
             }
         }
-
         
-
-
-
         //the process should be explained here...
     }
 }

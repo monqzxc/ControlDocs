@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,6 +40,13 @@ namespace DocsControl.Model
                 return true;
                         
             return false;
+        }
+
+        private static ObservableCollection<string> _checkList = new ObservableCollection<string>();
+        public static ObservableCollection<string> checkList
+        {
+            get { return _checkList; }
+            set { _checkList = value; }
         }
 
         //opening dialog. 

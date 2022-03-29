@@ -31,11 +31,11 @@ namespace DocsControl.ViewModel
             var subject = db.DocDatas.Select(x => x.DocSubject).ToList();
             var docType = db.DocTypes.Select(x => x.DocumentType).ToList();
             var controlNumber = db.DocDatas.Select(x => x.DocControlNumber).ToList();
-            
+
             ComboBox(cmbSubject, subject);
             ComboBox(cmbDocType, docType);
             ComboBox(cmbControlNumber, controlNumber);
-    
+
         }
 
         private ObservableCollection<DocData> sampleDocs = new ObservableCollection<DocData>();
@@ -43,8 +43,8 @@ namespace DocsControl.ViewModel
         {
             get { return sampleDocs; }
             set { sampleDocs = value; }
-        }       
-        
+        }
+
         private void buttonShowDialog(object sender, RoutedEventArgs e) //event for clicking add button
         {
             var item = sender as Button;
@@ -60,7 +60,7 @@ namespace DocsControl.ViewModel
         {
 
             sampleDocs.Clear();
-            var doc = db.DocDatas.ToList();         
+            var doc = db.DocDatas.ToList();
 
             if (!string.IsNullOrWhiteSpace(cmbControlNumber.Text))
                 doc = doc.Where(x => x.DocControlNumber.Contains(cmbControlNumber.Text)).ToList();
@@ -70,35 +70,34 @@ namespace DocsControl.ViewModel
 
             if (!string.IsNullOrWhiteSpace(cmbDocType.Text))
                 doc = doc.Where(x => x.DoctTypes.Contains(cmbDocType.Text)).ToList();
-            
+
             if (!string.IsNullOrWhiteSpace(dtpDate.Text))
             {
                 DateTime fromDate = new DateTime(dtpDate.SelectedDate.Value.Year, dtpDate.SelectedDate.Value.Month, dtpDate.SelectedDate.Value.Day, 00, 00, 00);
                 DateTime toDate = new DateTime(dtpDate.SelectedDate.Value.Year, dtpDate.SelectedDate.Value.Month, dtpDate.SelectedDate.Value.Day, 23, 59, 59);
                 doc = doc.Where(x => x.DateAdd >= fromDate && x.DateAdd <= toDate).ToList();
             }
-               
-            var docList = new ObservableCollection<DocData>();
+
+            foreach (var item in doc)
             {
-                foreach (var item in doc)
+                //control number will depend on tag of document. split and concat with Incoming then stay as is when Outgoing
+                var cn = item.Tag.Equals("I") ? string.Format("{0} | {1}", item.DocControlNumber.Split('|')[0], item.DocControlNumber.Split('|')[1])  :  item.DocControlNumber;
+                sampleDocs.Add(new DocData()
                 {
-                    docList.Add(new DocData()
-                    {
-                        Id = item.Id,
-                        DocSubject = item.DocSubject,
-                        DocControlNumber = item.DocControlNumber,
-                        DoctTypes = item.DoctTypes,
-                        DateAdd = item.DateAdd
-                    });
-                    sampleDocs.Add(item);
-                }
+                    Id = item.Id,
+                    DocSubject = item.DocSubject,
+                    DocControlNumber = cn,
+                    DoctTypes = item.DoctTypes,
+                    DateAdd = item.DateAdd
+                });
             }
-            lblTotalDocs.Content = string.Format("TOTAL DOCUMENT(S): {0}", docList.Count());
-            totalDocs = docList.Count();
+
+            lblTotalDocs.Content = string.Format("TOTAL DOCUMENT(S): {0}", sampleDocs.Count());
+
         }
         public void btnSearch_Click(object sender, RoutedEventArgs eventArgs)
         {
-            loadDocList();            
+            loadDocList();
         }
         int totalDocs;
         public void pagination()
