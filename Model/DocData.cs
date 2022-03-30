@@ -100,5 +100,7 @@ namespace DocsControl.Model
             }
             return focals;
         }
+
+        
     }
 }

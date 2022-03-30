@@ -130,7 +130,7 @@
                         Width="200">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <AccessText
+                                <AccessText                                    
                                     TextWrapping="Wrap"
                                     VerticalAlignment="Center"                                                                 
                                     Text="{Binding Path=FocalID}"/>
@@ -140,11 +140,13 @@
                     <DataGridTemplateColumn >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button
-                                ToolTip="SEE DETAILS"                              
-                                Width="90"                                
-                                Content="VIEW" 
-                                Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+                                <Button                                
+                                    ToolTip="SEE DETAILS"       
+                                    Tag="{Binding Path=Id}"
+                                    Width="90"                                                                
+                                    Content="VIEW"                                     
+                                    Click="buttonShowDialog"                                
+                                    Style="{StaticResource MaterialDesignRaisedAccentButton}" />
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

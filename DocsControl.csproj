@@ -146,6 +146,7 @@
     </Compile>
     <Compile Include="Model\Addressee.cs" />
     <Compile Include="Model\DocPath.cs" />
+    <Compile Include="Model\IncomingClass.cs" />
     <Compile Include="Model\Modules.cs" />
     <Compile Include="Model\Routes.cs" />
     <Compile Include="Model\NewCheckBox.cs" />

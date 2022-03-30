@@ -42,7 +42,7 @@
 
             <StackPanel            
                     Margin="0,0,0,0"                    
-                    Background="White" Grid.ColumnSpan="2">
+                    Background="White" Grid.ColumnSpan="2" >
 
                 <Grid Height="784">
                     <Grid.RowDefinitions>
@@ -55,7 +55,9 @@
                     </Grid.ColumnDefinitions>
 
                     <StackPanel Grid.Column="1" 
-                                Grid.Row="1"   
+                                Grid.Row="1"  
+                                
+                            DataContext="{Binding Path=docDatas}"
                             VerticalAlignment="Top"
                             Height="782"
                             Orientation="Vertical"
@@ -77,7 +79,7 @@
                             x:Name="txtNumberORD"
                             Margin="15,15,0,0"
                             HorizontalAlignment="Left"
-                            Text=""                            
+                            Text="{Binding ORDNumber}"                           
                             FontSize="14"
                             Width="235"
                             materialDesign:HintAssist.Hint="ORD NUMBER*"
@@ -86,7 +88,7 @@
                             x:Name="txtNumberROD"
                             Margin="15,15,0,0"
                             HorizontalAlignment="Left"
-                            Text=""                            
+                            Text="{Binding RODNumber}"                          
                             FontSize="14"
                             Width="235"
                             materialDesign:HintAssist.Hint="ROD DOCUMENT NUMBER*"
@@ -96,7 +98,7 @@
                             x:Name="txtDocType"
                             Margin="15,15,0,0"
                             HorizontalAlignment="Left"
-                            Text=""                            
+                            Text="{Binding DocumentType}"                              
                             FontSize="14"
                             Width="235"
                             materialDesign:HintAssist.Hint="DOCUMENT TYPE*"
@@ -105,15 +107,17 @@
                     </StackPanel>
 
                     <StackPanel Grid.Row="1"
-                                Grid.Column="1"
-                            Orientation="Vertical"
-                            Background="White" Margin="261,0,62,350">
+                                Grid.Column="1"                            
+                                Orientation="Vertical"                            
+                                Background="White" 
+                                Margin="261,0,62,350"
+                                DataContext="{Binding Path=docDatas}">
 
                         <TextBox    
                             x:Name="txtNumberDoc"
                             Margin="10,39,0,0"                
                             HorizontalAlignment="Left"                
-                            Text="{Binding Path=DocSubject}"                                             
+                            Text="{Binding Path=DocNumber}"                                             
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"                   
                             VerticalAlignment="Top"                                   
                             AcceptsReturn="True"                             
@@ -125,7 +129,7 @@
                             x:Name="dpDateOfDocFS"
                             FontSize="14"
                             Margin="10,15,26,0"
-                            SelectedDate="{Binding ForRelease}"                    
+                            SelectedDate="{Binding DateOfDocument}"                    
                             materialDesign:HintAssist.Hint="DATE OF DOCUMENT*"                    
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"                    
                             SelectedDateFormat="Short"                   
@@ -136,7 +140,7 @@
                             Name="txtAddresseeOffice"
                             Margin="10,15,0,0"
                             HorizontalAlignment="Left"
-                            Text=""                            
+                            Text="{Binding Path=OriginOffice}"                                
                             FontSize="14"
                             Width="240"
                             materialDesign:HintAssist.Hint="ORIGIN OFFICE*"
@@ -146,7 +150,7 @@
                             Name="txtAddresseeFullName"
                             Margin="10,15,0,0"
                             HorizontalAlignment="Left"
-                            Text=""                            
+                             Text="{Binding Path=OriginSignatory}"                             
                             FontSize="14"
                             Width="240"
                             materialDesign:HintAssist.Hint="ORIGIN SIGNATORY*"
@@ -155,7 +159,8 @@
 
                     <StackPanel Grid.Row="1"
                                 Grid.Column="1"
-                                Margin="0,251,62,-181">
+                                Margin="0,251,62,-181"
+                                DataContext="{Binding Path=docDatas}">
 
                         <Label                                                              
                             Content="PERSONNEL*"                                         
@@ -165,7 +170,7 @@
                             Margin="10,50,0,0"/>
 
                         <ScrollViewer  Margin="5,5,0,0" VerticalScrollBarVisibility="Hidden" Width="Auto" Height="128">
-                            <ItemsControl Name="icPersonnel" ItemsSource="{Binding Path=CheckBoxes}" Width="533">
+                            <ItemsControl Name="icPersonnel" ItemsSource="{Binding Path=Focals}" Width="533">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
                                         <WrapPanel IsItemsHost="True"/>
@@ -180,7 +185,7 @@
                             Width="290"
                             TextWrapping="Wrap"
                             HorizontalAlignment="Left"
-                            Text=""                            
+                            Text="{Binding Path=Remarks1}"                                        
                             FontSize="14"                         
                             materialDesign:HintAssist.Hint="INSTRUCTION/REMARKS*"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="52"/>
@@ -190,7 +195,7 @@
                             FontSize="13"
                             Margin="325,-38,20,0"
                           
-                            SelectedDate="{Binding Path=ForRelease}"                    
+                            SelectedDate="{Binding Path=DateReceivedByFocal}"                    
                             materialDesign:HintAssist.Hint="DATE RECEIVED BY FOCAL*"                    
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"                    
                             SelectedDateFormat="Short"/>
@@ -207,7 +212,7 @@
                             Name="txtRemarks2"
                             Margin="15,-5,0,0"
                             HorizontalAlignment="Left"
-                            Text=""              
+                            Text="{Binding Path=Remarks2}"                           
                             TextWrapping="Wrap"
                             FontSize="13"                      
                             Width="300"
@@ -219,14 +224,14 @@
                             Name="dpDateOfActionR"
                             FontSize="14"
                           
-                            SelectedDate="{Binding Path=ForRelease}"                    
+                            SelectedDate="{Binding Path=ActionDate}"                    
                             materialDesign:HintAssist.Hint="ACTION DATE"                    
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"                    
                             SelectedDateFormat="Short" Margin="15,8,380,0"/>
 
                         <materialDesign:TimePicker
                             Name="tpDateOfActionR"
-                            SelectedTime="{Binding Path=DateAdd}"                                                                                   
+                            SelectedTime="{Binding Path=ActionTime}"                                                                                   
                             Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                                      
                             materialDesign:HintAssist.Hint="ACTION TIME"                    
                             Margin="180,-36,250,0" Height="36"/>
@@ -234,7 +239,7 @@
                             Name="txtStatus"
                             Margin="310,-39,0,0"
                             HorizontalAlignment="Left"
-                            Text=""                            
+                            Text="{Binding Path=Status}"                                          
                             FontSize="14"                           
                             materialDesign:HintAssist.Hint="STATUS"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="208"/>
@@ -249,7 +254,7 @@
                              x:Name="dpAddedReceived"
                             FontSize="14"
                             Margin="10,0,417,0"
-                            SelectedDate="{Binding Path=DateAdd}"                    
+                            SelectedDate="{Binding Path=DateAdded}"                    
                             materialDesign:HintAssist.Hint="DATE*"                    
                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"                    
                             SelectedDateFormat="Short"                   
@@ -257,12 +262,12 @@
 
                         <materialDesign:TimePicker  
                             Name="tpAddedReceived"
-                            SelectedTime="{Binding Path=DateAdd}"                                                                                       
+                            SelectedTime="{Binding Path=DateAdded}"                                                                                       
                             Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                                      
                             materialDesign:HintAssist.Hint="TIME*"                    
                             Margin="135,-36,307,0" Height="36"  />
 
-                        <StackPanel 
+                        <StackPanel DataContext="{Binding docDatas}"
                             Margin="265,-60,10,0"
                             Height="75"
                             Orientation="Vertical">
@@ -287,8 +292,7 @@
                                     <AccessText 
                                         HorizontalAlignment="Center"
                                         Name="lblPath"
-                                        TextWrapping="Wrap"                                                                            
-                                        Text="{Binding Path=Path}"                                                      
+                                        TextWrapping="Wrap"                                                                                                                   
                                         Width="155"                                                    
                                         Height="39" />
                                 </Label.Content>
@@ -307,8 +311,7 @@
 
                             <Button      
                                 Name="btnRemoveDoc"
-                                Style="{StaticResource MaterialDesignRaisedAccentButton}" 
-                                Tag="{Binding Path=Path}"                           
+                                Style="{StaticResource MaterialDesignRaisedAccentButton}"                                                           
                                 HorizontalAlignment="Right"                                                                               
                                 Width="96"           
                                 FontSize="13"
@@ -316,8 +319,6 @@
                                 ToolTip="REMOVE"
                                 Height="23" 
                                 Margin="0,-23,0,0" Click="btnRemoveDoc_Click"/>
-
-                            
                         </StackPanel>
                     </StackPanel>
 

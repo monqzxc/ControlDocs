@@ -26,16 +26,16 @@ namespace DocsControl.Model
 
         public static void showInfo(string message)
         {
-            System.Windows.Forms.MessageBox.Show(message, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            System.Windows.Forms.MessageBox.Show(message, "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
         public static void showError(string message)
         {
-            System.Windows.Forms.MessageBox.Show(message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            System.Windows.Forms.MessageBox.Show(message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public static bool showWarning(string message)
         {
-            var dialog = System.Windows.Forms.MessageBox.Show(message, "", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var dialog = System.Windows.Forms.MessageBox.Show(message, "INFORMATION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialog.Equals(DialogResult.Yes))
                 return true;
                         

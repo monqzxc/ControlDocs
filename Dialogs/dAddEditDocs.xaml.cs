@@ -24,12 +24,7 @@ namespace DocsControl.Dialogs
     /// </summary>
     public partial class dAddEditDocs : Window
     {
-
-        public class path
-        {
-            public string signed { get; set; }
-            public string received { get; set; }
-        }
+  
         public dAddEditDocs(string dialogName, int id)
         {
             InitializeComponent();
@@ -192,7 +187,13 @@ namespace DocsControl.Dialogs
         }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (showWarning("DO YOU WANT TO CANCEL?").Equals(true))
+            {
+                //store the path in the list to be deleted/removed
+                this.Close();
+            }
+            else
+                return;        
         }
        
         private bool browseFile()
