@@ -23,6 +23,7 @@ namespace DocsControl.Model
         public virtual DbSet<Plantilla> Plantillas { get; set; }
         public virtual DbSet<Addressee> Addressees { get; set; }       
         public virtual DbSet<DocPath> DocPaths { get; set; }
+        public virtual DbSet<Activities> Activities { get; set; }
 
     }
 }

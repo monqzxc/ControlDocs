@@ -5,17 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DocsControl.Dialogs"
         mc:Ignorable="d"
-        Background="#EC4D37"       
+        Background="Teal"       
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"                   
         ResizeMode="NoResize"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
         FontFamily="Century Gothic"      
         Title="MainDialog" 
-        Height="652.66" 
+        Height="952.66" 
         Width="565.317" 
         WindowStyle="None">
-    <Grid Margin="0,0,0,70"  MouseDown="StackPanel_MouseDown">
+    <Grid Margin="0,0,0,70"  MouseDown="StackPanel_MouseDown" 
+          DataContext="{Binding Path=doctDatas}">
 
 
         <Label          
@@ -32,22 +33,26 @@
             HorizontalAlignment="Left"
             Margin="0,50,0,-22"
             Width="565">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="481*"/>
+                <ColumnDefinition Width="84*"/>
+            </Grid.ColumnDefinitions>
 
             <Border                        
                 Padding="2"                        
                 BorderBrush="Teal"                       
                 CornerRadius="5"                       
-                BorderThickness="2" Margin="10">
+                BorderThickness="2" Margin="10" Grid.ColumnSpan="2">
             </Border>
             <Grid Tag="DocDatas"
-                DataContext="{Binding Path=docInfo}" Margin="0,0,0,10"
+                Margin="0,0,0,10" Grid.ColumnSpan="2"
                 >
                 <Label       
                     FontSize="17"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"                                 
-                    Margin="20,15,0,0"                                 
-                    VerticalAlignment="Top" Height="57" Width="100"
+                    Margin="20,69,0,0"                                 
+                    VerticalAlignment="Top" Height="29" Width="100"
                     Content="SUBJECT">
                 </Label>
 
@@ -55,15 +60,15 @@
                     Foreground="CadetBlue"
                     FontSize="14"
                     HorizontalAlignment="Left"                                 
-                    Margin="30,35,0,0"                                 
+                    Margin="30,91,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="57" Width="510">
+                    Height="48" Width="510">
                     <Label.Content>
                         <AccessText 
                         TextWrapping="Wrap"                        
                         Text="{Binding Path=DocSubject}"
                         Width="500"
-                        Height="51" />
+                        Height="38" />
                     </Label.Content>
                 </Label>
 
@@ -72,8 +77,8 @@
                     FontSize="17"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"                                 
-                    Margin="20,75,0,0"                                 
-                    VerticalAlignment="Top" Height="57" Width="407"
+                    Margin="20,141,0,0"                                 
+                    VerticalAlignment="Top" Height="36" Width="407"
                     Content="TYPE">
                 </Label>
 
@@ -81,21 +86,22 @@
                     Foreground="CadetBlue"
                     FontSize="15"
                     HorizontalAlignment="Left"                                 
-                    Margin="30,95,0,0"                                 
+                    Margin="30,166,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="57" Width="407"
-                    Content="{Binding Path=DoctTypes}">
+                    Height="36" Width="407"
+                    Content="{Binding Path=DocumentType}">
                 </Label>
 
 
-                <Label        
+                <Label      
+                    Name="lblLabelControlNumber"
                     FontSize="18"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"                                 
-                    Margin="20,120,0,0"                                 
+                    Margin="20,196,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="57" 
-                    Width="171"
+                    Height="36" 
+                    Width="481"
                     Content="CONTROL NUMBER">
                 </Label>
 
@@ -103,19 +109,21 @@
                     Foreground="CadetBlue"
                     FontSize="14"
                     HorizontalAlignment="Left"                                 
-                    Margin="30,140,0,0"                                 
+                    Margin="30,221,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="57" Width="407"
-                    Content="{Binding Path=DocControlNumber}">
+                    Height="36" Width="407"
+                    Tag="this one changes when incoming docs"
+                    Content="{Binding Path=ORDNumber}">
                 </Label>
 
-                <Label                            
+                <Label   
+                    Name="lblLabelForSign"
                     FontSize="18"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"                                 
-                    Margin="20,160,0,0"                                 
+                    Margin="20,258,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="57" 
+                    Height="37" 
                     Width="277"
                     Content="DATE ADDED">
                 </Label>
@@ -124,97 +132,108 @@
                     Foreground="CadetBlue"
                     FontSize="14"
                     HorizontalAlignment="Left"                                 
-                    Margin="30,180,0,0"                                 
+                    Margin="30,282,0,0"                                 
                     VerticalAlignment="Top"
-                    Height="57" Width="407"
-                    Content="{Binding Path=DateAdd, StringFormat='yyyy-MM-dd'}">
+                    Height="32" Width="407"
+                    Tag="this one changes when incoming docs"                    
+                    Content="{Binding Path=DateOfDocument, StringFormat='yyyy-MM-dd'}">
                 </Label>
 
                 <Grid 
                     Background="#EC4D37" 
-                    Margin="0,376,0,125"/>
+                    Margin="0,660,0,141"/>
                 <Label          
                     Foreground="White"
                     FontSize="25"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"                                 
-                    Margin="20,380,0,0"                                 
+                    Margin="20,664,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="57" 
-                    Width="407"
+                    Height="40" 
+                    Width="160"
                     Content="TIMEFRAME">
                 </Label>
 
-                <Label                            
+                <Label      
+                    Name="lblLabelDateAdded"
                     FontSize="17"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"                                 
-                    Margin="20,420,0,0"                                 
+                    Margin="10,708,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="57" 
-                    Width="150"
+                    Height="35" 
+                    Width="181"
+                    HorizontalContentAlignment="Center"
                     Content="FOR SIGNATURE">
                 </Label>
 
                 <Label          
+                    HorizontalContentAlignment="Center"
                     Foreground="Teal"
                     FontSize="14"
                     HorizontalAlignment="Left"                                 
-                    Margin="20,445,0,0"                                 
+                    Margin="10,732,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="37" 
-                    Width="150"
-                    Content="{Binding Path=ForSigned}">
+                    Height="38" 
+                    Width="181"
+                    Content="{Binding Path=DateAdded}">
                 </Label>
 
-                <Label                            
+                <Label   
+                    
+                     HorizontalContentAlignment="Center"
+                    Name="lblLabelSigned"
                     FontSize="17"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"                                 
-                    Margin="225,420,0,0"                                 
+                    Margin="196,708,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="57" 
-                    Width="100"
+                    Height="35" 
+                    Width="179"
                     Content="SIGNED">
                 </Label>
 
                 <Label          
+                    HorizontalContentAlignment="Center"
                     Foreground="Teal"
                     FontSize="14"
                     HorizontalAlignment="Left"                                 
-                    Margin="225,445,0,0"                                 
+                    Margin="196,732,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="37" 
-                    Width="150"
-                    Content="{Binding Path=Signed}">
+                    Height="38" 
+                    Width="179"
+                    Content="{Binding Path=DateReceivedByFocal}">
                 </Label>
-                <Label                            
+                <Label     
+                     HorizontalContentAlignment="Center"
+                    Name="lblLabelReleased"
                     FontSize="17"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"                                 
-                    Margin="405,420,0,0"                                 
+                    Margin="380,708,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="57" 
-                    Width="100"
-                    Content="RECEIVED">
+                    Height="35" 
+                    Width="175"
+                    Content="RELEASED">
                 </Label>
 
-                <Label          
+                <Label      
+                    HorizontalContentAlignment="Center"
                     Foreground="Teal"
                     FontSize="14"
                     HorizontalAlignment="Left"                                 
-                    Margin="405,445,0,0"                                 
+                    Margin="380,732,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="37" 
-                    Width="150"
-                    Content="{Binding Path=ForRelease}">
+                    Height="38" 
+                    Width="175"
+                    Content="{Binding Path=ActionDate}">
                 </Label>
 
 
                 <Grid 
                     Background="#EC4D37"
                     Height="Auto"
-                    Margin="0,217,0,284"/>
+                    Margin="0,320,0,479"/>
 
                 <Button
                     ToolTip="VIEW"
@@ -222,7 +241,7 @@
                     Visibility="Hidden"
                     x:Name="btnSigned"
                     Content="VIEW"
-                    Margin="225,460,210,24">
+                    Margin="221,775,214,38">
                 </Button>
 
                 <Button     
@@ -231,14 +250,25 @@
                     Visibility="Hidden"
                     x:Name="btnReceived"
                     Content="VIEW"
-                    Margin="405,460,30,24">
+                    Margin="401,775,34,38">
                 </Button>
+                <Button
+                    ToolTip="VIEW"
+                    Click="buttonShowPDF"
+                    Visibility="Hidden"
+                    x:Name="btnForSigned"
+                    Content="VIEW"
+                    Margin="37,775,398,38"/>
+                <Grid 
+                    Background="#EC4D37"
+                    Height="Auto"
+                    Margin="0,20,0,779"/>
 
             </Grid>
 
 
             <Grid Tag="Routes"
-                DataContext="{Binding Path=routeInfo}" Margin="0,0,0,-9"
+                Margin="0,0,0,-9" Grid.ColumnSpan="2"
                 >
 
                 <Label     
@@ -246,18 +276,19 @@
                     FontSize="25"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"                                 
-                    Margin="20,220,0,0"                                 
+                    Margin="20,323,0,0"                                 
                     VerticalAlignment="Top" 
-                    Height="57" 
+                    Height="41" 
                     Width="407"
                     Content="ROUTES">
                 </Label>
 
-                <Label                            
+                <Label     
+                    Name="lblLabelOriginOffice"
                     FontSize="17"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"                                 
-                    Margin="20,260,0,0"                                 
+                    Margin="20,369,0,0"                                 
                     VerticalAlignment="Top" 
                     Height="57" 
                     Width="240"
@@ -268,7 +299,67 @@
                     FontSize="14"
                     Foreground="Teal"
                     HorizontalAlignment="Left"                                 
-                    Margin="30,280,0,0"                                 
+                    Margin="30,393,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="230">
+                    <Label.Content>
+                        <AccessText                         
+                            TextWrapping="Wrap"                                                
+                            Text="{Binding Path=FocalOffice}"                        
+                            Width="220"                        
+                            Height="51" />
+                    </Label.Content>
+                </Label>
+
+                <Label       
+                    Name="lblLabelOriginFocal"
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="20,441,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="240"
+                    Tag="this one changes when incoming docs. assigned focal na nun sya hehe"
+                    Content="ORIGIN/FOCAL">
+                </Label>
+
+                <Label                            
+                    FontSize="13"
+                    Foreground="Teal"
+                    HorizontalAlignment="Left"                                 
+                    Margin="30,462,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="250">
+                    <Label.Content>
+                        <AccessText                         
+                            TextWrapping="Wrap"                                                
+                            Text="{Binding FocalID}"                          
+                            Width="240"                        
+                            Height="51" />
+                    </Label.Content>
+                </Label>
+
+                <Label  
+                    Name="lblLabelAddresseeOffice"
+                    Tag="Change to Origin if incoming hehe"
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="295,372,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="57" 
+                    Width="260"
+                    Content="ADDRESSEE/OFFICE">
+                </Label>
+
+                <Label                            
+                    FontSize="14"
+                    Foreground="Teal"
+                    HorizontalAlignment="Left"                                 
+                    Margin="305,393,0,0"                                 
                     VerticalAlignment="Top" 
                     Height="57" 
                     Width="230">
@@ -281,89 +372,118 @@
                     </Label.Content>
                 </Label>
 
-                <Label                            
+                <Label     
+                    Name="lblLabelAddresseeName"
                     FontSize="17"
                     FontWeight="DemiBold"
                     HorizontalAlignment="Left"                                 
-                    Margin="20,310,0,0"                                 
-                    VerticalAlignment="Top" 
-                    Height="57" 
-                    Width="240"
-                    Content="ORIGIN/FOCAL">
-                </Label>
-
-                <Label                            
-                    FontSize="14"
-                    Foreground="Teal"
-                    HorizontalAlignment="Left"                                 
-                    Margin="30,330,0,0"                                 
-                    VerticalAlignment="Top" 
-                    Height="57" 
-                    Width="230">
-                    <Label.Content>
-                        <AccessText                         
-                            TextWrapping="Wrap"                                                
-                            Text="{Binding Path=FocalName}"                          
-                            Width="220"                        
-                            Height="51" />
-                    </Label.Content>
-                </Label>
-
-                <Label                            
-                    FontSize="17"
-                    FontWeight="DemiBold"
-                    HorizontalAlignment="Left"                                 
-                    Margin="295,260,0,0"                                 
-                    VerticalAlignment="Top" 
-                    Height="57" 
-                    Width="260"
-                    Content="ADDRESSEE/OFFICE">
-                </Label>
-
-                <Label                            
-                    FontSize="14"
-                    Foreground="Teal"
-                    HorizontalAlignment="Left"                                 
-                    Margin="305,280,0,0"                                 
-                    VerticalAlignment="Top" 
-                    Height="57" 
-                    Width="230">
-                    <Label.Content>
-                        <AccessText                         
-                            TextWrapping="Wrap"                                                
-                            Text="{Binding Path=AddresseeOffice}"                        
-                            Width="220"                        
-                            Height="51" />
-                    </Label.Content>
-                </Label>
-
-                <Label                            
-                    FontSize="17"
-                    FontWeight="DemiBold"
-                    HorizontalAlignment="Left"                                 
-                    Margin="295,310,0,0"                                 
+                    Margin="295,442,0,0"                                 
                     VerticalAlignment="Top" 
                     Height="57" 
                     Width="260"
                     Content="ADDRESSEE/NAME">
                 </Label>
 
-                <Label                            
+                <Label               
+                    
                     FontSize="14"
                     Foreground="Teal"
                     HorizontalAlignment="Left"                                 
-                    Margin="305,330,0,0"                                 
+                    Margin="305,462,0,0"                                 
                     VerticalAlignment="Top" 
                     Height="57" 
                     Width="230">
                     <Label.Content>
                         <AccessText                         
                             TextWrapping="Wrap"                                                
-                            Text="{Binding Path=AddresseeName}"                        
+                            Text="{Binding Path=OriginSignatory}"                        
                             Width="215"                        
                             Height="51" />
                     </Label.Content>
                 </Label>
+                <Label                            
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="20,521,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="30" 
+                    Width="240"
+                    Tag="REMARKS"
+                    Content="INSTRUCTION/REMARKS"/>
+                <Label                            
+                    FontSize="13"
+                    Foreground="Teal"
+                    HorizontalAlignment="Left"                                 
+                    Margin="30,542,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="41" 
+                    Width="505">
+                    <AccessText                         
+                        TextWrapping="Wrap"                                                
+                        Text="{Binding Remarks1}"                          
+                        Width="495"                        
+                        Height="36" />
+                </Label>
+                <Label                            
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="20,583,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="30" 
+                    Width="135"
+                    Tag="REMARKS"
+                    Content="ACTION TAKEN"/>
+                <Label                            
+                    FontSize="13"
+                    Foreground="Teal"
+                    HorizontalAlignment="Left"                                 
+                    Margin="30,606,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="51" 
+                    Width="262">
+                    <AccessText                         
+                        TextWrapping="Wrap"                                                
+                        Text="{Binding Remarks2}"                          
+                        Width="252"                        
+                        Height="46" />
+                </Label>
+                <Label                            
+                    FontSize="17"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="305,583,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="30" 
+                    Width="135"
+                    Tag="REMARKS"
+                    Content="STATUS"/>
+                <Label                            
+                    FontSize="13"
+                    Foreground="Teal"
+                    HorizontalAlignment="Left"                                 
+                    Margin="305,604,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="53" 
+                    Width="238">
+                    <AccessText                         
+                        TextWrapping="Wrap"                                                
+                        Text="{Binding Status}"                          
+                        Width="228"                        
+                        Height="48" />
+                </Label>
+                <Label     
+                    Name="lblDocTitle"
+                    Foreground="White"
+                    FontSize="25"
+                    FontWeight="DemiBold"
+                    HorizontalAlignment="Left"                                 
+                    Margin="10,23,0,0"                                 
+                    VerticalAlignment="Top" 
+                    Height="41" 
+                    Width="407"
+                    Content="INCOMING/OUTGOING DOC"/>
             </Grid>
         </Grid>
 
@@ -372,6 +492,6 @@
             Name="btnCancel"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"    
             ToolTip="OKAY"
-            Margin="0,605,0,-78" Height="Auto" Click="btnCancel_Click"/>
+            Margin="0,905,0,-78" Height="Auto" Click="btnCancel_Click"/>
     </Grid>
 </Window>

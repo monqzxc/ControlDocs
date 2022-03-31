@@ -69,6 +69,7 @@
 
             <TextBox    
                 Text="{Binding Path=DocSubject}"
+                Tag="{Binding Path=DateAdd}"
                 x:Name="txtSubject"
                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"    
                 VerticalAlignment="Top"                   

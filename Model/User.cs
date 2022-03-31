@@ -57,7 +57,7 @@ namespace DocsControl.Model
 
         public string GetNickname()
         {
-            var nickname = db.Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).Select(x => x.NickName).FirstOrDefault();
+            var nickname = db.Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).Select(x => string.Concat( x.RoleID, "|", x.NickName)).FirstOrDefault();
             if (nickname != null)
                 return nickname;
             else

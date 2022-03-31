@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="DocsControl.View.vDashboard"
+﻿<UserControl x:Class="DocsControl.ViewModel.vmDashboard"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -14,7 +14,7 @@
             HorizontalAlignment="Left" 
             Margin="13,15,0,0" 
             VerticalAlignment="Top"
-            Height="114" Width="269">
+            Height="198" Width="967">
             <Label 
                 Name="lblWelcome"
                 FontSize="25"
@@ -23,7 +23,7 @@
                 Margin="10,10,0,0"
                 VerticalAlignment="Top"
                 Height="60" 
-                Width="Auto"/>
+                Width="444"/>
         </materialDesign:Card>
     </Grid>
 </UserControl>

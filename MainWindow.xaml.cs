@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using static DocsControl.Model.Modules;
 
 namespace DocsControl
 {
@@ -26,17 +27,23 @@ namespace DocsControl
         {
             InitializeComponent();
         }
+        string user;
+ 
 
         public MainWindow(string user)
         {
             InitializeComponent();
-            //sp1.Children.Add();
-            lblUser.Content = user.ToUpper();
+            
             var users = new User
             {
                 NickName = user
             };
+            sp1.Children.Clear();
+            sp1.Children.Add(new ViewModel.vmDashboard(user));
 
+            lblUser.Content = user.Split('|')[1].ToUpper();
+            this.user = user;
+            
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
             dispatcherTimer.Tick += DispatcherTimer_Tick;
@@ -54,7 +61,14 @@ namespace DocsControl
 
         private void buttonLogout(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("HHHH");
+            if (showWarning("DO YOU WANT TO LOGOUT?").Equals(true)) 
+            {
+                var login = new Login();
+                this.Close();
+                login.ShowDialog();
+            }
+            else
+                return;
         }
         private void buttonShowList(object sender, RoutedEventArgs e)
         {
@@ -69,18 +83,20 @@ namespace DocsControl
         }
         private void buttonDashboard(object sender, RoutedEventArgs e)
         {
-
+            sp1.Children.Clear();
+            sp1.Children.Add(new ViewModel.vmDashboard(user));
+           
         }
         private void buttonOutgoing(object sender, RoutedEventArgs e)
         {
             sp1.Children.Clear();
-            sp1.Children.Add(new ViewModel.vmOutgoing());
+            sp1.Children.Add(new ViewModel.vmOutgoing(user));
         }
 
         private void buttonIncoming(object sender, RoutedEventArgs e)
         {
             sp1.Children.Clear();
-            sp1.Children.Add(new ViewModel.vmIncoming());
+            sp1.Children.Add(new ViewModel.vmIncoming(user));
         }
         private void buttonDocuments(object sender, RoutedEventArgs e)
         {

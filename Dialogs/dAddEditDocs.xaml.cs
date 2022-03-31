@@ -25,14 +25,14 @@ namespace DocsControl.Dialogs
     public partial class dAddEditDocs : Window
     {
   
-        public dAddEditDocs(string dialogName, int id)
+        public dAddEditDocs(string dialogName, int id, string user)
         {
             InitializeComponent();
             lblTitle.Content = dialogName;
             this.docDataID = id;
             //docData.Id = id;
-
-            var focals = db.Focals.Select(x => x.FullName).ToList(); //populate combo box with focal names
+            this.user = user;
+            var focals = db.Focals.OrderBy(x => x.PlantillaID).Select(x => x.FullName).ToList(); //populate combo box with focal names
             ComboBox(cmbFocals, focals); //method for populating //Models>Modules static           
 
             DataContext = new
@@ -52,13 +52,15 @@ namespace DocsControl.Dialogs
         Addressee addressee = new Addressee();
         DocData docData = new DocData();
         DocPath docPath = new DocPath();
+        Activities activities = new Activities();
         private int docDataID;
         private string currentFileName;
         private DateTime? signedDate;
         private DateTime? receivedDate;
         private string signedCopyFile;
         private string receivedCopyFile;
-  
+        private string user;
+        
         public ObservableCollection<DocData> doctDatas 
         {
             get
@@ -244,7 +246,7 @@ namespace DocsControl.Dialogs
                         if (showWarning("DO YOU WANT TO REMOVE THIS FILE?").Equals(true))
                         {                            
                             //store the path in the list to be deleted/removed
-                            var itemPath = docPath.GetDocPaths(lbl.Text[0].ToString()).FirstOrDefault().Path;                            
+                            var itemPath = docPath.GetDocPaths(lbl.Text[0].ToString()).FirstOrDefault().Path; //getting the first index of string and make it the TAG.
                             docPath.pathItem.Add(itemPath);                                                                              
                         }
                         else                        
@@ -276,11 +278,11 @@ namespace DocsControl.Dialogs
                 Id = docDataID,
                 DocSubject = txtSubject.Text,
                 CurrentStatus = cmbStatus.Text,
-                ForSigned = DateTime.Now,
+                ForSigned = lblTitle.Content.ToString().Contains("EDIT") ? DateTime.Parse(txtSubject.Tag.ToString()) : DateTime.Now,
                 Signed = signedDate,
                 ForRelease = receivedDate,
                 FocalID = db.Focals.Where(x => x.FullName.Equals(cmbFocals.Text)).FirstOrDefault().Id.ToString(),
-                DateAdd = DateTime.Now,
+                DateAdd = lblTitle.Content.ToString().Contains("EDIT") ? DateTime.Parse(txtSubject.Tag.ToString()) : DateTime.Now,
                 DoctTypes = txtDocType.Text,
                 AddresseeID = lblTitle.Content.ToString().Contains("ADD") ? db.Addressees.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault() : int.Parse(lblAddressee.Tag.ToString()),
                 Remarks = txtRemarks.Text,
@@ -356,6 +358,26 @@ namespace DocsControl.Dialogs
                 docPath.deletePath();                
             }
         }
+        private void updateAcitvity()
+        {
+            string activityType = "";
+            string activeUser = user.Split('|')[1];
+            if (lblTitle.Content.ToString().Contains("EDIT"))
+            {
+                activityType = "updated";
+            }
+            else
+            {
+                activityType = "added";
+                activities = new Activities()
+                {
+                    Activity = string.Format("{0} new Incoming document", activityType),
+                    User = activeUser,
+                    DateTime = DateTime.Now
+                };
+                activities.addActivities();
+            }
+        }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (!isValid())
@@ -365,6 +387,7 @@ namespace DocsControl.Dialogs
                 try
                 {
                     updateDatabase();
+                    updateAcitvity();
                     showInfo("Successfully Saved!");
                     this.Close();
                 }

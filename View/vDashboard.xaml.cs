@@ -22,7 +22,7 @@ namespace DocsControl.View
     {
         public vDashboard()
         {
-            InitializeComponent();
+          
         }
     }
 }

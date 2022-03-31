@@ -26,111 +26,122 @@ namespace DocsControl.Dialogs
             InitializeComponent();
             docDataId = id;
 
-            DataContext = new
-            {
-                docInfo = doctDatas,
-                routeInfo = routes
-            };
+            lblDocTitle.Content = db.DocDatas.Where(x => x.Id.Equals(id)).Select(x => x.Tag).FirstOrDefault().Equals("I") ? "INCOMING" : "OUTGOING";
+            changeLabel();
+            this.DataContext = this;
         }
+        dbDocs db = new dbDocs();
         int docDataId;
-        int focalId;
-        public ObservableCollection<DocData> doctDatas
+        List<string> focalName = new List<string>();
+        List<string> focalOffice = new List<string>();
+        private void changeLabel()
+        {
+            if (lblDocTitle.Content.ToString().Contains("OUTGOIN"))
+            {
+                lblLabelAddresseeName.Content = "ADDRESSEE/FULL NAME";
+                lblLabelAddresseeOffice.Content = "ADDRESSEE/OFFICE";
+                lblLabelDateAdded.Content = "FOR SIGNATURE";
+                lblLabelForSign.Content = "DATE ADDED";
+                lblLabelSigned.Content = "SIGNED";
+                lblLabelReleased.Content = "RELEASED";
+                lblLabelOriginFocal.Content = "ORIGIN/FOCAL";
+                lblLabelOriginOffice.Content = "ORIGIN/OFFICE";
+                lblLabelControlNumber.Content = "CONTROL NUMBER";
+            }
+            else
+            {
+                lblLabelAddresseeName.Content = "ORIGIN/FULL NAME";
+                lblLabelAddresseeOffice.Content = "ORIGIN/OFFICE";
+                lblLabelDateAdded.Content = "RECEIVED BY ROD";
+                lblLabelForSign.Content = "DATE OF DOCUMENT";
+                lblLabelSigned.Content = "RECEIVED BY FOCAL";
+                lblLabelReleased.Content = "DATE OF ACTION";
+                lblLabelOriginFocal.Content = "ASSIGNED/FOCAL(S)";
+                lblLabelOriginOffice.Content = "ASSIGNED/OFFICE";
+                lblLabelControlNumber.Content = "ORD | ROD | DOCUMENT NUMBER";
+            }
+        }
+        public void focalData()
+        {
+            var focal = db.DocDatas.Where(x => x.Id.Equals(docDataId)).Select(x => x.FocalID).FirstOrDefault().Split(',').ToList();
+            foreach (var item in focal)
+            {
+                var id = int.Parse(item);
+                var fName = "";
+                if (lblDocTitle.Content.ToString().Contains("INCOMING"))
+                    fName = db.Focals.Where(x => x.Id.Equals(id)).Select(x => x.NickName).FirstOrDefault();
+                else
+                    fName = db.Focals.Where(x => x.Id.Equals(id)).Select(x => x.FullName).FirstOrDefault();
+                focalName.Add(fName);
+                
+                focalOffice.Add(db.Focals.Where(x => x.Id.Equals(id)).FirstOrDefault().Office.OperatingUnit);
+            }
+            
+        }
+        public ObservableCollection<IncomingClass> doctDatas
         {
             get
             {
                 var doc = new DocData();
                 doc.Id = docDataId;
-
-                var doctList = new ObservableCollection<DocData>();
+                focalData();
+                var doctList = new ObservableCollection<IncomingClass>();
                 foreach (var item in doc.GetDocDatas())
                 {
-                    switch (item.CurrentStatus) //selected index for current status
+                    DateTime newForSign = item.ForSigned ?? DateTime.Now;
+                    doctList.Add(new IncomingClass()
                     {
-                        case "FOR SIGNATURE":
-                            item.CurrentStatus = "0";
-                            break;
-                        case "SIGNED":
-                            item.CurrentStatus = "1";
-                            break;
-                        case "RECEIVED":
-                            item.CurrentStatus = "2";
-                            break;
-                    }
-                    focalId = int.Parse(item.FocalID);
-                    doctList.Add(new DocData()
-                    {
-                        Id = item.Id,
+                        DocDataID = item.Id,
                         DocSubject = item.DocSubject,
-                        CurrentStatus = item.CurrentStatus,
-                        DoctTypes = item.DoctTypes,
-                        DocControlNumber = item.DocControlNumber,
-                        Remarks = item.Remarks,
-                        DateAdd = item.DateAdd,
+                        Status = item.CurrentStatus,
+                        DocumentType = item.DoctTypes,
+                        ORDNumber = item.DocControlNumber,
                         Tag = item.Tag,
-                        ForSigned = item.ForSigned,
-                        Signed = item.Signed,
-                        ForRelease = item.ForRelease,
-                        FocalID = (int.Parse(item.FocalID) - 1).ToString(),
+                        DateAdded = item.DateAdd,
+                        DateOfDocument = lblDocTitle.Content.ToString().Contains("OUTGOING") ? item.DateAdd : newForSign,
+                        DateReceivedByFocal = item.Signed,
+                        ActionDate = item.ForRelease,
+                        Remarks1 = lblDocTitle.Content.ToString().Contains("OUTGOING") ? item.Remarks : item.Remarks.Split('|')[0],
+                        Remarks2 = lblDocTitle.Content.ToString().Contains("OUTGOING") ? item.Remarks : item.Remarks.Split('|')[1],
+                        FilePath = item.DocPaths.Select(x => x.Path).FirstOrDefault(),
+                        OriginID = item.Addressee.Id,
+                        OriginOffice = item.Addressee.Office,
+                        OriginSignatory = item.Addressee.FullName,
+                        FocalID = string.Join(", ", focalName.Distinct()),
+                        FocalOffice = string.Join(", ", focalOffice.Distinct())
                     });
 
-                    if (!string.IsNullOrWhiteSpace(item.Signed.ToString()))
-                    {
-                        btnSigned.Visibility = Visibility.Visible;
-                        btnSigned.Tag = item.DocPaths.Where(x =>x.DocStatusTag.Equals("S")).Select(x => x.Path).First();
-                    }                        
 
-                    if (!string.IsNullOrWhiteSpace(item.ForRelease.ToString()))
+                    if (lblDocTitle.Content.ToString().Contains("OUTGOING"))
                     {
-                        btnReceived.Visibility = Visibility.Visible;
-                        btnReceived.Tag = item.DocPaths.Where(x => x.DocStatusTag.Equals("R")).Select(x => x.Path).First();
+                        if (!string.IsNullOrWhiteSpace(item.Signed.ToString()))
+                        {
+                            btnSigned.Visibility = Visibility.Visible;
+                            btnSigned.Tag = item.DocPaths.Where(x => x.DocStatusTag.Equals("S")).Select(x => x.Path).First();
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(item.ForRelease.ToString()))
+                        {
+                            btnReceived.Visibility = Visibility.Visible;
+                            btnReceived.Tag = item.DocPaths.Where(x => x.DocStatusTag.Equals("R")).Select(x => x.Path).First();
+                        }
                     }
-                }
+                    else
+                    {
+                        if (item.DocPaths.Count() > 0)
+                        {
+                            btnForSigned.Visibility = Visibility.Visible;
+                            btnForSigned.Tag = item.DocPaths.Where(x => x.DocStatusTag.Equals("R")).Select(x => x.Path).First();
+                        }
+                    }
+                }            
 
-                //this code will load the file path
-                //docPath.DocDataID = docDataID;
-
-                //if (docPath.GetDocPaths("S").Count() > 0) //get file name and trim (if there's any)
-                //    signedCopyFile = new FileInfo(docPath.GetDocPaths("S").FirstOrDefault().Path).Name;
-                //else
-                //    signedCopyFile = "...";
-
-                //if (docPath.GetDocPaths("R").Count() > 0) //get file name and trim (if there's any)
-                //    receivedCopyFile = new FileInfo(docPath.GetDocPaths("R").FirstOrDefault().Path).Name;
-                //else
-                //    receivedCopyFile = "...";
-
-                ////bind file name (if there's any)
-                //lblSigned.Content = lblSigned.Content.ToString().Contains("ADD") ? "..." : signedCopyFile;
-                //lblReceived.Content = lblReceived.Content.ToString().Contains("ADD") ? "..." : receivedCopyFile;
-
-
-            
-
-                //return docdata
+               
                 return doctList;
             }
         }        
 
-        public ObservableCollection<Routes> routes //collection of addressees
-        {
-            get
-            {
-                var db = new dbDocs();
-                var focal = db.DocDatas.Where(x => x.Id.Equals(docDataId)).ToList();
-                var addresseeList = new ObservableCollection<Routes>();
-                foreach (var item in focal)
-                {
-                    addresseeList.Add(new Routes()
-                    {
-                       // FocalName = item.Focal.FullName,
-                       // OriginOffice = item.Focal.Office.OperatingUnit,
-                        AddresseeName = item.Addressee.FullName,
-                        AddresseeOffice = item.Addressee.Office
-                    });
-                }
-                return addresseeList;
-            }
-        }
+        
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

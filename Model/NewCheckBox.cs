@@ -23,6 +23,10 @@ namespace DocsControl.Model
         protected override void OnChecked(RoutedEventArgs e)
         {
             checkList.Add(this.Tag.ToString());            
-        }        
+        }
+        protected override void OnUnchecked(RoutedEventArgs e)
+        {
+            checkList.Remove(this.Tag.ToString());
+        }
     }
 }

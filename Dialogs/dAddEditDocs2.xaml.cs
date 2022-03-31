@@ -24,21 +24,46 @@ namespace DocsControl.Dialogs
     /// </summary>
     public partial class dAddEditDocs2 : Window
     {
-        public dAddEditDocs2(string title, int id)
+        public dAddEditDocs2(string title, int id, string user)
         {
             InitializeComponent();
             lblTitle.Content = title;
             
             btnRemoveDoc.Visibility = Visibility.Hidden;
+            
             checkList.Clear();
             this.docDataID = id;
-           
+
+            this.user = user;
+            this.nickName = user.Split('|')[1];
+            this.role = int.Parse(user.Split('|')[0]);
+
+            if (role > 2)
+            {
+                txtSubject.IsEnabled = false;
+                txtNumberORD.IsEnabled = false;
+                txtNumberROD.IsEnabled = false;
+                txtDocType.IsEnabled = false;
+                txtNumberDoc.IsEnabled = false;
+                dpDateOfDocFS.IsEnabled = false;
+                txtAddresseeFullName.IsEnabled = false;
+                txtAddresseeOffice.IsEnabled = false;
+                icPersonnel.IsEnabled = false;
+                txtRemarks1.IsEnabled = false;
+                dpRecievedByFocalS.IsEnabled = false;
+                dpAddedReceived.IsEnabled = false;
+                tpAddedReceived.IsEnabled = false;
+                btnRemoveDoc.IsEnabled = false;
+            }
             DataContext = new
             {
                 checkBoxes = CheckBoxes,
                 docDatas = doctDatas
             };
-            //continuation of designing then finish the functionality
+            if (btnViewDocFile.Content.ToString().Contains("VIEW"))
+                btnViewDocFile.Margin = new Thickness(0, -85, 0, 0);
+   
+           
         }
 
         dbDocs db = new dbDocs();
@@ -46,14 +71,19 @@ namespace DocsControl.Dialogs
         Addressee addressee = new Addressee();
         DocData docData = new DocData();
         DocPath docPath = new DocPath();
+        Activities activities = new Activities();
         private int docDataID;
+        private string user;
+        private string nickName;
+        private int role;
         public List<NewCheckBox> CheckBoxes
         {
             get
             {
+                checkList.Clear();
                 var focalList = new List<NewCheckBox>();
                 bool isChecked = false; //checked
-                var focal = db.Focals.ToList();               
+                var focal = db.Focals.OrderBy(x => x.PlantillaID).ToList();               
                 var dbFocalList = new List<string>(); //focal list from database based on
                 if (lblTitle.Content.ToString().Contains("EDIT"))
                 {
@@ -73,6 +103,7 @@ namespace DocsControl.Dialogs
                         isChecked = true;
                     else
                         isChecked = false;
+
                     var chk = new NewCheckBox
                     {
                         Content = item.NickName,
@@ -95,18 +126,7 @@ namespace DocsControl.Dialogs
                 var doctList = new ObservableCollection<IncomingClass>();
                 foreach (var item in doc.GetDocDatas())
                 {
-                    switch (item.CurrentStatus) //selected index for current status
-                    {
-                        case "FOR SIGNATURE":
-                            item.CurrentStatus = "0";
-                            break;
-                        case "SIGNED":
-                            item.CurrentStatus = "1";
-                            break;
-                        case "RECEIVED":
-                            item.CurrentStatus = "2";
-                            break;
-                    }
+                   
                     doctList.Add(new IncomingClass()
                     {
                         DocDataID = item.Id,
@@ -124,17 +144,19 @@ namespace DocsControl.Dialogs
                         Remarks1 = item.Remarks.Split('|')[0],
                         Remarks2 = item.Remarks.Split('|')[1],
                         FilePath = item.DocPaths.Select(x => x.Path).FirstOrDefault(),
+                        OriginID = item.Addressee.Id,
                         OriginOffice = item.Addressee.Office,
                         OriginSignatory = item.Addressee.FullName,
                         Focals = CheckBoxes
                     });
                
                 }
-                if (lblTitle.Content.ToString().Contains("ADD"))
+                if (lblTitle.Content.ToString().Contains("ADD")) //add checkboxes
                 {
                     doctList.Add(new IncomingClass()
                     {
-                        Focals = CheckBoxes
+                        Focals = CheckBoxes,
+                        DateAdded = DateTime.Now,
                     });
                 }
 
@@ -153,8 +175,6 @@ namespace DocsControl.Dialogs
                // bind file name(if there's any)
                 lblPath.Text = lblPath.Text.Contains("ADD") ? "" : receivedCopyFile;
                 lblPath.Tag = lblPath.Text.Contains("ADD") ? "" : receivedPathFile;
-
-
 
                 //change of content and color in buttons
                 if (!lblPath.Text.Equals(""))
@@ -202,21 +222,7 @@ namespace DocsControl.Dialogs
                 showError("Please fill out all necessary fields (*) before saving the document");
                 return false;
             }
-
-            //saving validation of signed copy
-            //if (cmbStatus.Text.Contains("SIGNED") && (btnSigned.Content.ToString().Contains("ADD") || string.IsNullOrWhiteSpace(dpSigned.Text) || string.IsNullOrWhiteSpace(tpSigned.Text)))
-            //{
-            //    showError("Save Failed: Please input date and time of Signed Copy");
-            //    return false;
-            //}
-
-            ////saving validation of received copy
-            //if (cmbStatus.Text.Contains("RECEIVED") && (btnReceived.Content.ToString().Contains("ADD") || string.IsNullOrWhiteSpace(dpReceived.Text) || string.IsNullOrWhiteSpace(tpReceived.Text)))
-            //{
-            //    showError("Save Failed: Please input date and time of Received Copy");
-            //    return false;
-            //}
-
+           
             return true;
         }
        
@@ -238,7 +244,6 @@ namespace DocsControl.Dialogs
                 return false;
             }
         }
-
       
         private void btnRemoveDoc_Click(object sender, RoutedEventArgs e)
         {
@@ -249,14 +254,30 @@ namespace DocsControl.Dialogs
                 btnViewDocFile.Margin = new Thickness(0, -106, 0, 0);
                 lblPath.Text = "";
             }// add removing in the database and path here....
+            if (lblTitle.Content.ToString().Contains("EDIT"))
+            {              
 
-
-
-         //   foreach (var item in checkList)
-         //   {
-         //       Console.WriteLine(item);
-         //   }
-         ////   Console.WriteLine(checkList.Count);
+                if (lblPath.Tag.ToString().Contains("R4A_FileServer")) //if the file is already in database. return true
+                {
+                    if (showWarning("DO YOU WANT TO REMOVE THIS FILE?").Equals(true))
+                    {
+                        //store the path in the list to be deleted/removed. right after removing the file. change the button properties
+                        var itemPath = docPath.GetDocPaths("R").FirstOrDefault().Path;
+                        docPath.pathItem.Add(itemPath);
+                        btnViewDocFile.Content = "BROWSE";
+                        btnViewDocFile.Margin = new Thickness(0, -106, 0, 0);
+                        btnRemoveDoc.Visibility = Visibility.Hidden;
+                        lblPath.Text = "";
+                    }
+                    else
+                        return;
+                }
+                btnRemoveDoc.Visibility = Visibility.Hidden;
+                btnViewDocFile.Content = "BROWSE";
+                btnViewDocFile.Margin = new Thickness(0, -106, 0, 0);
+                lblPath.Text = "";
+            }
+            
         }
 
         private void btnViewDocFile_Click(object sender, RoutedEventArgs e)
@@ -268,7 +289,7 @@ namespace DocsControl.Dialogs
                 btnViewDocFile.Content = "VIEW";
                 btnViewDocFile.Margin = new Thickness(0, -85, 0, 0);
                 lblPath.Text = currentFileName;
-
+                lblPath.Tag = currentFileName;
                 btnRemoveDoc.Visibility = Visibility.Visible;
             }
             else
@@ -325,7 +346,7 @@ namespace DocsControl.Dialogs
                 ForSigned = dpDateOfDocFS.SelectedDate,
                 Signed = dpRecievedByFocalS.SelectedDate,
                 ForRelease = actionDate,
-                FocalID = string.Join(",", checkList.OrderBy(x => int.Parse(x))), //customized focal ID, then sort
+                FocalID = string.Join(",", checkList.Distinct().OrderBy(x => int.Parse(x))), //customized focal ID, then sort
                 DateAdd = receievedDate,
                 DoctTypes = txtDocType.Text,
                 AddresseeID = lblTitle.Content.ToString().Contains("ADD") ? db.Addressees.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault() : int.Parse(txtAddresseeOffice.Tag.ToString()),
@@ -383,9 +404,29 @@ namespace DocsControl.Dialogs
                 docPath.deletePath();
             }
         }
+        private void updateAcitvity()
+        {
+            string activityType = "";
+            string activeUser = user.Split('|')[1];
+            if (lblTitle.Content.ToString().Contains("EDIT"))
+            {
+                activityType = "updated";
+            }
+            else
+            {
+                activityType = "added";
+                activities = new Activities()
+                {
+                    Activity = string.Format("{0} new Incoming document", activityType),
+                    User = activeUser,
+                    DateTime = DateTime.Now
+                };
+                activities.addActivities();
+            }
+        }
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            //Console.WriteLine(string.Join(",", checkList));
+            
             if (!isValid())
                 return;
             else
@@ -393,12 +434,13 @@ namespace DocsControl.Dialogs
                 try
                 {
                     updateDatabase();
+                    updateAcitvity();
                     showInfo("Successfully Saved!");
                     this.Close();
                 }
                 catch (Exception ex)
                 {
-                    //showError("An error has occured" + ex.Message);
+                    showError("An error has occured" + ex.Message);
                     this.Close();
                 }
             }

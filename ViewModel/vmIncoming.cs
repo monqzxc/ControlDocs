@@ -17,15 +17,25 @@ namespace DocsControl.ViewModel
     public partial class vmIncoming
     {
 
-        public vmIncoming()
+        public vmIncoming(string user)
         {
             InitializeComponent();
             loadComboBox();
             loadDocList();
             this.DataContext = this;
+
+            this.role = int.Parse(user.Split('|')[0]);
+            this.nickName = user.Split('|')[1];
+            this.user = user;
+            if (role > 2)
+            {
+                btnAdd.Visibility = Visibility.Hidden;
+            }
         }
         dbDocs db = new dbDocs();
-
+        string user;
+        int role;
+        string nickName;
         private void loadComboBox()
         {
             var subjects = db.DocDatas.Where(x => x.Tag.Equals("I")).Select(x => x.DocSubject).ToList();
@@ -58,7 +68,7 @@ namespace DocsControl.ViewModel
 
             this.Opacity = .5;
             this.Background = Brushes.Black;
-            var dialog = new dAddEditDocs2(title, DocID);
+            var dialog = new dAddEditDocs2(title, DocID,user);
             dialog.ShowDialog();
             this.Opacity = 1;
             this.Background = Brushes.Transparent;
@@ -78,13 +88,23 @@ namespace DocsControl.ViewModel
             var doc = db.DocDatas.Where(x => x.Tag.Equals("I")).ToList();
 
             if (!string.IsNullOrWhiteSpace(cmbORDRODNumber.Text))
-                doc = doc.Where(x => x.DocControlNumber.Contains(cmbORDRODNumber.Text)).ToList();
-
+            {
+                var controlNumber = cmbORDRODNumber.Text.Replace(" ", "");
+                doc = doc.Where(x => x.DocControlNumber.Contains(controlNumber)).ToList();
+            }
+                
             if (!string.IsNullOrWhiteSpace(cmbSubject.Text))
                 doc = doc.Where(x => x.DocSubject.Contains(cmbSubject.Text)).ToList();
 
             if (!string.IsNullOrWhiteSpace(cmbPersonnel.Text))
             {
+                doc = doc.Where(x => x.FocalID.Contains(cmbPersonnel.Text)).ToList();
+
+
+                //searching of personnel must be done here
+                
+
+                
                 //if (cmbPersonnel.Text.Contains(","))
                 //{
                 //    var cmbfocals = cmbPersonnel.Text.Split(new char[] { ',', ' ' }).ToList();
@@ -118,10 +138,10 @@ namespace DocsControl.ViewModel
                 //    }
 
                 //    var focalids = doc.Select(x => x.FocalID).ToList();
-                                        
-                   
+
+
                 //} 
-                doc = doc.Where(x => x.FocalID.Contains(cmbPersonnel.Text)).ToList();
+
             }
                      
             if (!string.IsNullOrWhiteSpace(dtpDate.Text))
@@ -149,60 +169,10 @@ namespace DocsControl.ViewModel
             lblTotalDocs.Content = string.Format("TOTAL DOCUMENT(S): {0}", sampleDocs.Count());
             //totalDocs = docList.Count();
         }
-        
+
         public void btnSearch_Click(object sender, RoutedEventArgs eventArgs)
         {
             loadDocList();
-            //if (!string.IsNullOrWhiteSpace(cmbPersonnel.Text))
-            //{
-            //    if (cmbPersonnel.Text.Contains(","))
-            //    {
-            //        var cmbfocals = cmbPersonnel.Text.Split(new char[] { ',', ' ' }).ToList();
-            //        var newFocals = new List<int>(); //list of focals in combo box
-            //        foreach (var item in cmbfocals)
-            //        {
-            //            if (!item.Equals(""))
-            //            {
-            //                var fID = db.Focals.Where(x => x.NickName.Contains(item));
-            //                if (fID.Count() > 0)
-            //                {
-            //                    var f = fID.FirstOrDefault().Id;
-            //                    newFocals.Add(f);
-            //                }
-                            
-            //            }
-            //        }
-
-            //        //sort the list of id in combo box
-            //        //concat them in a string
-            //        //fill out all missing number
-            //        //ex, the lowest is 10 then the highest if 13. numbers 11 and 12 should be inserted
-            //        //thats the result 
-            //        var firstIndex = newFocals.Distinct().OrderBy(x => x).FirstOrDefault();
-            //        var lastIndex = newFocals.Distinct().OrderByDescending(x => x).FirstOrDefault();
-
-            //        var hatdog = new List<string>();
-            //        for (int i = firstIndex; i <= lastIndex; i++)
-            //        {
-            //            hatdog.Add(i.ToString());
-            //        }
-            //        Console.WriteLine(string.Join(",",hatdog));
-
-
-            //        //just implement that damn frenzy search
-
-
-
-                    
-            //        //focalids.ForEach(x => x.FocalID = string.Join(",", zz));
-            //        //Console.WriteLine(newFocals.Distinct().OrderBy(x => x).FirstOrDefault() + " " + newFocals.Distinct().OrderByDescending(x => x).FirstOrDefault());
-            //        //doc = doc.Where(x => x.FocalID.Contains(focalID)).ToList();
-            //    }
-            //}
         }
-
-
-        //this method is used if u want to get rid of all the fucking spaces in a string.
-        //var focal = string.ToCharArray().Where(x => !Char.IsWhiteSpace(x)).Select(x => x.ToString()).Aggregate((x, z) => x + z);
     }
 }

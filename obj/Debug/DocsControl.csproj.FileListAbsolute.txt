@@ -66,3 +66,8 @@ C:\Users\Mon\source\repos\DocsControl\obj\Debug\View\vIncoming.baml
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateDocDataDateAddDateTimeColumn.resources
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateFocalTableAddNickname.resources
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateDocDataFocalIDRelationship.resources
+C:\Users\Mon\source\repos\DocsControl\bin\Debug\DocsControl.exe.manifest
+C:\Users\Mon\source\repos\DocsControl\bin\Debug\DocsControl.application
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.exe.manifest
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.application
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.AddActivitiesTable.resources

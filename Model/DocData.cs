@@ -68,7 +68,9 @@ namespace DocsControl.Model
         {
             var doc = db.DocDatas.Where(x => x.Id.Equals(Id)).FirstOrDefault();
             doc.DocSubject = DocSubject;
-            doc.CurrentStatus = CurrentStatus;            
+            doc.CurrentStatus = CurrentStatus;
+            doc.DateAdd = DateAdd;
+            doc.ForSigned = ForSigned;
             doc.Signed = Signed;
             doc.ForRelease = ForRelease;
             doc.FocalID = FocalID;          

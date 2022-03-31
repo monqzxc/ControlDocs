@@ -51,7 +51,15 @@ namespace DocsControl.Model
         }
         private void deletePath(string path)
         {
-            System.IO.File.Delete(path);
+            try
+            {
+                System.IO.File.Delete(path);
+            }
+            catch (Exception)
+            {
+                //sorry medyo hirap ako dito kaya nandaya ako using try catch
+            }
+               
         }
         public IQueryable<DocPath> GetDocPaths(string Tag)
         {

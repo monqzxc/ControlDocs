@@ -162,6 +162,7 @@
 
 
             <Button
+                x:Name="btnAdd"
                 Click="buttonShowDialog"
                 Margin="940,-190,0,0"                
                 Style="{StaticResource MaterialDesignFloatingActionButton}"            

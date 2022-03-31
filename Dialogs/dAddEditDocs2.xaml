@@ -136,7 +136,7 @@
                             />
 
                         <TextBox
-                            Tag="{Binding Path=Id}"
+                            Tag="{Binding Path=OriginID}"
                             Name="txtAddresseeOffice"
                             Margin="10,15,0,0"
                             HorizontalAlignment="Left"
@@ -188,7 +188,7 @@
                             Text="{Binding Path=Remarks1}"                                        
                             FontSize="14"                         
                             materialDesign:HintAssist.Hint="INSTRUCTION/REMARKS*"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="52"/>
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="57"/>
 
                         <DatePicker     
                             Name="dpRecievedByFocalS"
@@ -231,7 +231,7 @@
 
                         <materialDesign:TimePicker
                             Name="tpDateOfActionR"
-                            SelectedTime="{Binding Path=ActionTime}"                                                                                   
+                            SelectedTime="{Binding Path=ActionDate}"                                                                                   
                             Style="{StaticResource MaterialDesignFloatingHintTimePicker}"                                      
                             materialDesign:HintAssist.Hint="ACTION TIME"                    
                             Margin="180,-36,250,0" Height="36"/>
@@ -251,7 +251,7 @@
                             Content="DATE &amp; TIME RECIEVED BY ROIVA-ROD"/>
 
                         <DatePicker   
-                             x:Name="dpAddedReceived"
+                            x:Name="dpAddedReceived"
                             FontSize="14"
                             Margin="10,0,417,0"
                             SelectedDate="{Binding Path=DateAdded}"                    

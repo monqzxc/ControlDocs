@@ -15,6 +15,7 @@ namespace DocsControl.Model
         public string RODNumber { get; set; }
         public string DocumentType { get; set; }
         public string DocNumber { get; set; }
+        public int OriginID { get; set; }
         public string OriginOffice { get; set; }
         public string OriginSignatory { get; set; }
         public DateTime? DateOfDocument { get; set; }
@@ -26,7 +27,8 @@ namespace DocsControl.Model
         public DateTime DateAdded { get; set; }
         public string Tag { get; set; }
         public string FilePath { get; set; }
-
+        public string FocalOffice { get; set; }
+        public string FocalID { get; set; }
         public List<NewCheckBox> Focals 
         {
             get
