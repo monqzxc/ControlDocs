@@ -12,6 +12,11 @@
         FontFamily="Century Gothic"
         Background="AliceBlue"
         Title="MainWindow" Height="890" Width="1300" WindowStyle="None">
+    <Window.Resources>
+        <ResourceDictionary>
+            
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RenderTransform>
             <TransformGroup>
@@ -29,7 +34,7 @@
             <RowDefinition Height="52*"/>
             <RowDefinition Height="389*"/>
         </Grid.RowDefinitions>
-
+       
         <materialDesign:Card
             x:Name="navSide"
             Background="#008080"
@@ -78,7 +83,7 @@
         </Label>
         
         <Image
-            Source="D:\Downloads\Icons\tesda logo white.png"
+            Source="\\R4A_FileServer\Control of Documents\Icons\tesda logo white.png"
             HorizontalAlignment="Left"
             Height="118"
             Margin="63,45,0,0"
@@ -110,7 +115,7 @@
                 Width="236">
                 <Image 
                     HorizontalAlignment="Left"
-                    Source="D:\Downloads\Icons\chart-icon-color-white.png"
+                    Source="\\R4A_FileServer\Control of Documents\Icons\chart-icon-color-white.png"
                     Width="44"/>
                 <Label 
                     FontSize="14"
@@ -137,7 +142,7 @@
                 Width="236">
                 <Image
                     HorizontalAlignment="Left"
-                    Source="D:\Downloads\Icons\Outgoing.png"
+                    Source="\\R4A_FileServer\Control of Documents\Icons\Outgoing.png"
                     Width="43"/>
                 <Label
                     FontSize="14"
@@ -164,7 +169,7 @@
                 Width="236">
                 <Image
                     HorizontalAlignment="Left"
-                    Source="D:\Downloads\Icons\Incoming.png"
+                    Source="\\R4A_FileServer\Control of Documents\Icons\Incoming.png"
                     Width="43"/>
                 <Label
                     FontSize="14"
@@ -191,7 +196,7 @@
                 Width="236">
                 <Image
                     HorizontalAlignment="Left"
-                    Source="D:\Downloads\Icons\billing-icon-color-white.png"
+                    Source="\\R4A_FileServer\Control of Documents\Icons\billing-icon-color-white.png"
                     Width="43"/>
                 <Label
                     FontSize="14"
@@ -236,6 +241,8 @@
         </Label>
 
         <TreeView 
+            x:Name="tvItems"
+            Visibility="Visible"
             Cursor="Hand"
             MinWidth="220"
             Grid.ColumnSpan="2"
@@ -266,6 +273,7 @@
                 </TreeViewItem>
 
                 <TreeViewItem
+                    Visibility="Visible"
                     FontSize="14"
                     Padding="0"
                     Foreground="white"
@@ -274,6 +282,7 @@
                 </TreeViewItem>
 
                 <TreeViewItem
+                    Visibility="Visible"
                     FontSize="14"
                     Padding="0"
                     Foreground="white"
@@ -282,32 +291,32 @@
                 </TreeViewItem>
 
                 <TreeViewItem
-                    FontSize="14"
-                    Padding="0"
-                    Foreground="white"
-                    PreviewMouseDown="buttonShowList"
-                    Header="DOCUMENT TYPES">
-             
-                </TreeViewItem>
-
-                <TreeViewItem
+                    Visibility="Visible"
                     FontSize="14"
                     Padding="0"
                     Foreground="white"
                     PreviewMouseDown="buttonShowList"
                     Header="POSITIONS">
-                   
+             
                 </TreeViewItem>
 
-
-
                 <TreeViewItem
+                    Visibility="Hidden"
                     FontSize="14"
                     Padding="0"
                     Foreground="white"
                     PreviewMouseDown="buttonShowList"
                     Header="OFFICES">
-                    
+
+                </TreeViewItem>
+
+                <TreeViewItem
+                    Visibility="Hidden"
+                    FontSize="14"
+                    Padding="0"
+                    Foreground="white"
+                    PreviewMouseDown="buttonShowList"
+                    Header="DOCUMENT TYPES">
                 </TreeViewItem>
 
             </TreeViewItem>

@@ -136,7 +136,7 @@
                             <Button
                                 ToolTip="SEE DETAILS"
                                 Click="buttonShowDialog"
-                                Width="100" 
+                                Width="90" 
                                 Tag="{Binding Path=Id}"
                                 Content="VIEW" 
                                 Style="{StaticResource MaterialDesignRaisedAccentButton}" />

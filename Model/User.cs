@@ -14,22 +14,13 @@ namespace DocsControl.Model
     {
         public int Id { get; set; }
 
-        private string username;
-        public string UserName {
-            get
-            {
-                return username;
-            }
-            set
-            {
-                username = value;
-                NotifyPropertyChanged();
-            }
-        }
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+        public string UserName { get; set; }
+           
+        
+        //private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
         public string Password { get; set; }
 
         public string FirstName { get; set; }
@@ -50,10 +41,10 @@ namespace DocsControl.Model
         public event PropertyChangedEventHandler PropertyChanged;
         
 
-        public IQueryable<User> GetUserInfo()
-        {                      
-            return new dbDocs().Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password));
-        }
+        //public IQueryable<User> GetUserInfo()
+        //{                      
+        //    return new dbDocs().Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password));
+        //}
 
         public string GetNickname()
         {
@@ -66,12 +57,31 @@ namespace DocsControl.Model
 
         public void addUser()
         {
-
+            var u = new User()
+            {
+                UserName = UserName,
+                FirstName = FirstName,
+                LastName = LastName,
+                NickName = NickName,
+                RoleID = RoleID,
+                Password = Password,
+                Sex = Sex,                
+            };
+            db.Users.Add(u);
+            db.SaveChanges();
         }
 
         public void editUser()
         {
-
+            var u = db.Users.Where(x => x.Id.Equals(Id)).FirstOrDefault();
+            u.UserName = UserName;
+            u.FirstName = FirstName;
+            u.LastName = LastName;
+            u.NickName = NickName;
+            u.RoleID = RoleID;
+            u.Password = Password;
+            u.Sex = Sex;
+            db.SaveChanges();
         }
 
         public void deleteUser()

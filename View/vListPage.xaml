@@ -28,53 +28,83 @@
                 FontSize="55"/>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
+        <StackPanel x:Name="sp2" Grid.Row="2" Orientation="Horizontal">
             <ComboBox
-                Name="cmbSubject"                 
+                
+                DisplayMemberPath="Name"
+                Name="cmbName"                 
                 materialDesign:HintAssist.Hint="SUBJECT"  
                 IsEditable="True"  
                 HorizontalContentAlignment="Left"
-                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}" Width="362" 
+                Margin="30,10,0,26">
+            </ComboBox>
+
+            <ComboBox
+                
+                
+                Name="cmbItem"                 
+                materialDesign:HintAssist.Hint="DESCRIPTION"  
+                IsEditable="True"  
+                HorizontalContentAlignment="Left"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}" Width="362" 
+                Margin="30,10,0,26">
             </ComboBox>
 
         </StackPanel>
 
-        <StackPanel Grid.Row="3">
-            <DataGrid
-                Margin="0,0,10,0"
+        <StackPanel Grid.Row="3" Height="685" VerticalAlignment="Top" >
+            <DataGrid                           
                 Background="White"
-                Height="620"                                 
+                Height="640"                       
                 IsReadOnly="True"            
                 x:Name="dgDocList"                                                    
                 AlternatingRowBackground="WhiteSmoke"                                          
                 AutoGenerateColumns="False"            
-                HorizontalScrollBarVisibility="Disabled" >
-                <DataGridTemplateColumn  
-                        Header=" SUBJECT"                                        
-                        MinWidth="200"                    
-                        Width="315">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <AccessText 
+                HorizontalScrollBarVisibility="Disabled"
+                ItemsSource="{Binding Path=NewDirectories}">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn  
+                        Header=" NAME"                             
+                        MinWidth="300"                      
+                        Width="400">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText 
                                 VerticalAlignment="Center"                                   
-                                Text="{Binding Path=DocSubject}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                                Text="{Binding Path=Name}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn  
-                        Header=" SUBJECT"                                        
-                        MinWidth="200"                    
-                        Width="315">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <AccessText 
+                    <DataGridTemplateColumn  
+                        Header=" DESCRIPTION"                             
+                        MinWidth="440"                      
+                        Width="500">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText 
                                 VerticalAlignment="Center"                                   
-                                Text="{Binding Path}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                                Text="{Binding Path=Description}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    
+                    <DataGridTemplateColumn >
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button                                
+                                    ToolTip="SEE DETAILS"
+                                    Click="buttonShowDialog"                                
+                                    Width="90"                                                                 
+                                    Tag="{Binding Path=Id}"                                
+                                    Content="VIEW"                                
+                                    Style="{StaticResource MaterialDesignRaisedAccentButton}" />
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
 
+                </DataGrid.Columns>
                 <DataGrid.Resources>
                     <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
                         <Setter Property="Background" Value="#303134"/>
@@ -83,6 +113,18 @@
                     </Style>
                 </DataGrid.Resources>
             </DataGrid>
+
+            <Button
+                Click="buttonShowDialog"
+                x:Name="btnAdd"            
+                Margin="950,-100,0,0"                
+                Style="{StaticResource MaterialDesignFloatingActionButton}"            
+                ToolTip="ADD NEW DOCUMENT">
+                <materialDesign:PackIcon                                    
+                    Kind="Add"                
+                    Height="24"                
+                    Width="24" />
+            </Button>
         </StackPanel>
     </Grid>
 </UserControl>

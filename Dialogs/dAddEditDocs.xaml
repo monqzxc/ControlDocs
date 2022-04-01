@@ -86,7 +86,9 @@
                 FontSize="14"    
                 Name="cmbStatus"                                
                 materialDesign:HintAssist.Hint="CURRENT STATUS" 
-                Margin="15,103,0,409" Height="Auto" Width="251">
+                Margin="15,103,0,409"
+                Height="Auto"
+                Width="251">
                 <ComboBoxItem>
                     FOR SIGNATURE
                 </ComboBoxItem>

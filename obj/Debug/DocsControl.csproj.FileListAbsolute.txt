@@ -71,3 +71,12 @@ C:\Users\Mon\source\repos\DocsControl\bin\Debug\DocsControl.application
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.exe.manifest
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.application
 C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.AddActivitiesTable.resources
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\DocsControl.Migrations.updateFocalshipColumns.resources
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\Dialogs\dAddFocals.g.cs
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\Dialogs\dAddFocalship.g.cs
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\Dialogs\dAddPlantilla.g.cs
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\Dialogs\dAddUsers.g.cs
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\Dialogs\dAddFocals.baml
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\Dialogs\dAddFocalship.baml
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\Dialogs\dAddPlantilla.baml
+C:\Users\Mon\source\repos\DocsControl\obj\Debug\Dialogs\dAddUsers.baml

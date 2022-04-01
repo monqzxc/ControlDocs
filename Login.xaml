@@ -16,11 +16,12 @@
         Width="420" Height="400">
     <Window.Resources>
         <Model:User x:Key="u"></Model:User>
+        
     </Window.Resources>
     <Grid DataContext="{Binding Source={StaticResource u}}">
         <StackPanel Background="#1D1B1B" MouseDown="StackPanel_MouseDown">
             <Image
-                Source="D:\Downloads\Icons\tesda logo white.png"
+                Source="\\R4A_FileServer\Control of Documents\Icons\tesda logo white.png"
                 HorizontalAlignment="Left"
                 Height="280"
                 Margin="260,-80,-200,0"
@@ -32,7 +33,7 @@
                 Margin="50,-120,53,10"
                 Height="239" Width="317">
                 <Image 
-                    Source="D:\Downloads\Icons\4AICON.png"
+                    Source="\\R4A_FileServer\Control of Documents\Icons\4AICON.png"
                     HorizontalAlignment="Center"
                     Height="69"                                  
                     Width="88" Margin="110,0,120,0"/>
@@ -54,7 +55,7 @@
                         Foreground="White"
                         Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
                         VerticalAlignment="Top"
-                        Height="49"                      
+                        Height="49"                              
                         materialDesign:HintAssist.Hint="PASSWORD"/>
                 <Button
                         x:Name="buttonLogin"
@@ -76,7 +77,7 @@
             </StackPanel>
 
             <Image                
-                Source="D:\Downloads\Icons\tesda logo white.png"
+                Source="\\R4A_FileServer\Control of Documents\Icons\tesda logo white.png"
                 HorizontalAlignment="Left"
                 Height="280"
                 Margin="-120,-25,-100,0"

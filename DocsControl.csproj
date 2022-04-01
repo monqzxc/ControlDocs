@@ -28,7 +28,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>10</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -118,6 +118,18 @@
     <Compile Include="Dialogs\dAddEditDocs2.xaml.cs">
       <DependentUpon>dAddEditDocs2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\dAddFocals.xaml.cs">
+      <DependentUpon>dAddFocals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\dAddFocalship.xaml.cs">
+      <DependentUpon>dAddFocalship.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\dAddPlantilla.xaml.cs">
+      <DependentUpon>dAddPlantilla.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\dAddUsers.xaml.cs">
+      <DependentUpon>dAddUsers.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\dDocInfo.xaml.cs">
       <DependentUpon>dDocInfo.xaml</DependentUpon>
     </Compile>
@@ -176,8 +188,13 @@
     <Compile Include="Migrations\202203310736304_AddActivitiesTable.designer.cs">
       <DependentUpon>202203310736304_AddActivitiesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204010141129_updateFocalshipColumns.cs" />
+    <Compile Include="Migrations\202204010141129_updateFocalshipColumns.designer.cs">
+      <DependentUpon>202204010141129_updateFocalshipColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Activities.cs" />
     <Compile Include="Model\Addressee.cs" />
+    <Compile Include="Model\Directories.cs" />
     <Compile Include="Model\DocPath.cs" />
     <Compile Include="Model\IncomingClass.cs" />
     <Compile Include="Model\Modules.cs" />
@@ -208,6 +225,22 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\dAddEditDocs2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\dAddFocals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\dAddFocalship.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\dAddPlantilla.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\dAddUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -337,6 +370,9 @@
     <EmbeddedResource Include="Migrations\202203310736304_AddActivitiesTable.resx">
       <DependentUpon>202203310736304_AddActivitiesTable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204010141129_updateFocalshipColumns.resx">
+      <DependentUpon>202204010141129_updateFocalshipColumns.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -356,6 +392,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">

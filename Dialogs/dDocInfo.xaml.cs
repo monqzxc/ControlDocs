@@ -36,7 +36,7 @@ namespace DocsControl.Dialogs
         List<string> focalOffice = new List<string>();
         private void changeLabel()
         {
-            if (lblDocTitle.Content.ToString().Contains("OUTGOIN"))
+            if (lblDocTitle.Content.ToString().Contains("OUTGOING"))
             {
                 lblLabelAddresseeName.Content = "ADDRESSEE/FULL NAME";
                 lblLabelAddresseeOffice.Content = "ADDRESSEE/OFFICE";

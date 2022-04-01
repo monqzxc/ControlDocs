@@ -371,7 +371,7 @@ namespace DocsControl.Dialogs
                 activityType = "added";
                 activities = new Activities()
                 {
-                    Activity = string.Format("{0} new Incoming document", activityType),
+                    Activity = string.Format("{0} new Outgoing document", activityType),
                     User = activeUser,
                     DateTime = DateTime.Now
                 };

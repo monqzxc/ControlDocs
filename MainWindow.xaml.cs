@@ -43,7 +43,11 @@ namespace DocsControl
 
             lblUser.Content = user.Split('|')[1].ToUpper();
             this.user = user;
-            
+
+
+            if (int.Parse(user.Split('|')[0]) > 2)
+                tvItems.Visibility = Visibility.Hidden;
+
             DispatcherTimer dispatcherTimer = new DispatcherTimer();
 
             dispatcherTimer.Tick += DispatcherTimer_Tick;
@@ -74,7 +78,7 @@ namespace DocsControl
         {
             var item = sender as TreeViewItem;        
             sp1.Children.Clear();
-            sp1.Children.Add(new ViewModel.vmListPage(item.Header.ToString()));
+            sp1.Children.Add(new ViewModel.vmListPage(item.Header.ToString(),user));
         }
         private void navHeader_MouseDown(object sender, MouseButtonEventArgs e)
         {

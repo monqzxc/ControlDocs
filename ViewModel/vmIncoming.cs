@@ -68,7 +68,7 @@ namespace DocsControl.ViewModel
 
             this.Opacity = .5;
             this.Background = Brushes.Black;
-            var dialog = new dAddEditDocs2(title, DocID,user);
+            var dialog = new dAddEditDocs2(title, DocID, user);
             dialog.ShowDialog();
             this.Opacity = 1;
             this.Background = Brushes.Transparent;
