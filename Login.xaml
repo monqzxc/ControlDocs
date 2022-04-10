@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DocsControl"
-         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"     
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:Model="clr-namespace:DocsControl.Model"
         mc:Ignorable="d"            
         ResizeMode="NoResize"
         AllowsTransparency="True"
@@ -14,11 +14,14 @@
         Title="Login"
         WindowStyle="None"        
         Width="420" Height="400">
-
-    <Grid>
-        <StackPanel Background="#1A73E8" MouseDown="StackPanel_MouseDown">
+    <Window.Resources>
+        <Model:User x:Key="u"></Model:User>
+        
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource u}}">
+        <StackPanel Background="#1D1B1B" MouseDown="StackPanel_MouseDown">
             <Image
-                Source="D:\Downloads\Icons\tesda logo white.png"
+                Source="\\R4A_FileServer\Control of Documents\Icons\tesda logo white.png"
                 HorizontalAlignment="Left"
                 Height="280"
                 Margin="260,-80,-200,0"
@@ -30,12 +33,12 @@
                 Margin="50,-120,53,10"
                 Height="239" Width="317">
                 <Image 
-                    Source="D:\Downloads\Icons\4AICON.png"
+                    Source="\\R4A_FileServer\Control of Documents\Icons\4AICON.png"
                     HorizontalAlignment="Center"
                     Height="69"                                  
                     Width="88" Margin="110,0,120,0"/>
                 <TextBox
-                        x:Name="txtUsername"
+                        x:Name="txtUsername"                    
                         Margin="0,1,1,1"
                         FontSize="13"
                         Foreground="White"
@@ -52,20 +55,20 @@
                         Foreground="White"
                         Style="{StaticResource MaterialDesignOutlinedPasswordBox}"
                         VerticalAlignment="Top"
-                        Height="49"                      
+                        Height="49"                              
                         materialDesign:HintAssist.Hint="PASSWORD"/>
                 <Button
-                        Name="buttonLogin"
-                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        x:Name="buttonLogin"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
                         Width="100"
-                        ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                        ToolTip="LOGIN"
                         Content="LOGIN" 
-                        Margin="-120,20,10,10"
+                        Margin="44,20,173,10"
                         Click="buttonClick"/>
                 <Button
                         Style="{StaticResource MaterialDesignRaisedAccentButton}"
                         Width="100"
-                        ToolTip="Resource name: MaterialDesignRaisedAccentButton"
+                        ToolTip="EXIT"
                         Content="EXIT"
                         Margin="150,-42,10,10"
                         Click="buttonClick"/>
@@ -74,13 +77,15 @@
             </StackPanel>
 
             <Image                
-                Source="D:\Downloads\Icons\tesda logo white.png"
+                Source="\\R4A_FileServer\Control of Documents\Icons\tesda logo white.png"
                 HorizontalAlignment="Left"
                 Height="280"
                 Margin="-120,-25,-100,0"
                 VerticalAlignment="Top"
                 Width="280"/>
-        </StackPanel>
+     
 
+        </StackPanel>
+       
     </Grid>
 </Window>

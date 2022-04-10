@@ -2,18 +2,25 @@ namespace DocsControl.Model
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity;
     using System.Data.Entity.Spatial;
     using System.Linq;
+    using System.Runtime.CompilerServices;
 
-    public partial class User
+    public partial class User : INotifyPropertyChanged
     {
         public int Id { get; set; }
 
         public string UserName { get; set; }
-
+           
+        
+        //private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        //}
         public string Password { get; set; }
 
         public string FirstName { get; set; }
@@ -30,104 +37,59 @@ namespace DocsControl.Model
 
         dbDocs db = new dbDocs();
 
+        
+        public event PropertyChangedEventHandler PropertyChanged;
+        
 
-        public List<User> GetUserInfo(string userName, string password)
+        //public IQueryable<User> GetUserInfo()
+        //{                      
+        //    return new dbDocs().Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password));
+        //}
+
+        public string GetNickname()
         {
-            this.UserName = userName;
-            this.Password = password;
-            var list = new List<User>();
-            var z = new dbDocs().Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).ToList();
-            foreach (var item in z)
-            {
-
-                list.Add(new User { 
-                    FirstName = item.FirstName, 
-                    LastName = item.LastName, 
-                    NickName = item.NickName, 
-                    UserName = item.UserName, 
-                    Password = item.Password, 
-                    Sex = item.Sex, 
-                    RoleID = item.RoleID, 
-                    Id = item.Id });                
-            }
-            return list;            
-        }
-
-        public string GetRole()
-        {
-            var role = db.Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).Select(x => x.Role.RoleName).FirstOrDefault();
-            if (role != null)
-                return role;
+            var nickname = db.Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).Select(x => string.Concat( x.RoleID, "|", x.NickName)).FirstOrDefault();
+            if (nickname != null)
+                return nickname;
             else
                 return "Invalid Username and Password";
         }
 
-        //public User(string userName, string password)
-        //{
-        //    this.UserName = userName;
-        //    this.Password = password;
-
-        //    var z = new dbDocs().Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).ToList();
-        //    foreach (var item in z)
-        //    {
-        //        this.FirstName = item.FirstName;
-        //        this.LastName = item.LastName;
-        //        this.NickName = item.NickName;
-        //        this.Sex = item.Sex;
-        //        this.RoleID = item.RoleID;
-        //    }
-        //}
-
-        //public string GetRole()
-        //{
-        //    var role = db.Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).Select(x => x.Role.RoleName).FirstOrDefault();
-        //    if (role != null)
-        //        return role;
-        //    else
-        //        return "Invalid Username and Password";
-        //}
-        public class UserHanlder
+        public void addUser()
         {
-            public string UserName { get; set; }
-            public string Password { get; set; }
-            dbDocs db = new dbDocs();
-            public UserHanlder(string userName, string password)
-            {                                
-                this.UserName = userName;
-                this.Password = password;
-            }
-
-            public string GetRole()
+            var u = new User()
             {
-                var role = db.Users.Where(x => x.UserName.Equals(this.UserName) && x.Password.Equals(this.Password)).Select(x => x.Role.RoleName).FirstOrDefault();
-                if (role != null)
-                    return role;
-                else
-                    return "Invalid Username and Password";
-            }
+                UserName = UserName,
+                FirstName = FirstName,
+                LastName = LastName,
+                NickName = NickName,
+                RoleID = RoleID,
+                Password = Password,
+                Sex = Sex,                
+            };
+            db.Users.Add(u);
+            db.SaveChanges();
         }
-        //public class UserHandler
-        //{
-        //    private List<User> users;
-        //    public List<User> Users
-        //    {
-        //        get
-        //        {
-        //            return users;
-        //        }
-        //        set
-        //        {
-        //            users = value;
-        //        }
-        //    }
-        //    public UserHandler()
-        //    {
-        //        Users = new List<User>();
-        //    }
-        //    public void Add(User users)
-        //    {
-        //        Users.Add(users);
-        //    }
-        //}
+
+        public void editUser()
+        {
+            var u = db.Users.Where(x => x.Id.Equals(Id)).FirstOrDefault();
+            u.UserName = UserName;
+            u.FirstName = FirstName;
+            u.LastName = LastName;
+            u.NickName = NickName;
+            u.RoleID = RoleID;
+            u.Password = Password;
+            u.Sex = Sex;
+            db.SaveChanges();
+        }
+
+        public void deleteUser()
+        {
+
+        }
+
+    
+     
     }
 }

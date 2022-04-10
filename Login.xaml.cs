@@ -48,17 +48,24 @@ namespace DocsControl
             {
                 case "LOGIN":
 
-                    var user = new User();                  
-               
-                    foreach (var item in user.GetUserInfo(txtUsername.Text, txtPassword.Password.ToString()))
+                    var user = new User
                     {
-                        Console.WriteLine(item.NickName);
+                        UserName = txtUsername.Text,
+                        Password = txtPassword.Password.ToString()
+                    };
+                    
+                    if (user.GetNickname().Contains("Invalid"))
+                    {
+                        MessageBox.Show(user.GetNickname());
+                        Cursor = Cursors.Arrow;
+                        return;
                     }
-
-                    Console.WriteLine(user.GetRole());
+                    var mainWindow = new MainWindow(user.GetNickname());
+                    this.Close();
+                    mainWindow.Show();
+                    
                     break;
-                case "EXIT":
-                    MessageBox.Show("OYOYOYY");
+                case "EXIT":                   
                     this.Close();
                     break;
             }
