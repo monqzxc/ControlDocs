@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbDocsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+    <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DocDatas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocSubject" Type="nvarchar(max)" />
+    <Property Name="CurrentStatus" Type="nvarchar(max)" />
+    <Property Name="ForSigned" Type="datetime" />
+    <Property Name="Signed" Type="datetime" />
+    <Property Name="ForRelease" Type="datetime" />
+    <Property Name="Link" Type="nvarchar(max)" />
+    <Property Name="DocFrom" Type="int" />
+    <Property Name="DocTo" Type="int" />
+    <Property Name="DocTypeID" Type="int" Nullable="false" />
+    <Property Name="Focals_Id" Type="int" />
+    <Property Name="Focals_Id1" Type="int" />
+    <Property Name="Focals2_Id" Type="int" />
+  </EntityType>
+  <EntityType Name="DocTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DocType" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Focals">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" />
+    <Property Name="ContactNumber" Type="float" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="FocalshipID" Type="int" Nullable="false" />
+    <Property Name="OfficeID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Focalships">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FocalshipName" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Offices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperatingUnit" Type="nvarchar(max)" />
+    <Property Name="ContactNo" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" />
+    <Property Name="Password" Type="nvarchar(max)" />
+    <Property Name="FirstName" Type="nvarchar(max)" />
+    <Property Name="LastName" Type="nvarchar(max)" />
+    <Property Name="NickName" Type="nvarchar(max)" />
+    <Property Name="Sex" Type="nvarchar(max)" />
+    <Property Name="RoleID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_dbo_DocDatas_dbo_DocTypes_DocTypeID">
+    <End Role="DocTypes" Type="Self.DocTypes" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="DocDatas" Type="Self.DocDatas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DocTypes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocDatas">
+        <PropertyRef Name="DocTypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_DocDatas_dbo_Focals_Focals_Id">
+    <End Role="Focals" Type="Self.Focals" Multiplicity="0..1" />
+    <End Role="DocDatas" Type="Self.DocDatas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Focals">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocDatas">
+        <PropertyRef Name="Focals_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_DocDatas_dbo_Focals_Focals_Id1">
+    <End Role="Focals" Type="Self.Focals" Multiplicity="0..1" />
+    <End Role="DocDatas" Type="Self.DocDatas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Focals">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocDatas">
+        <PropertyRef Name="Focals_Id1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_DocDatas_dbo_Focals_Focals2_Id">
+    <End Role="Focals" Type="Self.Focals" Multiplicity="0..1" />
+    <End Role="DocDatas" Type="Self.DocDatas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Focals">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DocDatas">
+        <PropertyRef Name="Focals2_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Focals_dbo_Focalships_FocalshipID">
+    <End Role="Focalships" Type="Self.Focalships" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Focals" Type="Self.Focals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Focalships">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Focals">
+        <PropertyRef Name="FocalshipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Focals_dbo_Offices_OfficeID">
+    <End Role="Offices" Type="Self.Offices" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Focals" Type="Self.Focals" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Offices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Focals">
+        <PropertyRef Name="OfficeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Users_dbo_Roles_RoleID">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbDocsModelStoreContainer">
+    <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocDatas" EntityType="Self.DocDatas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DocTypes" EntityType="Self.DocTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Focals" EntityType="Self.Focals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Focalships" EntityType="Self.Focalships" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Offices" EntityType="Self.Offices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_DocDatas_dbo_DocTypes_DocTypeID" Association="Self.FK_dbo_DocDatas_dbo_DocTypes_DocTypeID">
+      <End Role="DocTypes" EntitySet="DocTypes" />
+      <End Role="DocDatas" EntitySet="DocDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_DocDatas_dbo_Focals_Focals_Id" Association="Self.FK_dbo_DocDatas_dbo_Focals_Focals_Id">
+      <End Role="Focals" EntitySet="Focals" />
+      <End Role="DocDatas" EntitySet="DocDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_DocDatas_dbo_Focals_Focals_Id1" Association="Self.FK_dbo_DocDatas_dbo_Focals_Focals_Id1">
+      <End Role="Focals" EntitySet="Focals" />
+      <End Role="DocDatas" EntitySet="DocDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_DocDatas_dbo_Focals_Focals2_Id" Association="Self.FK_dbo_DocDatas_dbo_Focals_Focals2_Id">
+      <End Role="Focals" EntitySet="Focals" />
+      <End Role="DocDatas" EntitySet="DocDatas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Focals_dbo_Focalships_FocalshipID" Association="Self.FK_dbo_Focals_dbo_Focalships_FocalshipID">
+      <End Role="Focalships" EntitySet="Focalships" />
+      <End Role="Focals" EntitySet="Focals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Focals_dbo_Offices_OfficeID" Association="Self.FK_dbo_Focals_dbo_Offices_OfficeID">
+      <End Role="Offices" EntitySet="Offices" />
+      <End Role="Focals" EntitySet="Focals" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Users_dbo_Roles_RoleID" Association="Self.FK_dbo_Users_dbo_Roles_RoleID">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
