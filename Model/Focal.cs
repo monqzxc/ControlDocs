@@ -39,7 +39,33 @@ namespace DocsControl.Model
 
         dbDocs db = new dbDocs();
 
+        public void addFocal()
+        {
+            var focal = new Focal()
+            {
+                FullName = FullName,
+                NickName = NickName,
+                ContactNumber = ContactNumber,
+                Email = Email,
+                PlantillaID = PlantillaID,
+                FocalshipID = FocalshipID,
+                OfficeID = OfficeID
+            };
+            db.Focals.Add(focal);
+            db.SaveChanges();
+        }
+        public void editFocal()
+        {
+            var f = db.Focals.Where(x => x.Id.Equals(Id)).FirstOrDefault();
+            f.FullName = FullName;
+            f.NickName = NickName;
+            f.ContactNumber = ContactNumber;
+            f.Email = Email;
+            f.PlantillaID = PlantillaID;
+            f.FocalshipID = FocalshipID;
+            f.OfficeID = OfficeID;
+            db.SaveChanges();
+        }
 
-       
     }
 }

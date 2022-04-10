@@ -15,7 +15,7 @@
         Height="216.744" 
         Width="565.317"         
         WindowStyle="None">
-    <Grid  MouseDown="StackPanel_MouseDown">
+    <Grid  MouseDown="StackPanel_MouseDown" DataContext="{Binding Plantilla}">
         <Grid.RowDefinitions>
             <RowDefinition Height="0"/>
             <RowDefinition Height="40"/>
@@ -40,14 +40,15 @@
                 BorderThickness="2" 
                 Margin="10,5,10,187">
 
-            <StackPanel Grid.Row="2"                         
+            <StackPanel Grid.Row="2"             
+                        Name="sp1"            
                         Background="White" 
                         Margin="0,0,0,7">
                 <TextBox  
                     x:Name="txtAcronym"                             
                     Margin="15,45,0,0"                                                                   
                     HorizontalAlignment="Left"                                                                    
-                    Text="{Binding DocSubject}"                                                                                                                                      
+                    Text="{Binding Acronym}"                                                                                                                                      
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"                                                                       
                     VerticalAlignment="Top"                                                                                       
                     AcceptsReturn="True"                             
@@ -59,7 +60,7 @@
                     x:Name="txtPosition"                             
                     Margin="280,-40,0,0"                                                                   
                     HorizontalAlignment="Left"                                                                    
-                    Text="{Binding DocSubject}"                                                                                                                                      
+                    Text="{Binding Item, Mode=OneWay}"                                                                                                                                      
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"                                                                       
                     VerticalAlignment="Top"                                                                                       
                     AcceptsReturn="True"                             
@@ -92,7 +93,7 @@
                 Margin="345,0,0,0"
                 Style="{StaticResource MaterialDesignRaisedDarkButton}"                
                 Width="100"                
-                ToolTip="SAVE" >
+                ToolTip="SAVE" Click="btnSave_Click" >
             </Button>
             <Button             
                           

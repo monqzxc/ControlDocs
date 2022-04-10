@@ -1,18 +1,18 @@
 ﻿
-FC:\Users\Mon\source\repos\DocsControl\App.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\Dialogs\dAddEditDocs.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\Dialogs\dAddEditDocs2.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\Dialogs\dDocInfo.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\Dialogs\dPDFView.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\Login.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\MainWindow.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\View\vDashboard.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\View\vDocuments.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\View\vIncoming.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\View\vListPage.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\View\vOutgoing.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\Dialogs\dAddFocals.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\Dialogs\dAddFocalship.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\Dialogs\dAddPlantilla.xaml;;
-FC:\Users\Mon\source\repos\DocsControl\Dialogs\dAddUsers.xaml;;
+FD:\Control of Docs\App.xaml;;
+FD:\Control of Docs\Dialogs\dAddEditDocs.xaml;;
+FD:\Control of Docs\Dialogs\dAddEditDocs2.xaml;;
+FD:\Control of Docs\Dialogs\dAddFocals.xaml;;
+FD:\Control of Docs\Dialogs\dAddFocalship.xaml;;
+FD:\Control of Docs\Dialogs\dAddPlantilla.xaml;;
+FD:\Control of Docs\Dialogs\dAddUsers.xaml;;
+FD:\Control of Docs\Dialogs\dDocInfo.xaml;;
+FD:\Control of Docs\Dialogs\dPDFView.xaml;;
+FD:\Control of Docs\Login.xaml;;
+FD:\Control of Docs\MainWindow.xaml;;
+FD:\Control of Docs\View\vDashboard.xaml;;
+FD:\Control of Docs\View\vDocuments.xaml;;
+FD:\Control of Docs\View\vIncoming.xaml;;
+FD:\Control of Docs\View\vListPage.xaml;;
+FD:\Control of Docs\View\vOutgoing.xaml;;
 

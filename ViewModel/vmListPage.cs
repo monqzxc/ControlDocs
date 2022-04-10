@@ -172,15 +172,18 @@ namespace DocsControl.ViewModel
                     u.ShowDialog();
                     break;
                 case "FOCALS":
-                    var f = new dAddFocals(user);
+                    customTitle(item, "EDIT FOCAL", "ADD FOCAL");
+                    var f = new dAddFocals(user, listID, title);
                     f.ShowDialog();
                     break;
                 case "FOCALSHIP":
-                    var fs = new dAddFocalship(user);
+                    customTitle(item, "EDIT FOCALSHIP", "ADD FOCALSHIP");
+                    var fs = new dAddFocalship(user,listID, title);
                     fs.ShowDialog();
                     break;
                 case "POSITIONS":
-                    var p = new dAddPlantilla(user);
+                    customTitle(item, "EDIT POSITION", "ADD POSITION");
+                    var p = new dAddPlantilla(user, listID, title);
                     p.ShowDialog();
                     break;
 
