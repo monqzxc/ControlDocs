@@ -102,7 +102,7 @@ namespace DocsControl.Dialogs
                         DateReceivedByFocal = item.Signed,
                         ActionDate = item.ForRelease,
                         Remarks1 = lblDocTitle.Content.ToString().Contains("OUTGOING") ? item.Remarks : item.Remarks.Split('|')[0],
-                        Remarks2 = lblDocTitle.Content.ToString().Contains("OUTGOING") ? item.Remarks : item.Remarks.Split('|')[1],
+                        Remarks2 = lblDocTitle.Content.ToString().Contains("OUTGOING") ? "" : item.Remarks.Split('|')[1],
                         FilePath = item.DocPaths.Select(x => x.Path).FirstOrDefault(),
                         OriginID = item.Addressee.Id,
                         OriginOffice = item.Addressee.Office,

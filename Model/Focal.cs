@@ -13,14 +13,14 @@ namespace DocsControl.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Focal()
         {
-           
+
         }
 
         public int Id { get; set; }
 
         public string FullName { get; set; }
         public string NickName { get; set; }
-        public double? ContactNumber { get; set; }
+        public string ContactNumber { get; set; }
 
         public string Email { get; set; }
         public int PlantillaID { get; set; }

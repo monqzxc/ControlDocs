@@ -28,7 +28,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>10</ApplicationRevision>
+    <ApplicationRevision>12</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -192,12 +192,17 @@
     <Compile Include="Migrations\202204010141129_updateFocalshipColumns.designer.cs">
       <DependentUpon>202204010141129_updateFocalshipColumns.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204110323045_UpdateModelsFocalPlantilla.cs" />
+    <Compile Include="Migrations\202204110323045_UpdateModelsFocalPlantilla.designer.cs">
+      <DependentUpon>202204110323045_UpdateModelsFocalPlantilla.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\Activities.cs" />
     <Compile Include="Model\Addressee.cs" />
     <Compile Include="Model\Directories.cs" />
     <Compile Include="Model\DocPath.cs" />
     <Compile Include="Model\IncomingClass.cs" />
     <Compile Include="Model\Modules.cs" />
+    <Compile Include="Model\NewButton.cs" />
     <Compile Include="Model\Routes.cs" />
     <Compile Include="Model\NewCheckBox.cs" />
     <Compile Include="ViewModel\vmDashboard.cs" />
@@ -372,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204010141129_updateFocalshipColumns.resx">
       <DependentUpon>202204010141129_updateFocalshipColumns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204110323045_UpdateModelsFocalPlantilla.resx">
+      <DependentUpon>202204110323045_UpdateModelsFocalPlantilla.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

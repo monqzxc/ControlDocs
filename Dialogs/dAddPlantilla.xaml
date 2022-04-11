@@ -60,7 +60,7 @@
                     x:Name="txtPosition"                             
                     Margin="280,-40,0,0"                                                                   
                     HorizontalAlignment="Left"                                                                    
-                    Text="{Binding Item, Mode=OneWay}"                                                                                                                                      
+                    Text="{Binding Position, Mode=OneWay}"                                                                                                                                      
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"                                                                       
                     VerticalAlignment="Top"                                                                                       
                     AcceptsReturn="True"                             

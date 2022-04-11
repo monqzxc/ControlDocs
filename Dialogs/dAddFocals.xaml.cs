@@ -38,7 +38,7 @@ namespace DocsControl.Dialogs
                 sp1.IsEnabled = false;
                 btnSave.IsEnabled = false;
             }
-            
+
         }
 
         private string user;
@@ -51,7 +51,7 @@ namespace DocsControl.Dialogs
         {
             var office = db.Offices.Select(x => x.OperatingUnit).ToList();
             var focalship = db.Focalships.Select(x => x.FocalshipName).ToList();
-            var plantillia = db.Plantillas.Select(x => x.Item).ToList();
+            var plantillia = db.Plantillas.Select(x => x.Position).ToList();
 
             ComboBox(cmbOffice, office);
             ComboBox(cmbFocalship, focalship);
@@ -99,12 +99,13 @@ namespace DocsControl.Dialogs
         {
             var officeID = db.Offices.Where(x => x.OperatingUnit.Equals(cmbOffice.Text)).FirstOrDefault().Id;
             var focalshipID = db.Focalships.Where(x => x.FocalshipName.Equals(cmbFocalship.Text)).FirstOrDefault().Id;
-            var plantillaID = db.Plantillas.Where(x => x.Item.Equals(cmbPosition.Text)).FirstOrDefault().Id;
+            var plantillaID = db.Plantillas.Where(x => x.Position.Equals(cmbPosition.Text)).FirstOrDefault().Id;
             var focal = new Focal()
             {
                 Id = focalID,
                 FullName = txtFullName.Text,
                 NickName = txtNickname.Text,
+                ContactNumber = txtContact.Text,
                 Email = txtEmail.Text,
                 FocalshipID = focalshipID,
                 PlantillaID = plantillaID,
@@ -153,7 +154,7 @@ namespace DocsControl.Dialogs
                 return;
         }
 
-       
+
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             if (!isValid())

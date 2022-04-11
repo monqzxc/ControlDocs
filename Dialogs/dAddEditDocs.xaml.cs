@@ -30,12 +30,21 @@ namespace DocsControl.Dialogs
             InitializeComponent();
             lblTitle.Content = dialogName;
             this.docDataID = id;
+            this.user = user;
+            this.nickName = user.Split('|')[1];
+            this.role = int.Parse(user.Split('|')[0]);
             //docData.Id = id;
             this.user = user;
             var focals = db.Focals.OrderBy(x => x.PlantillaID).Select(x => x.FullName).ToList(); //populate combo box with focal names
             ComboBox(cmbFocals, focals); //method for populating //Models>Modules static           
 
-            DataContext = new
+            if (role > 2)
+            {
+                grid1.IsEnabled = false;
+                grid2.IsEnabled = false;
+                grid3.IsEnabled = false;
+            }
+                DataContext = new
             {
                 docInfo = doctDatas,
                 addresseeInfo = addressees
@@ -60,7 +69,9 @@ namespace DocsControl.Dialogs
         private string signedCopyFile;
         private string receivedCopyFile;
         private string user;
-        
+        private string nickName;
+        private int role;
+
         public ObservableCollection<DocData> doctDatas 
         {
             get
@@ -103,21 +114,39 @@ namespace DocsControl.Dialogs
                 //this code will load the file path
                 docPath.DocDataID = docDataID;
 
-                if (docPath.GetDocPaths("S").Count() > 0) //get file name and trim (if there's any)
+                if (docPath.GetDocPaths("S").Count() > 0) //get file name and trim (if there's any){
+                { 
                     signedCopyFile = new FileInfo(docPath.GetDocPaths("S").FirstOrDefault().Path).Name;
+                    lblSigned.Cursor = Cursors.Hand;
+                    lblSigned.Tag = docPath.GetDocPaths("S").FirstOrDefault().Path;
+                }
                 else
+                {
                     signedCopyFile = "...";
+                    lblSigned.Cursor = Cursors.Arrow;
+                    lblSigned.Tag = "...";
+                }
+
 
                 if (docPath.GetDocPaths("R").Count() > 0) //get file name and trim (if there's any)
+                {
                     receivedCopyFile = new FileInfo(docPath.GetDocPaths("R").FirstOrDefault().Path).Name;
+                    lblReceived.Cursor = Cursors.Hand;
+                    lblReceived.Tag = docPath.GetDocPaths("R").FirstOrDefault().Path;
+                }
                 else
+                {
                     receivedCopyFile = "...";
+                    lblReceived.Cursor = Cursors.Arrow;
+                    lblReceived.Tag = "...";
+                }
+                    
 
                 //bind file name (if there's any)
                 lblSigned.Text = lblSigned.Text.Contains("ADD") ? "..." : signedCopyFile;
                 lblReceived.Text = lblReceived.Text.Contains("ADD") ? "..." : receivedCopyFile;
-
-
+                            
+                
                 //change of content and color in buttons
                 if (!lblSigned.Text.Equals("..."))
                 {
@@ -191,7 +220,6 @@ namespace DocsControl.Dialogs
         {
             if (showWarning("DO YOU WANT TO CANCEL?").Equals(true))
             {
-                //store the path in the list to be deleted/removed
                 this.Close();
             }
             else
@@ -235,6 +263,7 @@ namespace DocsControl.Dialogs
                 dp.SelectedDate = DateTime.Now;
                 tp.SelectedTime = DateTime.Now;
                 lbl.Text = currentFileName;
+                lbl.Cursor = Cursors.Hand;
                 btn.Background = Brushes.OrangeRed;
             }
             else
@@ -244,8 +273,9 @@ namespace DocsControl.Dialogs
                     if (btn.Content.ToString().Contains("REMOVE") && !lbl.Text.Contains(@"\"))
                     {
                         if (showWarning("DO YOU WANT TO REMOVE THIS FILE?").Equals(true))
-                        {                            
+                        {
                             //store the path in the list to be deleted/removed
+                            lbl.Cursor = Cursors.Arrow;
                             var itemPath = docPath.GetDocPaths(lbl.Text[0].ToString()).FirstOrDefault().Path; //getting the first index of string and make it the TAG.
                             docPath.pathItem.Add(itemPath);                                                                              
                         }
@@ -398,7 +428,21 @@ namespace DocsControl.Dialogs
                 }
             }
         }
-        
-        //the process should be explained here...
+        private void buttonShowPDF(object sender, RoutedEventArgs e)
+        {
+            var at = sender as AccessText;
+
+            if (!at.Text.Contains("...") && !at.Tag.ToString().Contains("..."))
+            {
+                var pdfView = new dPDFView(at.Tag.ToString());
+                pdfView.Show();
+            }
+            else if (at.Tag.ToString().Contains("..."))
+            {
+                var pdfView = new dPDFView(at.Text.ToString());
+                pdfView.Show();
+            }
+        }
+
     }
 }

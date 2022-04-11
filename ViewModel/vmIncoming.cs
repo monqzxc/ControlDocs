@@ -98,7 +98,8 @@ namespace DocsControl.ViewModel
 
             if (!string.IsNullOrWhiteSpace(cmbPersonnel.Text))
             {
-                doc = doc.Where(x => x.FocalID.Contains(cmbPersonnel.Text)).ToList();
+                var newFID = db.Focals.Where(x => x.NickName.Contains(cmbPersonnel.Text)).FirstOrDefault().Id;
+                doc = doc.Where(x => x.FocalID.Contains(newFID.ToString())).ToList();
 
 
                 //searching of personnel must be done here
@@ -151,7 +152,7 @@ namespace DocsControl.ViewModel
                 doc = doc.Where(x => x.DateAdd >= fromDate && x.DateAdd <= toDate).ToList();
             }
 
-            foreach (var item in doc)
+            foreach (var item in doc.OrderByDescending(x => x.Id))
             {                              
                 dd.Id = item.Id;
 

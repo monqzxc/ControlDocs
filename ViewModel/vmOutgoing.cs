@@ -40,8 +40,7 @@ namespace DocsControl.ViewModel
         string nickName;
         private void lvMouseButton(object sender, MouseButtonEventArgs e) //event for clicking listview item
         {
-            if (role > 2)
-                return;
+            
             var item = sender as ListViewItem;
             {
                 if (item != null && item.IsSelected)
@@ -75,7 +74,7 @@ namespace DocsControl.ViewModel
             {
                 var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("FOR SIGNATURE") && x.Tag.Equals("O")).ToList();
                 var doctList = new ObservableCollection<DocData>();
-                foreach (var item in docs)
+                foreach (var item in docs.OrderByDescending(x => x.Id))
                 {
                     doctList.Add(new DocData()
                     {
@@ -93,7 +92,7 @@ namespace DocsControl.ViewModel
             {
                 var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("SIGNED") && x.Tag.Equals("O")).ToList();
                 var doctList = new ObservableCollection<DocData>();
-                foreach (var item in docs)
+                foreach (var item in docs.OrderByDescending(x => x.Id))
                 {
                     doctList.Add(new DocData()
                     {
@@ -114,7 +113,7 @@ namespace DocsControl.ViewModel
                 var removeDate = DateTime.Now.AddDays(3);
                 var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RECEIVED") && x.Tag.Equals("O")).ToList();
                 var doctList = new ObservableCollection<DocData>();
-                foreach (var item in docs)
+                foreach (var item in docs.OrderByDescending(x => x.Id))
                 {
                     if (DateTime.Now.Subtract(item.ForRelease.Value).TotalDays > 7)
                         continue;

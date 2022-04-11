@@ -30,7 +30,12 @@ namespace DocsControl
             {
                 if (e.Key.Equals(Key.Enter))
                     buttonClick(btn, new EventArgs());
-            };                        
+            };
+            txtUsername.KeyDown += (s, e) =>
+            {
+                if (e.Key.Equals(Key.Enter))
+                    buttonClick(btn, new EventArgs());
+            };
         }
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
