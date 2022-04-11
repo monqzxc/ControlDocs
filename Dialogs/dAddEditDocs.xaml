@@ -19,7 +19,7 @@
 
 
     <Grid Margin="0,0,0,10" MouseDown="StackPanel_MouseDown">
-       
+
         <Label 
             FontSize="20"
             FontFamily="Century Gothic"
@@ -51,7 +51,7 @@
             Margin="455,643,10,0">
         </Button>
 
-        <Grid DataContext="{Binding Path=docInfo}"
+        <Grid Name="grid1" DataContext="{Binding Path=docInfo}"
             Background="White"
             HorizontalAlignment="Left"
             Height="551"
@@ -147,6 +147,7 @@
                     Margin="15,283,298,0" Height="Auto"/>
 
             <Grid 
+                Name="grid2"
                 Tag="Files"
                 Margin="0,420,0,-39"
                 Background="White">
@@ -172,20 +173,7 @@
                     ToolTip="SAVE"                                                
                     Margin="10,34,368,104" Click="btnSigned_Click"/>
 
-                <Label                                       
-                    HorizontalAlignment="Left"
-                    Margin="384,27,0,0"
-                    VerticalAlignment="Top"       
-                    Width="171" Height="42">
-                    <AccessText     
-                        TextAlignment="Left"                      
-                        FontSize="10"                        
-                        Name="lblSigned"  
-                        TextWrapping="Wrap"
-                        Text="..." 
-                        Width="161"
-                        Height="35"/>
-                </Label>
+
 
                 <Button                                           
                     Content="ADD RECEIVED COPY"                            
@@ -203,21 +191,7 @@
                     VerticalAlignment="Top"                           
                     Margin="202,101,275,0"/>
 
-                <Label                     
-                                             
-                    HorizontalAlignment="Left"
-                    Margin="384,103,0,0"
-                    VerticalAlignment="Top"
-                    Width="171" Height="40">
-                    <AccessText
-                        FontSize="10"
-                        Name="lblReceived"  
-                        VerticalAlignment="Center"
-                        TextWrapping="Wrap"
-                        Text="..."                         
-                        Width="161"
-                        Height="33"/>
-                </Label>
+               
 
                 <materialDesign:TimePicker     
                     SelectedTime="{Binding Path=ForRelease}"
@@ -249,7 +223,7 @@
 
             </Grid>
         </Grid>
-        <Grid DataContext="{Binding Path=addresseeInfo}" Margin="0,0,0,-9">
+        <Grid Name="grid3" DataContext="{Binding Path=addresseeInfo}" Margin="0,0,0,-9">
             <Label                
                     Name="lblAddressee"
                     Tag="{Binding Path=Id}"
@@ -297,6 +271,41 @@
                     materialDesign:HintAssist.Hint="CONTACT NO"                 
                     Margin="289,263,24,0" Height="Auto"/>
         </Grid>
+        <StackPanel  Margin="384,485,0,76">
+            <Label                                       
+                    HorizontalAlignment="Left"
+                
+                    VerticalAlignment="Top"       
+                    Width="165" Height="37">
+                <AccessText   
+                        
+                        PreviewMouseDown="buttonShowPDF"
+                        TextAlignment="Left"                      
+                        FontSize="10"                        
+                        Name="lblSigned"  
+                        TextWrapping="Wrap"
+                        Text="..." 
+                        Width="161"
+                        Height="35"/>
+            </Label>
+
+            <Label                     
+                                             
+                    HorizontalAlignment="Left"
+                   Margin="0,40,0,0"
+                    VerticalAlignment="Top"
+                    Width="171" Height="40">
+                <AccessText
+                        PreviewMouseDown="buttonShowPDF"
+                        FontSize="10"
+                        Name="lblReceived"  
+                        VerticalAlignment="Center"
+                        TextWrapping="Wrap"
+                        Text="..."                         
+                        Width="161"
+                        Height="33"/>
+            </Label>
+        </StackPanel>
     </Grid>
 
 

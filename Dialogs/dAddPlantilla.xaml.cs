@@ -57,7 +57,7 @@ namespace DocsControl.Dialogs
                     plantillaList.Add(new Plantilla()
                     {
                         Acronym = item.Acronym,
-                        Item = item.Item
+                        Position = item.Position
                     });
                 }
                 return plantillaList;
@@ -81,7 +81,7 @@ namespace DocsControl.Dialogs
             {
                 Id = plantillaID,
                 Acronym = txtAcronym.Text,
-                Item = txtPosition.Text
+                Position = txtPosition.Text
             };
             if (lblTitle.Content.ToString().Contains("EDIT"))
                 p.editPlantilla();

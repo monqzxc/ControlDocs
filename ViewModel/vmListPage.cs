@@ -105,7 +105,7 @@ namespace DocsControl.ViewModel
                             Plantilla = x,
                             Id = x.Id,
                             Name = x.Acronym,
-                            Description = x.Item
+                            Description = x.Position
                         }).ToList();
 
                         dgDocList.Columns[0].Header = "ACRONYM";
@@ -138,6 +138,10 @@ namespace DocsControl.ViewModel
                         {
                             cmb.ItemsSource = data.Select(x => x.Description).Distinct();
                         }
+                        if (cmb.Name.Contains("Name"))
+                        {
+                            cmb.ItemsSource = data.Select(x => x.Name).Distinct();
+                        }
                     }
                 }
                 return directories;
@@ -168,7 +172,7 @@ namespace DocsControl.ViewModel
             {
                 case "USERS":
                     customTitle(item, "EDIT USER", "ADD USER");
-                    var u = new dAddUsers(user,listID , title);
+                    var u = new dAddUsers(user, listID, title);
                     u.ShowDialog();
                     break;
                 case "FOCALS":
@@ -178,7 +182,7 @@ namespace DocsControl.ViewModel
                     break;
                 case "FOCALSHIP":
                     customTitle(item, "EDIT FOCALSHIP", "ADD FOCALSHIP");
-                    var fs = new dAddFocalship(user,listID, title);
+                    var fs = new dAddFocalship(user, listID, title);
                     fs.ShowDialog();
                     break;
                 case "POSITIONS":
@@ -188,7 +192,7 @@ namespace DocsControl.ViewModel
                     break;
 
             }
-            
+
             this.Opacity = 1;
             this.Background = Brushes.Transparent;
         }

@@ -22,7 +22,7 @@ namespace DocsControl.Dialogs
     /// </summary>
     public partial class dAddFocalship : Window
     {
-        public dAddFocalship(string user,int id, string title)
+        public dAddFocalship(string user, int id, string title)
         {
             InitializeComponent();
             this.role = int.Parse(user.Split('|')[0]);

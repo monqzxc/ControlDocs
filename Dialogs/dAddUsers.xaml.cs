@@ -134,10 +134,10 @@ namespace DocsControl.Dialogs
             }
             else
             {
-                activityType = "added new";
+                activityType = "added";
                 var activities = new Activities()
                 {
-                    Activity = string.Format("{0} user", activityType),
+                    Activity = string.Format("{0} new user", activityType),
                     User = activeUser,
                     DateTime = DateTime.Now
                 };

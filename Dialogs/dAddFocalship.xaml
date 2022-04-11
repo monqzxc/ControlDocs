@@ -48,7 +48,7 @@
                     x:Name="txtAcronym"                             
                     Margin="15,45,0,0"                                                                   
                     HorizontalAlignment="Left"                                                                    
-                    Text="{Binding DocSubject}"                                                                                                                                      
+                    Text="{Binding Acronym}"                                                                                                                                      
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"                                                                       
                     VerticalAlignment="Top"                                                                                       
                     AcceptsReturn="True"                             
@@ -60,13 +60,13 @@
                     x:Name="txtPosition"                             
                     Margin="280,-40,0,0"                                                                   
                     HorizontalAlignment="Left"                                                                    
-                    Text="{Binding DocSubject}"                                                                                                                                      
+                    Text="{Binding FocalshipName}"                                                                                                                                      
                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"                                                                       
                     VerticalAlignment="Top"                                                                                       
                     AcceptsReturn="True"                             
                     FontSize="14"                                                  
                     Width="235"                                            
-                    materialDesign:HintAssist.Hint="POSITION*"                                                         
+                    materialDesign:HintAssist.Hint="FOCALSHIP*"                                                         
                     Height="Auto"/>
 
             </StackPanel>

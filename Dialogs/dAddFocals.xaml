@@ -125,7 +125,7 @@
                         FEMALE
                     </ComboBoxItem>
                 </ComboBox>
-               
+
                 <ComboBox                                    
                     SelectedIndex="{Binding Path=OfficeID}"                 
                     Style="{StaticResource MaterialDesignFloatingHintComboBox}"                  

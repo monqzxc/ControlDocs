@@ -1,57 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DocsControl.Model
 {
-    public class Plantilla : INotifyPropertyChanged
+    public class Plantilla
     {
 
         public int Id { get; set; }
-        private string _item;
-        public string Item
-        {
-            get
-            {
-                return _item;
-            }
-            set { _item = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        private string _acronym;
-        public string Acronym
-        {
-            get
-            {
-                return _acronym;
-            }
-            set
-            {
-                _acronym = value;
-                NotifyPropertyChanged();
-            }
-        }
+        public string Position { get; set; }
+        public string Acronym { get; set; }
 
         public virtual ICollection<Focal> Focals { get; set; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
         dbDocs db = new dbDocs();
         public void addPlanntilla()
         {
             var n = new Plantilla()
             {
                 Acronym = Acronym,
-                Item = Item
+                Position = Position
             };
             db.Plantillas.Add(n);
             db.SaveChanges();
@@ -60,7 +30,7 @@ namespace DocsControl.Model
         public void editPlantilla()
         {
             var n = db.Plantillas.Where(x => x.Id.Equals(Id)).FirstOrDefault();
-            n.Item = Item;
+            n.Position = Position;
             n.Acronym = Acronym;
             db.SaveChanges();
         }
