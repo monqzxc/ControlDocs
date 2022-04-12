@@ -74,7 +74,7 @@ namespace DocsControl.Dialogs
 
                 var dt = new DataTable();
                 var dgv = new System.Windows.Controls.DataGrid();
-                
+
                 var IncomingList = new ObservableCollection<IncomingClass>();
                 foreach (var item in incoming)
                 {
@@ -105,7 +105,7 @@ namespace DocsControl.Dialogs
                         FilePath = item.DocPaths.Select(x => x.Path).FirstOrDefault(),
                     });
                 }
-                
+
                 dgv.ItemsSource = IncomingList;
 
                 foreach (DataGridCellInfo item in dgv.SelectedCells)
@@ -127,7 +127,7 @@ namespace DocsControl.Dialogs
                 ExcelRange("KINDLY UPDATE THE STATUS OF 2022 INCOMING DOCUMENTS WHICH ARE ASSIGNED TO YOU. (COLUMNS N-P)", 6, 3, 3, false, 13, false, Excel.XlHAlign.xlHAlignLeft, Excel.XlVAlign.xlVAlignTop, Excel.XlRgbColor.rgbWhite);
                 ExcelRange("YOU CAN CREATE FILTER OR USE CTRL + F THEN SEARCH YOUR NAME TO EASILY PINPOINT YOUR TASKS.", 7, 3, 3, false, 13, false, Excel.XlHAlign.xlHAlignLeft, Excel.XlVAlign.xlVAlignTop, Excel.XlRgbColor.rgbWhite);
 
-                ExcelRange(string.Format("{0} INCOMING DOCUMENTS",DateTime.Now.Year), 10, 1, 10, true, 13, true, Excel.XlHAlign.xlHAlignCenter, Excel.XlVAlign.xlVAlignCenter, Excel.XlRgbColor.rgbDeepSkyBlue);
+                ExcelRange(string.Format("{0} INCOMING DOCUMENTS", DateTime.Now.Year), 10, 1, 10, true, 13, true, Excel.XlHAlign.xlHAlignCenter, Excel.XlVAlign.xlVAlignCenter, Excel.XlRgbColor.rgbDeepSkyBlue);
                 ExcelRange("MONITORING", 10, 11, 17, true, 13, true, Excel.XlHAlign.xlHAlignCenter, Excel.XlVAlign.xlVAlignCenter, Excel.XlRgbColor.rgbOrangeRed);
 
                 var header = new string[]
@@ -171,26 +171,26 @@ namespace DocsControl.Dialogs
 
                 //foreach (var item in IncomingList)
                 //{
-                    for (int i = 0; i < IncomingList.Count; i++)
-                    {
-                        xlWorkSheet.Cells[13 + i, 1] = IncomingList.Select(x => x.DateAdded.ToString("yyyy-MM-dd")).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 2] = IncomingList.Select(x => x.DateAdded.ToString("hh:mm tt")).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 3] = IncomingList.Select(x => x.ORDNumber).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 4] = IncomingList.Select(x => x.RODNumber).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 5] = IncomingList.Select(x => x.DocumentType).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 6] = IncomingList.Select(x => x.DocNumber).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 7] = IncomingList.Select(x => x.DateOfDocument).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 8] = IncomingList.Select(x => x.OriginOffice).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 9] = IncomingList.Select(x => x.OriginSignatory).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 10] = IncomingList.Select(x => x.DocSubject).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 11] = IncomingList.Select(x => x.FocalID).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 12] = IncomingList.Select(x => x.Remarks1).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 13] = IncomingList.Select(x => x.DateReceivedByFocal).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 14] = IncomingList.Select(x => x.Remarks2).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 15] = IncomingList.Select(x => x.ActionDate).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 16] = IncomingList.Select(x => x.Status).Skip(i).FirstOrDefault();
-                        xlWorkSheet.Cells[13 + i, 17] = IncomingList.Select(x => x.FilePath).Skip(i).FirstOrDefault();
-                    }
+                for (int i = 0; i < IncomingList.Count; i++)
+                {
+                    xlWorkSheet.Cells[13 + i, 1] = IncomingList.Select(x => x.DateAdded.ToString("yyyy-MM-dd")).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 2] = IncomingList.Select(x => x.DateAdded.ToString("hh:mm tt")).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 3] = IncomingList.Select(x => x.ORDNumber).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 4] = IncomingList.Select(x => x.RODNumber).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 5] = IncomingList.Select(x => x.DocumentType).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 6] = IncomingList.Select(x => x.DocNumber).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 7] = IncomingList.Select(x => x.DateOfDocument).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 8] = IncomingList.Select(x => x.OriginOffice).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 9] = IncomingList.Select(x => x.OriginSignatory).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 10] = IncomingList.Select(x => x.DocSubject).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 11] = IncomingList.Select(x => x.FocalID).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 12] = IncomingList.Select(x => x.Remarks1).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 13] = IncomingList.Select(x => x.DateReceivedByFocal).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 14] = IncomingList.Select(x => x.Remarks2).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 15] = IncomingList.Select(x => x.ActionDate).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 16] = IncomingList.Select(x => x.Status).Skip(i).FirstOrDefault();
+                    xlWorkSheet.Cells[13 + i, 17] = IncomingList.Select(x => x.FilePath).Skip(i).FirstOrDefault();
+                }
 
 
                 try
@@ -219,7 +219,7 @@ namespace DocsControl.Dialogs
             er.VerticalAlignment = verticalAlignment;
             er.Interior.Color = backColor;
             return er;
-        }    
+        }
 
         private bool ImportCsv()
         {
@@ -249,79 +249,136 @@ namespace DocsControl.Dialogs
                                     Console.WriteLine(dr[0]);
                                     var DocControlNumber = string.Format("{0}|{1}|{2}", dr[2], dr[3], dr[5]);
 
-                                    if (string.IsNullOrEmpty(DocControlNumber))
+                                    if (!string.IsNullOrEmpty(DocControlNumber))
                                     {
-                                        //add
-                                    }
-                                    else
-                                    {
-                                        var DateAdd = new DateTime(
-                                        DateTime.Parse(dr[0].ToString()).Year,
-                                        DateTime.Parse(dr[0].ToString()).Month,
-                                        DateTime.Parse(dr[0].ToString()).Day,
-                                        DateTime.Parse(dr[1].ToString()).Hour,
-                                        DateTime.Parse(dr[1].ToString()).Minute, 0);
-                                        DateTime? ActionDate = null;
-                                        if (!string.IsNullOrEmpty(dr[14].ToString()))
+                                        //put division here for existing and not existing
+
+                                        
+                                        if (db.DocDatas.Where(x => x.DocControlNumber.Equals(DocControlNumber)).Count() > 0)
                                         {
-                                            ActionDate = new DateTime(
-                                            DateTime.Parse(dr[14].ToString()).Year,
-                                            DateTime.Parse(dr[14].ToString()).Month,
-                                            DateTime.Parse(dr[14].ToString()).Day,
-                                            DateTime.Parse(dr[14].ToString()).Hour,
-                                            DateTime.Parse(dr[14].ToString()).Minute, 0);
+                                            //EDIT
+
+                                            var DateAdd = new DateTime(
+                                                DateTime.Parse(dr[0].ToString()).Year,                                       
+                                                DateTime.Parse(dr[0].ToString()).Month,                                       
+                                                DateTime.Parse(dr[0].ToString()).Day,                                       
+                                                DateTime.Parse(dr[1].ToString()).Hour,                                       
+                                                DateTime.Parse(dr[1].ToString()).Minute, 0);
+                                             
+                                            DateTime? ActionDate = null;
+                                            if (!string.IsNullOrEmpty(dr[14].ToString()))
+                                            {
+                                                ActionDate = new DateTime(
+                                                DateTime.Parse(dr[14].ToString()).Year,
+                                                DateTime.Parse(dr[14].ToString()).Month,
+                                                DateTime.Parse(dr[14].ToString()).Day,
+                                                DateTime.Parse(dr[14].ToString()).Hour,
+                                                DateTime.Parse(dr[14].ToString()).Minute, 0);
+                                            }
+
+                                            var DocDataID = db.DocDatas.Where(x => x.DocControlNumber.Equals(DocControlNumber)).Select(x => x.Id).FirstOrDefault();
+                                            var AddresseeID = db.DocDatas.Where(x => x.DocControlNumber.Equals(DocControlNumber)).Select(x => x.AddresseeID).FirstOrDefault();
+
+                                            var focalList = dr[10].ToString().Split(',').ToList();
+                                            // var focalIDList = db.DocDatas.Where(x => x.Id.Equals(DocDataID)).Select(x => x.FocalID).FirstOrDefault().Split(',').ToList(); //get focals id then put them into list
+                                            var dbFocalList = new List<string>();
+                                            foreach (var focalName in focalList) //getting all the id in the previous list then get their id column before adding into the list
+                                            {
+                                                dbFocalList.Add(db.Focals.Where(x => x.NickName.Equals(focalName)).Select(x => x.Id.ToString()).FirstOrDefault());
+                                            }
+                                            var addressee = new Addressee()
+                                            {
+                                                Id = AddresseeID,
+                                                Office = dr[7].ToString(),
+                                                FullName = dr[8].ToString(),
+                                            };
+                                            addressee.editAddressee();
+
+                                            var docData = new DocData()
+                                            {
+                                                Id = DocDataID,
+                                                DateAdd = DateAdd,
+                                                DocControlNumber = DocControlNumber,
+                                                DoctTypes = dr[4].ToString(),
+                                                ForSigned = DateTime.Parse(dr[6].ToString()),
+                                                AddresseeID = AddresseeID,
+                                                DocSubject = dr[9].ToString(),
+                                                FocalID = string.Join(",", dbFocalList.OrderBy(x => int.Parse(x))),
+                                                Remarks = string.Format("{0}|{1}", dr[11], dr[13]),
+                                                Signed = DateTime.Parse(dr[12].ToString()),
+                                                ForRelease = ActionDate,
+                                                CurrentStatus = dr[15].ToString(),
+                                                Tag = "I"
+                                            };
+                                            docData.editDocData();
                                         }
-
-                                        var DocDataID = db.DocDatas.Where(x => x.DocControlNumber.Equals(DocControlNumber)).Select(x => x.Id).FirstOrDefault();
-                                        var AddresseeID = db.DocDatas.Where(x => x.DocControlNumber.Equals(DocControlNumber)).Select(x => x.AddresseeID).FirstOrDefault();
-
-                                        var focalList = dr[10].ToString().Split(',').ToList();
-                                       // var focalIDList = db.DocDatas.Where(x => x.Id.Equals(DocDataID)).Select(x => x.FocalID).FirstOrDefault().Split(',').ToList(); //get focals id then put them into list
-                                        var dbFocalList = new List<string>();
-                                        foreach (var focalName in focalList) //getting all the id in the previous list then get their id column before adding into the list
-                                        {                                       
-                                            dbFocalList.Add(db.Focals.Where(x => x.NickName.Equals(focalName)).Select(x => x.Id.ToString()).FirstOrDefault());
-                                        }
-                                        var addressee = new Addressee()
+                                        else
                                         {
-                                            Id = AddresseeID,
-                                            Office = dr[7].ToString(),
-                                            FullName = dr[8].ToString(),
-                                        };
-                                        addressee.editAddressee();
+                                            //ADD
+                                            var DateAdd = new DateTime(
+                                                DateTime.Parse(dr[0].ToString()).Year,
+                                                DateTime.Parse(dr[0].ToString()).Month,
+                                                DateTime.Parse(dr[0].ToString()).Day,
+                                                DateTime.Parse(dr[1].ToString()).Hour,
+                                                DateTime.Parse(dr[1].ToString()).Minute, 0);
 
-                                        var docData = new DocData()
-                                        {
-                                            Id = DocDataID,
-                                            DateAdd = DateAdd,
-                                            DocControlNumber = DocControlNumber,
-                                            DoctTypes = dr[4].ToString(),
-                                            ForSigned = DateTime.Parse(dr[6].ToString()),
-                                            AddresseeID = AddresseeID,
-                                            DocSubject = dr[9].ToString(),
-                                            FocalID = string.Join(",", dbFocalList.Distinct()),
-                                            Remarks = string.Format("{0}|{1}", dr[11], dr[13]),
-                                            Signed = DateTime.Parse(dr[12].ToString()),
-                                            ForRelease = ActionDate,
-                                            CurrentStatus = dr[15].ToString(),
-                                            Tag = "I"
-                                        };
-                                        docData.editDocData();
+                                            DateTime? ActionDate = null;
+                                            if (!string.IsNullOrEmpty(dr[14].ToString()))
+                                            {
+                                                ActionDate = new DateTime(
+                                                DateTime.Parse(dr[14].ToString()).Year,
+                                                DateTime.Parse(dr[14].ToString()).Month,
+                                                DateTime.Parse(dr[14].ToString()).Day,
+                                                DateTime.Parse(dr[14].ToString()).Hour,
+                                                DateTime.Parse(dr[14].ToString()).Minute, 0);
+                                            }
+                                                                                      
+                                            var focalList = dr[10].ToString().Split(',').ToList();
+                                            // var focalIDList = db.DocDatas.Where(x => x.Id.Equals(DocDataID)).Select(x => x.FocalID).FirstOrDefault().Split(',').ToList(); //get focals id then put them into list
+                                            var dbFocalList = new List<string>();
+                                            foreach (var focalName in focalList) //getting all the id in the previous list then get their id column before adding into the list
+                                            {
+                                                dbFocalList.Add(db.Focals.Where(x => x.NickName.Equals(focalName)).Select(x => x.Id.ToString()).FirstOrDefault());
+                                            }
+                                            var addressee = new Addressee()
+                                            {
+                                                Office = dr[7].ToString(),
+                                                FullName = dr[8].ToString(),
+                                            };
+                                            addressee.addAddressee();
+
+                                            var docData = new DocData()
+                                            {                       
+                                                DateAdd = DateAdd,
+                                                DocControlNumber = DocControlNumber,
+                                                DoctTypes = dr[4].ToString(),
+                                                ForSigned = DateTime.Parse(dr[6].ToString()),
+                                                AddresseeID = db.Addressees.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault(),
+                                                DocSubject = dr[9].ToString(),
+                                                FocalID = string.Join(",", dbFocalList.OrderBy(x => int.Parse(x))),
+                                                Remarks = string.Format("{0}|{1}", dr[11], dr[13]),
+                                                Signed = DateTime.Parse(dr[12].ToString()),
+                                                ForRelease = ActionDate,
+                                                CurrentStatus = dr[15].ToString(),
+                                                Tag = "I"
+                                            };
+                                            docData.addDocData();
+
+                                        }                                                                         
+
                                     }
                                 }
                                 counter++;
                             }
                         }
-                        showInfo("Success of Importing file!");
+                        showInfo("File imported successfully!");
+                        this.Close();
                     }
                     catch (Exception ex)
                     {
                         showError("An error occur. " + ex.Message);
-
                     }
-
                 }
-
                 return true;
             }
             else
