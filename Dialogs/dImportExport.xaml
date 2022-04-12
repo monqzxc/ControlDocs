@@ -53,7 +53,7 @@
                     Width="235"                                            
                     materialDesign:HintAssist.Hint="ACRONYM*"                    
                     Height="35" Click="btnImport_Click">
-                    EXPORT CSV
+                    EXPORT EXCEL
                 </Button>
                 <Button  
                     x:Name="btnExport"                             
@@ -65,7 +65,7 @@
                     FontSize="14"                                                  
                     Width="238"                                            
                     materialDesign:HintAssist.Hint="POSITION*"                                                         
-                    Height="36" Click="btnExport_Click">IMPORT CSV</Button>
+                    Height="36" Click="btnExport_Click">IMPORT EXCEL</Button>
 
             </StackPanel>
 
