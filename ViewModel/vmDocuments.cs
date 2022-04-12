@@ -80,7 +80,7 @@ namespace DocsControl.ViewModel
                 doc = doc.Where(x => x.DateAdd >= fromDate && x.DateAdd <= toDate).ToList();
             }
 
-            foreach (var item in doc.OrderByDescending(x => x.Id))
+            foreach (var item in doc.OrderByDescending(x => x.DateAdd))
             {
                 //control number will depend on tag of document. split and concat with Incoming then stay as is when Outgoing
                 var cn = item.Tag.Equals("I") ? string.Format("{0} | {1}", item.DocControlNumber.Split('|')[0], item.DocControlNumber.Split('|')[1]) : item.DocControlNumber;

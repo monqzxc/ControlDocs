@@ -74,7 +74,7 @@ namespace DocsControl.ViewModel
             {
                 var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("FOR SIGNATURE") && x.Tag.Equals("O")).ToList();
                 var doctList = new ObservableCollection<DocData>();
-                foreach (var item in docs.OrderByDescending(x => x.Id))
+                foreach (var item in docs.OrderByDescending(x => x.DateAdd))
                 {
                     doctList.Add(new DocData()
                     {
@@ -92,7 +92,7 @@ namespace DocsControl.ViewModel
             {
                 var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("SIGNED") && x.Tag.Equals("O")).ToList();
                 var doctList = new ObservableCollection<DocData>();
-                foreach (var item in docs.OrderByDescending(x => x.Id))
+                foreach (var item in docs.OrderByDescending(x => x.DateAdd))
                 {
                     doctList.Add(new DocData()
                     {
@@ -113,7 +113,7 @@ namespace DocsControl.ViewModel
                 var removeDate = DateTime.Now.AddDays(3);
                 var docs = db.DocDatas.Where(x => x.CurrentStatus.Equals("RECEIVED") && x.Tag.Equals("O")).ToList();
                 var doctList = new ObservableCollection<DocData>();
-                foreach (var item in docs.OrderByDescending(x => x.Id))
+                foreach (var item in docs.OrderByDescending(x => x.DateAdd))
                 {
                     if (DateTime.Now.Subtract(item.ForRelease.Value).TotalDays > 7)
                         continue;

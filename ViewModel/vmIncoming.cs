@@ -153,7 +153,7 @@ namespace DocsControl.ViewModel
                 doc = doc.Where(x => x.DateAdd >= fromDate && x.DateAdd <= toDate).ToList();
             }
 
-            foreach (var item in doc.OrderByDescending(x => x.Id))
+            foreach (var item in doc.OrderByDescending(x => x.DateAdd))
             {                              
                 dd.Id = item.Id;
 
