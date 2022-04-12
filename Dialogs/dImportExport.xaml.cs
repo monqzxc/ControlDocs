@@ -76,6 +76,7 @@ namespace DocsControl.Dialogs
                 var dgv = new System.Windows.Controls.DataGrid();
 
                 var IncomingList = new ObservableCollection<IncomingClass>();
+
                 foreach (var item in incoming)
                 {
                     var focalIDList = db.DocDatas.Where(x => x.Id.Equals(item.Id)).Select(x => x.FocalID).FirstOrDefault().Split(',').ToList(); //get focals id then put them into list
@@ -195,11 +196,13 @@ namespace DocsControl.Dialogs
 
                 try
                 {
+                    Cursor = System.Windows.Input.Cursors.Wait;
                     xlWorkBook.SaveAs(sfd.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
                     xlWorkBook.Close(true, misValue, misValue);
                     xlApp.Quit();
-
-                    showInfo("File created !");
+                    Cursor = System.Windows.Input.Cursors.Arrow;
+                    showInfo("FILE SUCCESSFULLY EXPORTED!");
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
@@ -239,6 +242,7 @@ namespace DocsControl.Dialogs
                     {
                         connection.Open();
                         OleDbCommand command = new OleDbCommand("select * from [Sheet1$]", connection);
+                        Cursor = System.Windows.Input.Cursors.Wait;
                         using (OleDbDataReader dr = command.ExecuteReader())
                         {
                             int counter = 0;
@@ -371,7 +375,8 @@ namespace DocsControl.Dialogs
                                 counter++;
                             }
                         }
-                        showInfo("File imported successfully!");
+                        Cursor = System.Windows.Input.Cursors.Arrow;
+                        showInfo("FILE IMPORTED SUCCESSFULLY!");
                         this.Close();
                     }
                     catch (Exception ex)
