@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Mon\source\repos\DocsControl\obj\Debug\
+D:\Control of Docs\obj\Debug\
 DocsControl
 none
 false
 DEBUG;TRACE
-C:\Users\Mon\source\repos\DocsControl\App.xaml
-15-1719810259
+D:\Control of Docs\App.xaml
+16-609373429
 
-78-1502298045
-25-2104697344
-Dialogs\dAddEditDocs.xaml;Dialogs\dAddEditDocs2.xaml;Dialogs\dAddFocals.xaml;Dialogs\dAddFocalship.xaml;Dialogs\dAddPlantilla.xaml;Dialogs\dAddUsers.xaml;Dialogs\dDocInfo.xaml;Dialogs\dPDFView.xaml;Login.xaml;MainWindow.xaml;View\vDashboard.xaml;View\vDocuments.xaml;View\vIncoming.xaml;View\vListPage.xaml;View\vOutgoing.xaml;
+80-1700740004
+26-1755062751
+Dialogs\dAddEditDocs.xaml;Dialogs\dAddEditDocs2.xaml;Dialogs\dAddFocals.xaml;Dialogs\dAddFocalship.xaml;Dialogs\dAddPlantilla.xaml;Dialogs\dAddUsers.xaml;Dialogs\dDocInfo.xaml;Dialogs\dImportExport.xaml;Dialogs\dPDFView.xaml;Login.xaml;MainWindow.xaml;View\vDashboard.xaml;View\vDocuments.xaml;View\vIncoming.xaml;View\vListPage.xaml;View\vOutgoing.xaml;
 
 False
 

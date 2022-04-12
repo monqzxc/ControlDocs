@@ -140,12 +140,7 @@ namespace DocsControl.Dialogs
                 return doctList;
             }
         }        
-
-        
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
+       
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton.Equals(MouseButton.Left))
@@ -158,6 +153,10 @@ namespace DocsControl.Dialogs
                 var pdfView = new dPDFView(btn.Tag.ToString());
                 Console.WriteLine(btn.Tag);
                 pdfView.Show();
+        } 
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -169,7 +169,9 @@
                             HorizontalAlignment="Left"                                        
                             Margin="10,50,0,0"/>
 
-                        <ScrollViewer  Margin="5,5,0,0" VerticalScrollBarVisibility="Hidden" Width="Auto" Height="128">
+                        <ScrollViewer  Margin="5,5,0,0" 
+                                       VerticalScrollBarVisibility="Hidden"
+                                       Width="Auto" Height="128">
                             <ItemsControl Name="icPersonnel" ItemsSource="{Binding Path=Focals}" Width="533">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>

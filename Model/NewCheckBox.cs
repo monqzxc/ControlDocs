@@ -17,9 +17,10 @@ namespace DocsControl.Model
         {
             Margin = new Thickness(5, 6, 0, 0);
             Width = 123;
-            //continue the loading of focals checked na dapat sila hehe
+           
         }
             
+        //adding and removing of checked focals in static list
         protected override void OnChecked(RoutedEventArgs e)
         {
             checkList.Add(this.Tag.ToString());            

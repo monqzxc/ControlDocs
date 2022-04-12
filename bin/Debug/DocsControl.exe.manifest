@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DocsControl.exe" size="530832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DocsControl.exe" size="561552">
       <assemblyIdentity name="DocsControl" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Qz4wXtPQNJyuvF0S8uJ8gsCblc3HetJYP97CC5EQnug=</dsig:DigestValue>
+        <dsig:DigestValue>TznofeinsbeSfzKJe5BeYgEJp9KzuZhMM4pcESv4toU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

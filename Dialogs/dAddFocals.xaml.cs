@@ -143,6 +143,15 @@ namespace DocsControl.Dialogs
                 DragMove();
         }
 
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+            if (!isValid())
+                return;
+            updateDatabase();
+            updateAcitvity();
+            showInfo("Successfully Saved!");
+            this.Close();
+        }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             if (showWarning("DO YOU WANT TO CANCEL?").Equals(true))
@@ -152,17 +161,6 @@ namespace DocsControl.Dialogs
             }
             else
                 return;
-        }
-
-
-        private void btnSave_Click(object sender, RoutedEventArgs e)
-        {
-            if (!isValid())
-                return;
-            updateDatabase();
-            updateAcitvity();
-            showInfo("Successfully Saved!");
-            this.Close();
         }
     }
 }

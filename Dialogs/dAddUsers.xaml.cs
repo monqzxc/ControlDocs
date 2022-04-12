@@ -96,16 +96,7 @@ namespace DocsControl.Dialogs
                 return userList;
             }
         }
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            if (showWarning("DO YOU WANT TO CANCEL?").Equals(true))
-            {
-                //store the path in the list to be deleted/removed
-                this.Close();
-            }
-            else
-                return;
-        }
+       
         private void updateDatabase()
         {
             var user = new User()
@@ -177,6 +168,16 @@ namespace DocsControl.Dialogs
 
                 showError(string.Format("{0} An error occur: ",ex.Message));
             }
+        }
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (showWarning("DO YOU WANT TO CANCEL?").Equals(true))
+            {
+                //store the path in the list to be deleted/removed
+                this.Close();
+            }
+            else
+                return;
         }
     }
 }

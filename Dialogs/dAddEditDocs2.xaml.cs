@@ -186,18 +186,7 @@ namespace DocsControl.Dialogs
                 //return docdata
                 return doctList;
             }
-        }
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {            
-            if (showWarning("DO YOU WANT TO CANCEL?").Equals(true))
-            {
-                //store the path in the list to be deleted/removed
-                this.Close();
-            }
-            else
-                return;
-            
-        }
+        }        
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton.Equals(MouseButton.Left))
@@ -444,6 +433,17 @@ namespace DocsControl.Dialogs
                     this.Close();
                 }
             }
+        }
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (showWarning("DO YOU WANT TO CANCEL?").Equals(true))
+            {
+                //store the path in the list to be deleted/removed
+                this.Close();
+            }
+            else
+                return;
+
         }
     }
 }

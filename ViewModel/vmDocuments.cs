@@ -21,11 +21,22 @@ namespace DocsControl.ViewModel
             InitializeComponent();
             loadComboBox();
             loadDocList();
+            pagination.TotalDocs = 150;
             this.DataContext = this;
         }
 
         dbDocs db = new dbDocs();
-
+        public Pagination pagination = new Pagination();
+        public List<NewButton> NewButtons
+        {
+            get { return pagination.NewButtons; }
+        }
+        private ObservableCollection<DocData> sampleDocs = new ObservableCollection<DocData>();
+        public ObservableCollection<DocData> DocDatas
+        {
+            get { return sampleDocs; }
+            set { sampleDocs = value; }
+        }
         private void loadComboBox()
         {
             var subject = db.DocDatas.Select(x => x.DocSubject).ToList();
@@ -37,14 +48,6 @@ namespace DocsControl.ViewModel
             ComboBox(cmbControlNumber, controlNumber);
 
         }
-
-        private ObservableCollection<DocData> sampleDocs = new ObservableCollection<DocData>();
-        public ObservableCollection<DocData> DocDatas
-        {
-            get { return sampleDocs; }
-            set { sampleDocs = value; }
-        }
-
         private void buttonShowDialog(object sender, RoutedEventArgs e) //event for clicking add button
         {
             var item = sender as Button;
@@ -58,7 +61,6 @@ namespace DocsControl.ViewModel
         }
         public void loadDocList()
         {
-
             sampleDocs.Clear();
             var doc = db.DocDatas.ToList();
 
@@ -81,7 +83,7 @@ namespace DocsControl.ViewModel
             foreach (var item in doc.OrderByDescending(x => x.Id))
             {
                 //control number will depend on tag of document. split and concat with Incoming then stay as is when Outgoing
-                var cn = item.Tag.Equals("I") ? string.Format("{0} | {1}", item.DocControlNumber.Split('|')[0], item.DocControlNumber.Split('|')[1])  :  item.DocControlNumber;
+                var cn = item.Tag.Equals("I") ? string.Format("{0} | {1}", item.DocControlNumber.Split('|')[0], item.DocControlNumber.Split('|')[1]) : item.DocControlNumber;
                 sampleDocs.Add(new DocData()
                 {
                     Id = item.Id,
@@ -93,20 +95,10 @@ namespace DocsControl.ViewModel
             }
 
             lblTotalDocs.Content = string.Format("TOTAL DOCUMENT(S): {0}", sampleDocs.Count());
-
         }
         public void btnSearch_Click(object sender, RoutedEventArgs eventArgs)
         {
             loadDocList();
-        }
-        int totalDocs;
-        public void pagination()
-        {
-            var pages = totalDocs >= 12 ? totalDocs / 12 : 1; //if the total items is more than 12, generate new page. else 1 page
-            for (int i = 0; i < totalDocs; i++)
-            {
-
-            }
-        }
+        }       
     }
 }
