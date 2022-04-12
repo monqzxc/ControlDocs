@@ -16,9 +16,9 @@
         Width="420" Height="400">
     <Window.Resources>
         <Model:User x:Key="u"></Model:User>
-        
+
     </Window.Resources>
-    <Grid DataContext="{Binding Source={StaticResource u}}">
+    <Grid DataContext="{Binding}">
         <StackPanel Background="#1D1B1B" MouseDown="StackPanel_MouseDown">
             <Image
                 Source="\\R4A_FileServer\Control of Documents\Icons\tesda logo white.png"
@@ -72,8 +72,8 @@
                         Content="EXIT"
                         Margin="150,-42,10,10"
                         Click="buttonClick"/>
-                
-                
+
+
             </StackPanel>
 
             <Image                
@@ -83,9 +83,18 @@
                 Margin="-120,-25,-100,0"
                 VerticalAlignment="Top"
                 Width="280"/>
-     
+
+            <!--<ItemsControl HorizontalAlignment="Left" Name="icPersonnel" 
+                          ItemsSource="{Binding Path=NewButtons}"
+                          Width="410" Height="48" Margin="0,-450,0,0">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel IsItemsHost="True"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>-->
 
         </StackPanel>
-       
+
     </Grid>
 </Window>

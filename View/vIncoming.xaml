@@ -41,7 +41,7 @@
 
             <ComboBox 
                 Name="cmbORDRODNumber"
-                Margin="20,0,0,0"
+                Margin="10,0,0,0"
                 materialDesign:HintAssist.Hint="ORD | ROD NUMBER"  
                 IsEditable="True"  
                 Height="40"
@@ -51,7 +51,7 @@
 
             <ComboBox 
                 Name="cmbPersonnel"
-                Margin="20,0,0,0"
+                Margin="10,0,0,0"
                 materialDesign:HintAssist.Hint="ASSIGNED PERSONNEL"  
                 IsEditable="True"  
                 Height="40"
@@ -60,18 +60,26 @@
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"/>
             <DatePicker  
                 Name="dtpDate"
-                Margin="20,0,0,0"
+                Margin="10,-2,0,0"
                 
-                Width="110"
+                Width="112"
                 materialDesign:HintAssist.Hint="DATE RECEIVED"               
                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
                 Height="42" />
             <Button
                 ToolTip="SEARCH DOCUMENT"
                 Click="btnSearch_Click"
-                Margin="30,10,0,0"
+                Margin="20,10,0,0"
                 Width="100"
                 Content="SEARCH"/>
+
+            <Button Margin="10,10,0,0" 
+                    Name="btnImportExport"
+                    Click="btnImportExport_Click"
+                    Style="{StaticResource MaterialDesignRaisedAccentButton}"
+                    ToolTip="Import/Export">
+                <materialDesign:PackIcon Kind="ImportExport" />
+            </Button>
         </StackPanel>
         <StackPanel Grid.Row="3">
             <DataGrid                                       

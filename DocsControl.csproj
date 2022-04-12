@@ -87,6 +87,10 @@
     <Reference Include="MaterialSkin, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\MaterialSkin.Updated.0.2.2\lib\MaterialSkin.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -132,6 +136,9 @@
     </Compile>
     <Compile Include="Dialogs\dDocInfo.xaml.cs">
       <DependentUpon>dDocInfo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\dImportExport.xaml.cs">
+      <DependentUpon>dImportExport.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\dPDFView.xaml.cs">
       <DependentUpon>dPDFView.xaml</DependentUpon>
@@ -203,6 +210,7 @@
     <Compile Include="Model\IncomingClass.cs" />
     <Compile Include="Model\Modules.cs" />
     <Compile Include="Model\NewButton.cs" />
+    <Compile Include="Model\Pagination.cs" />
     <Compile Include="Model\Routes.cs" />
     <Compile Include="Model\NewCheckBox.cs" />
     <Compile Include="ViewModel\vmDashboard.cs" />
@@ -250,6 +258,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Dialogs\dDocInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dialogs\dImportExport.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

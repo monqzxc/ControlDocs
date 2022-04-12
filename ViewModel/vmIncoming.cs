@@ -30,6 +30,7 @@ namespace DocsControl.ViewModel
             if (role > 2)
             {
                 btnAdd.Visibility = Visibility.Hidden;
+                btnImportExport.Visibility = Visibility.Hidden;
             }
         }
         dbDocs db = new dbDocs();
@@ -174,6 +175,15 @@ namespace DocsControl.ViewModel
         public void btnSearch_Click(object sender, RoutedEventArgs eventArgs)
         {
             loadDocList();
+        }
+        public void btnImportExport_Click(object sender, RoutedEventArgs eventArgs)
+        {
+            this.Opacity = .5;
+            this.Background = Brushes.Black;
+            var ie = new dImportExport(user);
+            ie.ShowDialog();
+            this.Opacity = 1;
+            this.Background = Brushes.Transparent;
         }
     }
 }

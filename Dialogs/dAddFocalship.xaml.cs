@@ -112,18 +112,7 @@ namespace DocsControl.Dialogs
         {
             if (e.ChangedButton.Equals(MouseButton.Left))
                 DragMove();
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            if (showWarning("DO YOU WANT TO CANCEL?").Equals(true))
-            {
-                //store the path in the list to be deleted/removed
-                this.Close();
-            }
-            else
-                return;
-        }
+        }        
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -133,6 +122,16 @@ namespace DocsControl.Dialogs
             updateAcitvity();
             showInfo("Successfully Saved!");
             this.Close();
+        }
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            if (showWarning("DO YOU WANT TO CANCEL?").Equals(true))
+            {
+                //store the path in the list to be deleted/removed
+                this.Close();
+            }
+            else
+                return;
         }
     }
 }

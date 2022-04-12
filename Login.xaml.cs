@@ -36,8 +36,14 @@ namespace DocsControl
                 if (e.Key.Equals(Key.Enter))
                     buttonClick(btn, new EventArgs());
             };
+            pagination.TotalDocs = 150;
+            this.DataContext = this;
         }
-
+        public Pagination pagination = new Pagination();
+        public List<NewButton> NewButtons
+        {
+            get { return pagination.NewButtons; }
+        }
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton.Equals(MouseButton.Left))
