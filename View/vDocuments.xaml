@@ -24,7 +24,7 @@
                 Margin="731,805,20,10"
                 HorizontalContentAlignment="Right"/>
 
-            <ItemsControl HorizontalAlignment="Left" Name="icPersonnel" 
+            <!--<ItemsControl HorizontalAlignment="Left" Name="icPersonnel" 
                           ItemsSource="{Binding Path=NewButtons}"
                           Width="523" 
                           Margin="10,805,0,10">
@@ -33,7 +33,7 @@
                         <WrapPanel IsItemsHost="True"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-            </ItemsControl>
+            </ItemsControl>-->
         </Grid>
 
         <Grid Margin="10,91,10,695">

@@ -168,10 +168,6 @@ namespace DocsControl.Dialogs
                     xlColIndex++;
                 }
 
-                Console.WriteLine(IncomingList.Count);
-
-                //foreach (var item in IncomingList)
-                //{
                 for (int i = 0; i < IncomingList.Count; i++)
                 {
                     xlWorkSheet.Cells[13 + i, 1] = IncomingList.Select(x => x.DateAdded.ToString("yyyy-MM-dd")).Skip(i).FirstOrDefault();
@@ -230,6 +226,7 @@ namespace DocsControl.Dialogs
             var openFileDialog = new System.Windows.Forms.OpenFileDialog();
 
             openFileDialog.InitialDirectory = @"C:\Desktop";
+            openFileDialog.Filter = "Excel Files | *.xls;*.xlsx;*.xlsm";
             openFileDialog.RestoreDirectory = true;
 
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)

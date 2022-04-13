@@ -232,6 +232,7 @@ namespace DocsControl.Dialogs
             var openFileDialog = new System.Windows.Forms.OpenFileDialog();
 
             openFileDialog.InitialDirectory = @"C:\Desktop";
+            openFileDialog.Filter = "PDF Files | *.pdf";
             openFileDialog.RestoreDirectory = true;
 
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK) 
