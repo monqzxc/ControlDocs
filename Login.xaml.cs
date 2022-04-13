@@ -39,40 +39,7 @@ namespace DocsControl
             pagination.TotalDocs = 150;
 
 
-            var db = new dbDocs();
-
-            var status = new string[] { "FOR SIGNATURE", "SIGNED", "RECEIVED" };
-            var fsList = new List<string>();
-            foreach (var item in status)
-            {
-                var statList = db.DocDatas.Where(x => x.Tag.Equals("O") && x.CurrentStatus.Equals(item));
-               // Console.WriteLine(string.Format("{0} - {1}",item,db.DocDatas.Where(x => x.Tag.Equals("O") && x.CurrentStatus.Equals(item)).Count()));
-                if (item.Equals("SIGNED"))
-                {
-                    for (int i = 0; i < statList.Count() ; i++)
-                    {
-                        fsList.Add(statList.Select(x => x.Signed.ToString()).OrderBy(x => x).Skip(i).FirstOrDefault());
-                    }
-                    foreach (var signeDate in fsList)
-                    {
-                        var newSignDate = DateTime.Parse(signeDate);
-                        var countDate = Math.Ceiling(DateTime.Now.Subtract(newSignDate).TotalDays);
-                        if (countDate == 0)
-                        {
-                            Console.WriteLine("today");
-                        }else if (countDate == 1)
-                        {
-                            Console.WriteLine("yesterday");
-                        }else if (countDate > 1 && countDate <= 7)
-                        {
-                            Console.WriteLine("week");
-                        }
-                    }
-
-                }
-            }
-
-            Console.WriteLine(string.Join(",", fsList));
+                            
             this.DataContext = this;
         }
         public Pagination pagination = new Pagination();
