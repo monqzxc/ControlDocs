@@ -12,6 +12,7 @@ namespace DocsControl.Model
         public int Today { get; set; }
         public int Yesterday { get; set; }
         public int Week { get; set; }
+        public int Month { get; set; }
         public int Average { get; set; }
 
     }

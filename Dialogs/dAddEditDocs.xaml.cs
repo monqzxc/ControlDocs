@@ -35,7 +35,7 @@ namespace DocsControl.Dialogs
             this.role = int.Parse(user.Split('|')[0]);
             //docData.Id = id;
             this.user = user;
-            var focals = db.Focals.OrderBy(x => x.PlantillaID).Select(x => x.FullName).ToList(); //populate combo box with focal names
+            var focals = db.Focals.Select(x => x.FullName).ToList(); //populate combo box with focal names
             ComboBox(cmbFocals, focals); //method for populating //Models>Modules static           
 
             if (role > 2)
@@ -200,6 +200,14 @@ namespace DocsControl.Dialogs
                 return false;
             }
 
+           if (!string.IsNullOrWhiteSpace(cmbFocals.Text))
+            {
+                if (db.Focals.Where(x => x.FullName.Equals(cmbFocals.Text)).Count() < 0)
+                {
+                    showError("Please enter valid focal name");
+                    return false;
+                }
+            }
             //saving validation of signed copy
             if(cmbStatus.Text.Contains("SIGNED") && (btnSigned.Content.ToString().Contains("ADD") || string.IsNullOrWhiteSpace(dpSigned.Text) || string.IsNullOrWhiteSpace(tpSigned.Text)))
             {
@@ -304,22 +312,24 @@ namespace DocsControl.Dialogs
         }
         private void bindDocData()
         {
+            
             docData = new DocData()
-            {
-                Id = docDataID,
-                DocSubject = txtSubject.Text,
-                CurrentStatus = cmbStatus.Text,
-                ForSigned = lblTitle.Content.ToString().Contains("EDIT") ? DateTime.Parse(txtSubject.Tag.ToString()) : DateTime.Now,
-                Signed = signedDate,
-                ForRelease = receivedDate,
-                FocalID = db.Focals.Where(x => x.FullName.Equals(cmbFocals.Text)).FirstOrDefault().Id.ToString(),
-                DateAdd = lblTitle.Content.ToString().Contains("EDIT") ? DateTime.Parse(txtSubject.Tag.ToString()) : DateTime.Now,
-                DoctTypes = txtDocType.Text,
-                AddresseeID = lblTitle.Content.ToString().Contains("ADD") ? db.Addressees.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault() : int.Parse(lblAddressee.Tag.ToString()),
-                Remarks = txtRemarks.Text,
-                Tag = "O",
-                DocControlNumber = txtControlNumber.Text
-            };
+                {
+                    Id = docDataID,
+                    DocSubject = txtSubject.Text,
+                    CurrentStatus = cmbStatus.Text,
+                    ForSigned = lblTitle.Content.ToString().Contains("EDIT") ? DateTime.Parse(txtSubject.Tag.ToString()) : DateTime.Now,
+                    Signed = signedDate,
+                    ForRelease = receivedDate,
+                    FocalID = db.Focals.Where(x => x.FullName.Equals(cmbFocals.Text)).FirstOrDefault().Id.ToString(),
+                    DateAdd = lblTitle.Content.ToString().Contains("EDIT") ? DateTime.Parse(txtSubject.Tag.ToString()) : DateTime.Now,
+                    DoctTypes = txtDocType.Text,
+                    AddresseeID = lblTitle.Content.ToString().Contains("ADD") ? db.Addressees.OrderByDescending(x => x.Id).Select(x => x.Id).FirstOrDefault() : int.Parse(lblAddressee.Tag.ToString()),
+                    Remarks = txtRemarks.Text,
+                    Tag = "O",
+                    DocControlNumber = txtControlNumber.Text
+                };          
+            
         }
 
         private void uploadFile()

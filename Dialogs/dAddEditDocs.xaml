@@ -117,8 +117,7 @@
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"    
                 VerticalAlignment="Top"
                 VerticalContentAlignment="Top"
-                FontSize="14"     
-                IsEditable="True"  
+                FontSize="14"                  
                 materialDesign:HintAssist.Hint="FOCAL" 
                 Margin="16,225,298,0" Height="Auto" Width="251">
                 <ComboBoxItem Content="MON"/>

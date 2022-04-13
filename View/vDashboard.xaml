@@ -55,7 +55,7 @@
 
 
         <StackPanel Grid.Row="3" 
-                    Margin="10,0,10,0"
+                    Margin="10,0,10,-96"
                     materialDesign:ShadowAssist.ShadowDepth="Depth3"
                     Background="White">
 
@@ -64,12 +64,12 @@
                 Width="328"
                 HorizontalAlignment="Left"
                 Margin="10,10,0,0"
-                FontSize="23"
+                FontSize="25"
                 FontWeight="DemiBold"
                 HorizontalContentAlignment="Left" />
             <StackPanel Height="2" 
                         Background="Teal" 
-                        Margin="0,0,186,0"></StackPanel>
+                        Margin="0,0,116,0"></StackPanel>
 
             <DataGrid                   
                 Background="White"            
@@ -79,116 +79,31 @@
                 VerticalAlignment="Top"            
                 AutoGenerateColumns="False"           
                 HorizontalScrollBarVisibility="Disabled"                 
-                AlternatingRowBackground="WhiteSmoke" 
-                Width="600"
-                Margin="10,0,0,0" Height="192">
-                <DataGrid.Columns>
-                    <DataGridTemplateColumn                      
-                    MinWidth="100"
-                    Width="176">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <AccessText 
-                                VerticalAlignment="Center"                                                                 
-                                Text="{Binding Path=Status}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn  
-                        Header=" TODAY"                                                                 
-                        MinWidth="15"                                                                
-                        Width="150">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <AccessText 
-                                TextWrapping="Wrap"
-                                VerticalAlignment="Center"                                                                 
-                                Text="{Binding Path=Today}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn  
-                        Header=" YESTERDAY"                                                                 
-                        MinWidth="15"                                                                
-                        Width="150">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <AccessText 
-                                TextWrapping="Wrap"
-                                VerticalAlignment="Center"                                                                 
-                                Text="{Binding Path=Yesterday}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn                          
-                        Header=" WEEK"                                                                 
-                        MinWidth="15"                                                                
-                        Width="150">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <AccessText 
-                                TextWrapping="Wrap"
-                                VerticalAlignment="Center"                                                                 
-                                Text="{Binding Path=Week}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-                <DataGrid.Resources>
-                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="IsEnabled" Value="False"/>
-                        <Setter Property="FontWeight" Value="Bold"/>
-                    </Style>
-                </DataGrid.Resources>
-            </DataGrid>
-            <Label                 
-                Content="OUTGOING"
-                Width="328"
-                HorizontalAlignment="Right"
-                Margin="10,10,10,0"
-                FontSize="23"
-                FontWeight="DemiBold"
-                HorizontalContentAlignment="Right" />
-            <StackPanel Height="2" 
-                Background="Teal" 
-
-                Margin="186,0,0,0"/>
-            <DataGrid                   
-                Background="White"            
-                IsReadOnly="True"            
-                x:Name="dgDocList_Copy"            
-                HorizontalAlignment="Right"                          
-                VerticalAlignment="Top"            
-                AutoGenerateColumns="False"           
-                HorizontalScrollBarVisibility="Disabled"                 
-                AlternatingRowBackground="WhiteSmoke" 
-                Width="582" Height="192"
-                ItemsSource="{Binding Path=OutgoingData}">
-                <DataGrid.Resources>
-                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="IsEnabled" Value="False"/>
-                        <Setter Property="FontWeight" Value="Bold"/>
-                    </Style>
-                </DataGrid.Resources>
+                Width="818"
+                Margin="10,0,0,0" Height="192"
+                ItemsSource="{Binding Path=IncomingData}">
                 <DataGrid.Columns>
                     <DataGridTemplateColumn                      
                         MinWidth="100"
                         Width="176">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <AccessText 
+                                <AccessText                                    
+                                    FontWeight="DemiBold"
                                     VerticalAlignment="Center"                                                                 
                                     Text="{Binding Status}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
                     <DataGridTemplateColumn  
+                        
                         Header=" TODAY"                                                                 
                         MinWidth="15"                                                                
                         Width="150">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <AccessText 
+                                    HorizontalAlignment="Center"
                                     TextWrapping="Wrap"
                                     VerticalAlignment="Center"                                                                 
                                     Text="{Binding Path=Today}"/>
@@ -202,6 +117,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <AccessText 
+                                    HorizontalAlignment="Center"
                                     TextWrapping="Wrap"
                                     VerticalAlignment="Center"                                                                 
                                     Text="{Binding Path=Yesterday}"/>
@@ -215,9 +131,132 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <AccessText 
+                                    HorizontalAlignment="Center"
                                     TextWrapping="Wrap"
                                     VerticalAlignment="Center"                                                                 
                                     Text="{Binding Path=Week}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn                          
+                        Header=" MONTH"                                                                 
+                        MinWidth="15"                                                                
+                        Width="150">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText 
+                                    HorizontalAlignment="Center"
+                                    TextWrapping="Wrap"
+                                    VerticalAlignment="Center"                                                                 
+                                    Text="{Binding Path=Month}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="IsEnabled" Value="False"/>                        
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
+            <Label                 
+                Content="OUTGOING"
+                Width="328"
+                HorizontalAlignment="Right"
+                Margin="10,10,10,0"
+                FontSize="25"
+                FontWeight="DemiBold"
+                HorizontalContentAlignment="Right" />
+            <StackPanel Height="2" 
+                Background="Teal" 
+
+                Margin="100,0,0,0"/>
+            <DataGrid                   
+                Background="White"            
+                IsReadOnly="True"            
+                x:Name="dgDocList_Copy"            
+                HorizontalAlignment="Right"                          
+                VerticalAlignment="Top"            
+                AutoGenerateColumns="False"           
+                HorizontalScrollBarVisibility="Disabled"                 
+                Width="828" Height="192"
+                ItemsSource="{Binding Path=OutgoingData}">
+                <DataGrid.Resources>
+                    <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="IsEnabled" Value="False"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                    </Style>
+                </DataGrid.Resources>
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn                      
+                        MinWidth="100"
+                        Width="176">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText      
+                                    FontWeight="DemiBold"
+                                    VerticalAlignment="Center"                                                                 
+                                    Text="{Binding Status}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  
+                        
+                        Header=" TODAY"                                                                 
+                        MinWidth="15"                                                                
+                        Width="150">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText 
+                                    HorizontalAlignment="Center"
+                                    TextWrapping="Wrap"
+                                    VerticalAlignment="Center"                                                                 
+                                    Text="{Binding Path=Today}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn  
+                        Header=" YESTERDAY"                                                                 
+                        MinWidth="15"                                                                
+                        Width="150">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText 
+                                    HorizontalAlignment="Center"
+                                    TextWrapping="Wrap"
+                                    VerticalAlignment="Center"                                                                 
+                                    Text="{Binding Path=Yesterday}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn                          
+                        Header=" WEEK"                                                                 
+                        MinWidth="15"                                                                
+                        Width="150">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText 
+                                    HorizontalAlignment="Center"
+                                    TextWrapping="Wrap"
+                                    VerticalAlignment="Center"                                                                 
+                                    Text="{Binding Path=Week}"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTemplateColumn                          
+                        Header=" MONTH"                                                                 
+                        MinWidth="15"                                                                
+                        Width="150">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <AccessText 
+                                    HorizontalAlignment="Center"
+                                    TextWrapping="Wrap"
+                                    VerticalAlignment="Center"                                                                 
+                                    Text="{Binding Path=Month}"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>

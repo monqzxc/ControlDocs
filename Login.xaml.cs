@@ -37,10 +37,9 @@ namespace DocsControl
                     buttonClick(btn, new EventArgs());
             };
             pagination.TotalDocs = 150;
+           
+            this.DataContext = this;            
 
-
-                            
-            this.DataContext = this;
         }
         public Pagination pagination = new Pagination();
         public List<NewButton> NewButtons

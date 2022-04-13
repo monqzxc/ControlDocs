@@ -390,12 +390,16 @@ namespace DocsControl.Dialogs
         }
         private void btnImport_Click(object sender, RoutedEventArgs e)
         {
+            Cursor = System.Windows.Input.Cursors.Hand;
             ExportCsv();
+            Cursor = System.Windows.Input.Cursors.Arrow;
         }
 
         private void btnExport_Click(object sender, RoutedEventArgs e)
         {
+            Cursor = System.Windows.Input.Cursors.Hand;
             ImportCsv();
+            Cursor = System.Windows.Input.Cursors.Arrow;
         }
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
